@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">login</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome</string>
+    <string name="login">Login…</string>
+    <string name="password">Password…</string>
+    <string name="log_in">Log In</string>
+    <string name="hello">Hello</string>
+    <string name="log_out">Log Out</string>
+    <string name="app_name_splash">App Name</string>
+
+    <string name="error">Ошибка!</string>
+
+    <string name="login_successful">Вход выполнен</string>
+    <string name="two_lines_empty">Ошибка! Оба поля пусты</string>
+    <string name="need_add_login">Ошибка! Необходимо ввести Логин</string>
+    <string name="need_add_pass">Ошибка! Необходимо ввести Пароль</string>
+    <string name="pass_need_more_ten">Ошибка! Пароль должен быть меньше 10 символов</string>
+    <string name="pass_need_not_more_ten">Ошибка! Пароль должен быть больше 4 символов</string>
+    <string name="pass_no_probels">Ошибка! Пароль не должен быть иметь пробелов</string>
+    <string name="pass_no_symbol">Ошибка! Пароль не должен иметь специальных символов</string>
+    <string name="login_need_not_more_ten">"Ошибка! Логин должен быть меньше 10 символов"</string>
+    <string name="login_need_more_four">"Ошибка! Логин должен быть больше 4 символов"</string>
+    <string name="login_no_probels">Ошибка! Логин не должен быть иметь пробелов</string>
+    <string name="login_no_symbol">Ошибка! Логин не должен иметь специальных символов</string>
+    <string name="wrong_data">Ошибка! Неверный логин или пароль</string>
 </resources>

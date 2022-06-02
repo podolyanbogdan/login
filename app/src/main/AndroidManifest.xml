@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Login">
 
         <activity
-            android:name=".presentation.CustomSplashActivity"
+            android:name=".presentation.NinjaLaunchedScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true">

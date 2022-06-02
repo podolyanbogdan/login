@@ -1,7 +1,6 @@
 package com.example.login.presentation
 
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
@@ -11,8 +10,8 @@ import com.example.login.R
 import com.example.login.databinding.ActivityCustomSplashBinding
 import kotlinx.coroutines.*
 
-@SuppressLint("CustomSplashScreen")
-class CustomSplashActivity : AppCompatActivity() {
+
+class NinjaLaunchedScreen : AppCompatActivity() {
     private lateinit var binding: ActivityCustomSplashBinding
     private lateinit var animationDrawable: AnimationDrawable
     private val activityScope = CoroutineScope(Dispatchers.Main)
@@ -28,6 +27,7 @@ class CustomSplashActivity : AppCompatActivity() {
         initNinja()
         launchAct()
     }
+
 
     private fun initProgressBar(){
         binding.progressBar.progressDrawable.setColorFilter(
@@ -54,7 +54,7 @@ class CustomSplashActivity : AppCompatActivity() {
             }
             if(splashScreenTime == zero)
             {
-                var intent = Intent(this@CustomSplashActivity, MainActivity::class.java)
+                var intent = Intent(this@NinjaLaunchedScreen, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }

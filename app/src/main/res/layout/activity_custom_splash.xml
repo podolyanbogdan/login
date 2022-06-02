@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#232323"
     app:layoutDescription="@xml/activity_custom_splash_scene"
-    tools:context=".presentation.CustomSplashActivity">
+    tools:context=".presentation.NinjaLaunchedScreen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backgroundLayout"

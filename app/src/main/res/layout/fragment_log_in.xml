@@ -16,6 +16,7 @@
         android:backgroundTint="#DA7E7E"
         android:text="@string/log_in"
         android:textColor="#212121"
+        android:onClick="@{() -> viewmodel.clickNext()}"
         app:layout_constraintEnd_toEndOf="@+id/edPass"
         app:layout_constraintStart_toStartOf="@+id/edPass"
         app:layout_constraintTop_toBottomOf="@+id/edPass" />
@@ -28,7 +29,7 @@
         android:fontFamily="@font/acme"
         android:text="@string/welcome"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

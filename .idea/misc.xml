@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable-v24/bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_getstarted_icon.xml" value="0.2203125" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_wave.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/activity_custom_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_get_started.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_hello_user.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_introduce_yourself.xml" value="0.1" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_log_in.xml" value="0.20416666666666666" />
       </map>
     </option>

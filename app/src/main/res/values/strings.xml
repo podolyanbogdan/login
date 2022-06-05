@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Quizlet</string>
+    <string name="getStarted_description">This is special app from Ministers of Ukraine \n To collect information from the population</string>
+    <string name="welcome_to_quiz_app">Welcome to Quiz App</string>
+    <string name="get_started">Get Started</string>
+    <string name="wave1">wave1</string>
+    <string name="wave2">wave2</string>
+
 
 </resources>

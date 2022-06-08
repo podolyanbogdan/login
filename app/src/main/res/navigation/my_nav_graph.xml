@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav_graph"
+    app:startDestination="@id/getStartedFragment">
+
+    <fragment
+        android:id="@+id/getStartedFragment"
+        android:name="com.example.login.ui.GetStartedFragment"
+        android:label="fragment_get_started"
+        tools:layout="@layout/fragment_get_started" >
+        <action
+            android:id="@+id/fromGetStartedToIntroduce"
+            app:destination="@id/introduceYourSelfFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introduceYourSelfFragment"
+        android:name="com.example.login.ui.IntroduceYourSelfFragment"
+        android:label="fragment_introduce_your_self"
+        tools:layout="@layout/fragment_introduce_your_self" >
+        <action
+            android:id="@+id/fromIntroduceToQuestions"
+            app:destination="@id/mainQuestionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainQuestionsFragment"
+        android:name="com.example.login.ui.MainQuestionsFragment"
+        android:label="fragment_main_questions"
+        tools:layout="@layout/fragment_main_questions" >
+        <action
+            android:id="@+id/fromMainQuestToEditQuest"
+            app:destination="@id/questionEditTextFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.login.ui.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/resultToIntroduce"
+            app:destination="@id/introduceYourSelfFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionEditTextFragment"
+        android:name="com.example.login.ui.QuestionEditTextFragment"
+        android:label="fragment_question_edit_text"
+        tools:layout="@layout/fragment_question_edit_text" >
+        <action
+            android:id="@+id/fromEditToResult"
+            app:destination="@id/resultFragment" />
+    </fragment>
+</navigation>

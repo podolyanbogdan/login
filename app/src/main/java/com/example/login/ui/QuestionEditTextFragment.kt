@@ -11,14 +11,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.login.R
 import com.example.login.databinding.FragmentQuestionEditTextBinding
-import com.example.login.model.Constants
-import com.example.login.model.QuestionEditTextModel
-import com.example.login.viewmodel.UserAuthorizationViewModel
+import com.example.login.questions.Questions
+import com.example.login.questions.QuestionEditTextModel
+import com.example.login.viewmodel.UserLoginViewModel
 
 class QuestionEditTextFragment : Fragment() {
 
     private lateinit var binding: FragmentQuestionEditTextBinding
-    private val userAuthorizationViewModel: UserAuthorizationViewModel by activityViewModels()
+    private val userLoginViewModel: UserLoginViewModel by activityViewModels()
 
     private var currentPosition = 1
     private lateinit var questionsList: ArrayList<QuestionEditTextModel>
@@ -33,7 +33,7 @@ class QuestionEditTextFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentQuestionEditTextBinding.inflate(inflater, container, false)
-        questionsList = Constants.getQuestionsEditText()
+        questionsList = Questions.getQuestionsEditText()
         setQuestion()
         buttonClick()
         return binding.root
@@ -53,7 +53,7 @@ class QuestionEditTextFragment : Fragment() {
         binding.progressBar.progress = currentPosition
         binding.tvProgress.text =
             "$currentPosition" + getString(R.string.chertochka) + binding.progressBar.max
-        binding.tvQuestName.text = question.questionName
+        binding.tvQuestName.text = question.questEditList["questionName"] as CharSequence?
 
         isClicked = false
     }
@@ -98,7 +98,7 @@ class QuestionEditTextFragment : Fragment() {
                     binding.edUserAnswer.isEnabled = false
                     val userAnswer = binding.edUserAnswer.text.toString().toInt()
                     val question = questionsList[currentPosition - 1]
-                    if (question.correctAnswerEditText == userAnswer) {
+                    if (question.questEditList["correctAnswerEditText"] == userAnswer) {
                         binding.tvUserResultOfAnswer.visibility = View.VISIBLE
                         answerView(1, R.drawable.correct_option_border_bg, getString(R.string.you_correc))
                         unCorrectAnswer++
@@ -108,8 +108,6 @@ class QuestionEditTextFragment : Fragment() {
                         answerView(1, R.drawable.wrong_option_border_bg, getString(R.string.wrong))
                         correctAnswer++
                     }
-                    userAuthorizationViewModel.correctAnswerModel.value = correctAnswer
-                    userAuthorizationViewModel.unCorrectAnswerModel.value = unCorrectAnswer
                     selectedOptionPosition = 0
                     binding.edUserAnswer.text.clear()
                 }

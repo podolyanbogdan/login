@@ -14,14 +14,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.login.R
 import com.example.login.databinding.FragmentMainQuestionsBinding
-import com.example.login.model.Constants
-import com.example.login.model.QuestionModel
-import com.example.login.viewmodel.UserAuthorizationViewModel
+import com.example.login.questions.Questions
+import com.example.login.questions.QuestionModel
+import com.example.login.viewmodel.UserLoginViewModel
 
 
 class MainQuestionsFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentMainQuestionsBinding
-    private val userAuthorizationViewModel: UserAuthorizationViewModel by activityViewModels()
+    private val userLoginViewModel: UserLoginViewModel by activityViewModels()
     private var currentPosition = 1
     private lateinit var questionsList: ArrayList<QuestionModel>
     private var selectedOptionPosition = 0
@@ -35,7 +35,7 @@ class MainQuestionsFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainQuestionsBinding.inflate(inflater, container, false)
-        questionsList = Constants.getQuestions()
+        questionsList = Questions.getQuestions()
         setQuestion()
         initListeners()
         return binding.root
@@ -70,11 +70,11 @@ class MainQuestionsFragment : Fragment(), View.OnClickListener {
         binding.progressBar.progress = currentPosition
         binding.tvProgress.text =
             "$currentPosition" + getString(R.string.chertochka) + questionsList.size
-        binding.tvQuestName.text = question.questionName
-        binding.tvOptionOne.text = question.optionOne
-        binding.tvOptionTwo.text = question.optionTwo
-        binding.tvOptionThree.text = question.optionThree
-        binding.tvOptionFour.text = question.optionFour
+        binding.tvQuestName.text = question.questMainList["questionName"] as CharSequence?
+        binding.tvOptionOne.text = question.questMainList["optionOne"] as CharSequence?
+        binding.tvOptionTwo.text = question.questMainList["optionTwo"] as CharSequence?
+        binding.tvOptionThree.text = question.questMainList["optionThree"] as CharSequence?
+        binding.tvOptionFour.text = question.questMainList["optionFour"] as CharSequence?
 
 
         isClicked = false
@@ -134,19 +134,17 @@ class MainQuestionsFragment : Fragment(), View.OnClickListener {
                         }
                     } else {
                         val question = questionsList[currentPosition - 1]
-                        if (question.correctAnswer != selectedOptionPosition) {
+                        if (question.questMainList["correctAnswer"] != selectedOptionPosition) {
                             answerView(selectedOptionPosition, R.drawable.wrong_option_border_bg)
                             unCorrectAnswer++
                         }
-                        answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                        answerView(question.questMainList["correctAnswer"] as Int, R.drawable.correct_option_border_bg)
                         correctAnswer++
                         if (currentPosition == questionsList.size) {
                             binding.btnSubmit.text = getString(R.string.next_module)
                         } else {
                             binding.btnSubmit.text = getString(R.string.go_to_next_question)
                         }
-                        userAuthorizationViewModel.correctAnswerModel.value = correctAnswer
-                        userAuthorizationViewModel.unCorrectAnswerModel.value = unCorrectAnswer
                         selectedOptionPosition = 0
                     }
                 }

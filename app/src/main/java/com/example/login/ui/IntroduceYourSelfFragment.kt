@@ -6,47 +6,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import com.example.login.R
 import com.example.login.databinding.FragmentIntroduceYourSelfBinding
+import com.example.login.interfaceLogin.LoginResultCallBacks
 import com.example.login.model.UserModel
-import com.example.login.viewmodel.UserAuthorizationViewModel
+import com.example.login.viewmodel.LoginViewModelFactory
+import com.example.login.viewmodel.UserLoginViewModel
 
-class IntroduceYourSelfFragment : Fragment() {
-    private lateinit var binding: FragmentIntroduceYourSelfBinding
-    private val userAutoViewModel: UserAuthorizationViewModel by activityViewModels()
-    private val user = UserModel()
-
+class IntroduceYourSelfFragment : Fragment(), LoginResultCallBacks {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentIntroduceYourSelfBinding.inflate(inflater, container, false)
+       val binding : FragmentIntroduceYourSelfBinding =
+           DataBindingUtil.inflate(inflater,R.layout.fragment_introduce_your_self, container, false)
+        binding.viewModelLogin = ViewModelProvider(this, LoginViewModelFactory(this))[UserLoginViewModel::class.java]
+        binding.viewModelLogin.isNavigate.observe(this,{ result ->
+            if(result == 1){
+                view?.let { Navigation.findNavController(it).navigate(R.id.fromIntroduceToQuestions) }
+            }
+        })
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.btnConfirm.setOnClickListener {
-            initUser()
-            userAutoViewModel.confirmUserInfo(user, view)
-            showError()
-        }
+    override fun onResultMessage(message: Int) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun initUser() {
-        val name = binding.edName.text.toString()
-        val surname = binding.edSurname.text.toString()
-        val age = binding.edAge.text.toString().toIntOrNull() ?: 0
-        user.name = name
-        user.surname = surname
-        user.age = age
-    }
-    private fun showError(){
-        userAutoViewModel.message.observe(this, {
-            it.getContentIfNotHandled()?.let {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 }

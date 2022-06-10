@@ -18,8 +18,8 @@ class GetStartedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentGetStartedBinding.inflate(inflater, container, false)
-        binding.btnGetStarted.setOnClickListener {
-            view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.fromGetStartedToIntroduce) }
+        binding.btnGetStarted.setOnClickListener { _ ->
+            view?.let { Navigation.findNavController(it).navigate(R.id.fromGetStartedToIntroduce) }
         }
         return binding.root
     }

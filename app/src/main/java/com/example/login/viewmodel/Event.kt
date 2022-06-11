@@ -3,7 +3,7 @@ package com.example.login.viewmodel
 open class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false
-    private set
+        private set
 
     fun getContentIfNotHandled(): T?{
         return if(hasBeenHandled){

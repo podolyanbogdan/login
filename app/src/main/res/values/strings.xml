@@ -1,30 +1,53 @@
 <resources>
-    <string name="app_name">login</string>
+    <string name="app_name">Quizlet</string>
+    <string name="getStarted_description">This is special app from Ministers of Ukraine \n To collect information from the population</string>
+    <string name="welcome_to_quiz_app">Welcome to Quiz App</string>
+    <string name="get_started">Get Started</string>
+    <string name="wave1">wave1</string>
+    <string name="wave2">wave2</string>
+    <string name="input_your_data">Input your data below</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="age">Age</string>
+    <string name="confirm">Confirm</string>
 
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="welcome">Welcome</string>
-    <string name="login">Login…</string>
-    <string name="password">Password…</string>
-    <string name="log_in">Log In</string>
-    <string name="hello">Hello</string>
-    <string name="log_out">Log Out</string>
-    <string name="app_name_splash" translatable="false">App Name</string>
-
-    <string name="error">Error!</string>
-    <string name="hello_user">Hello</string>
-    <string name="name_user" translatable="false">"@id/edLogin"</string>
 
     <string name="login_successful">Signed in</string>
-    <string name="two_lines_empty">Error! Both fields are empty</string>
-    <string name="need_add_login">Error! Login required</string>
-    <string name="need_add_pass">Error! Password required</string>
-    <string name="pass_need_more_ten">Error! Password must be less than 10 characters</string>
-    <string name="pass_need_not_more_ten">Error! Password must be more than 4 characters</string>
-    <string name="pass_no_probels">Error! Password must not contain spaces</string>
-    <string name="pass_no_symbol">Error! Password must not have special characters</string>
-    <string name="login_need_not_more_ten">Error! Login must be less than 10 characters</string>
-    <string name="login_need_more_four">Error! Login must be more than 4 characters</string>
-    <string name="login_no_probels">Error! Login must not contain spaces</string>
-    <string name="login_no_symbol">Error! Login must not have special characters</string>
-    <string name="wrong_data">Error! Wrong login or password</string>
+    <string name="two_lines_empty">Error! All fields are empty</string>
+    <string name="need_add_name">Error! Name required</string>
+    <string name="need_add_surname">Error! Surname required</string>
+    <string name="name_need_less_twelve">Error! Name must be less than 12 characters</string>
+    <string name="name_need_more_one">Error! Name must be more than 1 characters</string>
+    <string name="name_no_probels">Error! Name must not contain spaces</string>
+    <string name="name_no_symbol">Error! Name must not have special characters</string>
+    <string name="surname_need_not_more_twelve">Error! Surname must be less than 12 characters</string>
+    <string name="surname_need_more_three">Error! Surname must be more than 3 characters</string>
+    <string name="surname_no_probels">Error! Surname must not contain spaces</string>
+    <string name="surname_no_symbol">Error! Surname must not have special characters</string>
+    <string name="age_empty">Error! Age required</string>
+    <string name="age_less_100">Error! Age must be less than 80</string>
+    <string name="age_more_15">Error! Age must be more than 15</string>
+    <string name="age_no_zero">Error! Age must not be empty</string>
+    <string name="submit">Submit</string>
+    <string name="you_successful_completed">You successful completed</string>
+    <string name="next_module">Go to next Model</string>
+    <string name="finish">Finish</string>
+    <string name="go_to_next_question">Go To Next Question</string>
+    <string name="finish_two">Finish</string>
+    <string name="submit_btn">Submit</string>
+    <string name="chertochka" translatable="false">/</string>
+    <string name="need_to_choice">Need to choice one!</string>
+    <string name="right_answers">Rights answers</string>
+    <string name="unRight_answers">Non rights answers</string>
+    <string name="try_again">Try Again</string>
+    <string name="dude_sit_on_image">Dude Sit On Image</string>
+    <string name="wave">Wave</string>
+    <string name="woman_look_at_idk_what">woman look at idk what</string>
+    <string name="answer_ed_text">Answer…</string>
+    <string name="need_answer_smth">Need answer smth</string>
+    <string name="right_solution">Yes, its right solution</string>
+    <string name="wrong">It`s wrong</string>
+    <string name="answer2">Answer…</string>
+    <string name="you_get_wron">You get wrong</string>
+    <string name="you_correc">You correct</string>
 </resources>

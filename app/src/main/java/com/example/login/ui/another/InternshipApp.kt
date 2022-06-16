@@ -1,4 +1,4 @@
-package com.example.login.ui
+package com.example.login.ui.another
 
 import android.app.Application
 import com.example.login.di.viewModelModule

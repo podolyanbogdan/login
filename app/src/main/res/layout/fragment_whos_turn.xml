@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.viewmodels.TurnsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/splash_color">
+
+
+        <TextView
+            android:id="@+id/tvMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="@string/who_first_turn"
+            android:textColor="@color/item_color"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="80dp"
+            android:onClick="@{() -> viewmodel.personTurnClick()}"
+            android:src="@drawable/ic_player"
+            app:layout_constraintEnd_toEndOf="@+id/tvMain"
+            app:layout_constraintStart_toStartOf="@+id/tvMain"
+            app:layout_constraintTop_toBottomOf="@+id/tvMain" />
+
+        <ImageView
+            android:id="@+id/imgComputer"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="@{() -> viewmodel.computerTurnClick()}"
+            android:src="@drawable/ic_computer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imgUser"
+            app:layout_constraintStart_toStartOf="@+id/imgUser"
+            app:layout_constraintTop_toBottomOf="@+id/imgUser" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -14,6 +14,7 @@ class TicTacBoard @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : GridLayout(context, attrs, defStyleAttr) {
+    val boardModel = BoardModel()
 
     private var mWinLineState: WinLineState = WinLineState.None
     private var winLineRect: RectF? = null
@@ -47,8 +48,8 @@ class TicTacBoard @JvmOverloads constructor(
         widthF = MeasureSpec.getSize(widthSpec).toFloat()
         heightF = MeasureSpec.getSize(heightSpec).toFloat()
 
-        cellWidth = widthF / 3f
-        cellHeight = heightF / 3f
+        cellWidth = widthF / boardModel.threef
+        cellHeight = heightF / boardModel.threef
 
         drawWinLine(mWinLineState)
     }
@@ -95,7 +96,6 @@ class TicTacBoard @JvmOverloads constructor(
             WinLineState.None -> null
         }
     }
-
 
 }
 

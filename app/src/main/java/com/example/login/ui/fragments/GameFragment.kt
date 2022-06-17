@@ -6,13 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.forEachIndexed
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
+import com.example.login.R
 import com.example.login.databinding.FragmentGameBinding
+import com.example.login.viewmodels.CellState
+import com.example.login.viewmodels.GameStatus
+import com.example.login.viewmodels.GameViewModel
+import com.example.login.viewmodels.TurnsViewModel
 
 class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
     private val viewModel: GameViewModel by viewModels()
+    val args: GameFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,12 +36,23 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val resultNavArgs = args.isCompFirst
+        val playerPlayerArgs = args.playerPlayerMode
+        if(resultNavArgs){ viewModel.compOnCellClick() }
         binding.btnStartGame.setOnClickListener {
             viewModel.onReloadClick()
+            if(resultNavArgs){ viewModel.compOnCellClick() }
         }
-        binding.field.forEachIndexed { index, view ->
-            view.setOnClickListener { viewModel.onCellClick(index) }
+        if(!playerPlayerArgs){
+            binding.field.forEachIndexed { index, view ->
+                view.setOnClickListener { viewModel.onCellClick(index) }
+            }
+        } else {
+            binding.field.forEachIndexed { index, view ->
+                view.setOnClickListener { viewModel.playerPlayerGame(index) }
+            }
         }
+
         viewModel.currentMove.observe(viewLifecycleOwner) {
             binding.arrow.animate()
                 .rotation(if (it == CellState.Cross) 0f else 180f)
@@ -54,5 +76,21 @@ class GameFragment : Fragment() {
         viewModel.winState.observe(viewLifecycleOwner){
             binding.field.drawWinLine(it)
         }
+        moveBack()
     }
+
+    fun moveBack(){
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true)
+            {
+                override fun handleOnBackPressed() {
+                    view?.let { Navigation.findNavController(it).navigate(R.id.BackFromMainGameToGameMode) }
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            callback
+        )
+    }
+
 }

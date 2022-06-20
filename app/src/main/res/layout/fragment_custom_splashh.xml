@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/splash_color">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:id="@+id/btnGoPlay"
-        android:layout_width="342dp"
-        android:layout_height="96dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/roundedbutton"
-        android:text="@string/go_play"
-        android:textColor="@color/splash_color"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgX"
-        android:layout_width="276dp"
-        android:layout_height="272dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="164dp"
-        android:src="@drawable/ic_x"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.viewmodels.SplashViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/splash_color">
 
-    <ImageView
-        android:id="@+id/imgO"
-        android:layout_width="207dp"
-        android:layout_height="218dp"
-        android:layout_marginTop="192dp"
-        android:src="@drawable/ic_o"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btnGoPlay"
+            android:layout_width="342dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/roundedbutton"
+            android:text="@string/go_play"
+            android:onClick="@{() -> viewmodel.clickBtn()}"
+            android:textColor="@color/splash_color"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgX"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="164dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_x"
+            app:layout_constraintBottom_toTopOf="@+id/btnGoPlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <ImageView
+            android:id="@+id/imgO"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="192dp"
+            android:src="@drawable/ic_o"
+            app:layout_constraintBottom_toTopOf="@+id/btnGoPlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgX"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.159" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

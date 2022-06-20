@@ -6,15 +6,54 @@
     app:startDestination="@id/customSlashFragment">
     <fragment
         android:id="@+id/customSlashFragment"
-        android:name="com.example.login.ui.splash.CustomSlashFragment"
+        android:name="com.example.login.ui.fragments.splash.CustomSlashFragment"
         android:label="fragment_custom_splashh"
         tools:layout="@layout/fragment_custom_splashh" >
         <action
-            android:id="@+id/fromSplashToGame"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/fromSplashToGameMode"
+            app:destination="@id/gameModeFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.login.ui.fragments.GameFragment"
-        android:label="GameFragment" />
+        android:label="GameFragment" >
+        <argument
+            android:name="isCompFirst"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/BackFromMainGameToGameMode"
+            app:destination="@id/gameModeFragment" />
+        <argument
+            android:name="playerPlayerMode"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/whosTurnFragment"
+        android:name="com.example.login.ui.fragments.WhosTurnFragment"
+        android:label="fragment_whos_turn"
+        tools:layout="@layout/fragment_whos_turn" >
+        <action
+            android:id="@+id/fromWhoTurnToGame"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/backFromWhoTurnToGameMode"
+            app:destination="@id/gameModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameModeFragment"
+        android:name="com.example.login.ui.fragments.GameModeFragment"
+        android:label="fragment_game_mode"
+        tools:layout="@layout/fragment_game_mode" >
+        <action
+            android:id="@+id/fromGameModeToWhoTurns"
+            app:destination="@id/whosTurnFragment" />
+        <action
+            android:id="@+id/fromGameModeToMainGame"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/backFromGameModeToSplash"
+            app:destination="@id/customSlashFragment" />
+    </fragment>
 </navigation>

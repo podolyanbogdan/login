@@ -6,4 +6,6 @@
     <string name="play">Играть</string>
     <string name="asd">Играть</string>
     <string name="go_play">Играть</string>
+    <string name="who_first_turn">Кто ходит первый?</string>
+    <string name="choice_game_mode">Выберите режим игры</string>
 </resources>

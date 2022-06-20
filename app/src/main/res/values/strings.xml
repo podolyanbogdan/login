@@ -5,4 +5,7 @@
     <string name="play">Play</string>
     <string name="asd">Play</string>
     <string name="go_play">Play</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="who_first_turn">Who is will first?</string>
+    <string name="choice_game_mode">Choice the game mode</string>
 </resources>

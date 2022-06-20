@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="myBlue">#2165D5</color>
+    <color name="splash_color">#FF4C4B</color>
+    <color name="item_color">#FFCA28</color>
 </resources>

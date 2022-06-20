@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splash_color"
+    tools:context=".ui.another.MainActivity"
+    tools:ignore="ContentDescription">
+
+
+    <ImageView
+        android:id="@+id/circle"
+        android:layout_width="70dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_o"
+        app:layout_constraintStart_toEndOf="@+id/arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cross"
+        android:layout_width="72dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="72dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintStart_toEndOf="@+id/cross"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.example.login.canvas.TicTacBoard
+        android:id="@+id/field"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartGame"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrow"
+        app:layout_constraintVertical_bias="0.56">
+
+        <ImageView
+            style="@style/CellStyle"
+            android:layout_row="0"
+            android:layout_column="0"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            android:layout_row="0"
+            android:layout_column="1"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+
+        <ImageView
+            style="@style/CellStyle"
+            tools:src="@drawable/ic_x" />
+    </com.example.login.canvas.TicTacBoard>
+
+    <Button
+        android:id="@+id/btnStartGame"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundedbutton"
+        android:text="@string/asd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/field"
+        app:layout_constraintStart_toStartOf="@+id/field"
+        app:layout_constraintTop_toBottomOf="@+id/field" />
+</androidx.constraintlayout.widget.ConstraintLayout>

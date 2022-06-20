@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav_graph"
-    app:startDestination="@id/customSlashFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
-        android:id="@+id/customSlashFragment"
-        android:name="com.example.login.ui.splash.CustomSlashFragment"
-        android:label="fragment_custom_splashh"
-        tools:layout="@layout/fragment_custom_splashh" >
-        <action
-            android:id="@+id/fromSplashToGame"
-            app:destination="@id/gameFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.example.login.ui.fragments.GameFragment"
-        android:label="GameFragment" />
+        android:id="@+id/splashFragment"
+        android:name="com.example.login.ui.splash.SplashFragment"
+        android:label="SplashFragment" />
 </navigation>

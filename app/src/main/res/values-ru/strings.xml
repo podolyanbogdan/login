@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Tic Tac Toe</string>
-    <string name="play_again">Play Again</string>
-    <string name="welcome">Добро пожаловать в Игру Крестики Нолики</string>
-    <string name="play">Играть</string>
-    <string name="asd">Играть</string>
-    <string name="go_play">Играть</string>
-</resources>

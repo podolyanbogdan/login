@@ -1,7 +1,20 @@
 package com.example.login.ui.splash
 
-import androidx.lifecycle.ViewModel
+import com.example.login.arch.BaseViewModel
+import com.example.login.arch.lifecycle.SingleLiveEvent
+import kotlinx.coroutines.delay
 
-class SplashViewModel: ViewModel() {
+class SplashViewModel(
 
+) : BaseViewModel() {
+
+    val initEvent = SingleLiveEvent<Boolean>()
+
+    init {
+        onLoading(true)
+        launch {
+            delay(1000)
+            initEvent.postValue(true)
+        }
+    }
 }

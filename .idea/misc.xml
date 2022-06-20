@@ -12,19 +12,24 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/active_board.xml" value="0.1" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/default_border.xml" value="0.1" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/default_option_border_bg.xml" value="0.14907407407407408" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/divider.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_arrow.xml" value="0.1365" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_getstarted_icon.xml" value="0.2203125" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_wave.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_x.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/roundedbutton.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/activity_custom_splash.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/auth_fragment.xml" value="0.18" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/canvas_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/canvas_view.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/datab.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_canvas_view.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_choice_turn.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_custom_dialog.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_custom_splashh.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_game.xml" value="0.18" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_game_mode.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_get_started.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_hello_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_introduce_your_self.xml" value="0.25" />
@@ -36,7 +41,11 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_questions_with_few_variant.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_result.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_tic_tac_toe.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_whos_turn.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_wifi.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/row.xml" value="0.25" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/splash_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

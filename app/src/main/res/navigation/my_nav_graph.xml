@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_wifiFragment"
+            app:destination="@id/wifiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wifiFragment"
+        android:name="com.example.login.ui.wifi.WifiFragment"
+        android:label="WifiFragment" />
 </navigation>

@@ -1,19 +1,16 @@
 <resources>
     <string name="app_name">Wifi Locator</string>
-    <string name="auth_user_name_hint">Enter your name</string>
-    <string name="auth_email_hint">Enter email</string>
-    <string name="auth_pass_hint">Enter password</string>
-    <string name="auth_login">LogIn</string>
 
-    <string name="title_messages">Messages</string>
-
-    <string name="err_empty_name">Name is empty</string>
-    <string name="err_empty_email">Email is empty or incorrect</string>
-    <string name="err_empty_pass">Password is empty</string>
-    <string name="err_empty_token">Token is empty</string>
-
-    <string name="menu_log_out">Log out</string>
-    <string name="canvas">Canvas</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scan">Scan</string>
+    <string name="excellent">Excellent</string>
+    <string name="good">Good</string>
+    <string name="fair">Fair</string>
+    <string name="weak">Weak</string>
+    <string name="wifi_disabled">Wifi is disabled</string>
+    <string name="scanning_wifi">Scanning Wifi…</string>
+    <string name="close">Close</string>
+    <string name="wifi_radar_app" translatable="false">Wifi Radar App</string>
+    <string name="granted1">Permission granted</string>
+    <string name="refused">permission refused</string>
+    <string name="perm_access">Permission to access your</string>
 </resources>

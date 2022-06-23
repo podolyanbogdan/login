@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wifi Locator</string>
+    <string name="scan">Сканировать</string>
+    <string name="excellent">Отличный</string>
+    <string name="good">Хороший</string>
+    <string name="fair">Норм</string>
+    <string name="weak">Слабый</string>
+    <string name="wifi_disabled">Wifi выключен</string>
+    <string name="scanning_wifi">Сканировать Wifi</string>
+    <string name="close">Закрыть</string>
+    <string name="granted1">Разрешение получено</string>
+    <string name="refused">Разрешение отказано</string>
+    <string name="perm_access">Для использования этого приложения требуется разрешение на доступ к вашему</string>
+</resources>

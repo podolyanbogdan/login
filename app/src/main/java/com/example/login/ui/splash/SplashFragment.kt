@@ -1,6 +1,5 @@
 package com.example.login.ui.splash
 
-import android.widget.Toast
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
@@ -10,6 +9,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragment) {
 
     override val viewModel: SplashViewModel by viewModel()
+    override fun setObservers() {
+        viewModel.initEvent.observe(this) {
+            if (it) showWifiFragment()
+        }
+    }
 
+    private fun showWifiFragment() {
+        navigate(R.id.wifiFragment, clearStack = true)
+    }
 
 }

@@ -13,4 +13,6 @@
     <string name="granted1">Permission granted</string>
     <string name="refused">permission refused</string>
     <string name="perm_access">Permission to access your</string>
+    <string name="you_need_accept">You need to accept permissions</string>
+    <string name="ok">OK</string>
 </resources>

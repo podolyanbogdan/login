@@ -2,7 +2,9 @@ package com.example.login.ui.wifi
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.login.arch.BaseViewModel
+import kotlinx.coroutines.launch
 
 
 class WifiViewModel(wifiItemManager: WifiItemManager) : BaseViewModel() {
@@ -10,13 +12,6 @@ class WifiViewModel(wifiItemManager: WifiItemManager) : BaseViewModel() {
     val wifiList: LiveData<ArrayList<WifiModel>>
         get() = _wifiList
 
-    private val _trigger = MutableLiveData<Boolean>()
-    val trigger: LiveData<Boolean>
-        get() = _trigger
-
-    fun onClickWifi(){
-        _trigger.value = true
-    }
 
     init {
         wifiItemManager.wifiManager.startScan()

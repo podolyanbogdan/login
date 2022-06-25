@@ -30,16 +30,13 @@ class WifiItemManager(context: Context) {
     }
 
     private fun updateList(scanList: List<ScanResult>) {
-        val actingList = arrayListOf<WifiModel>()
+        var actingList = arrayListOf<WifiModel>()
 
         if (scanList.size <= listSize) {
             scanList.forEach {
                 actingList.add(
                     WifiModel(
                         scanResult = it,
-                        name = it.SSID,
-                        power = it.level,
-                        description = it.capabilities
                     )
                 )
             }
@@ -48,13 +45,11 @@ class WifiItemManager(context: Context) {
                 actingList.add(
                     WifiModel(
                         scanResult = scanList[i],
-                        name = scanList[i].SSID,
-                        power = scanList[i].level,
-                        description = scanList[i].capabilities
                     )
                 )
             }
         }
+
 
         resultWifiList.clear()
         resultWifiList.addAll(actingList)

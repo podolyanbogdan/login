@@ -3,6 +3,7 @@
 
     <solid android:color="@color/myBlue" />
 
+    <stroke android:width="3dp" android:color="#3E4D57" />
     <size
         android:height="60dp"
         android:width="60dp" />

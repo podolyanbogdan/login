@@ -16,29 +16,17 @@
         android:background="@color/myGray"
         tools:context=".ui.splash.CanvasFragment">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/wifiSplashAnim"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:src="@drawable/wifianim"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </pl.droidsonroids.gif.GifImageView>
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Splash"
             android:textColor="@color/black"
-            android:layout_marginBottom="60dp"
             android:textSize="36sp"
-            android:text="@string/wifi_radar_app"
-            app:layout_constraintBottom_toTopOf="@+id/wifiSplashAnim"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

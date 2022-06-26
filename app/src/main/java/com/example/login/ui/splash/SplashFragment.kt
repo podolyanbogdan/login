@@ -1,10 +1,7 @@
 package com.example.login.ui.splash
 
-import android.os.Handler
-import android.os.Looper
 import com.example.login.R
 import com.example.login.arch.BaseFragment
-import com.example.login.arch.ext.navigate
 import com.example.login.databinding.SplashFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,7 +15,7 @@ class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragm
     }
 
     private fun showWifiFragment() {
-        navigate(R.id.wifiFragment, clearStack = true)
+
     }
 
 

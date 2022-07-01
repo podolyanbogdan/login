@@ -5,7 +5,6 @@ import com.example.login.arch.lifecycle.SingleLiveEvent
 import kotlinx.coroutines.delay
 
 class SplashViewModel(
-
 ) : BaseViewModel() {
 
     val initEvent = SingleLiveEvent<Boolean>()

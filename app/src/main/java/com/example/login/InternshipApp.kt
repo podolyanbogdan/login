@@ -9,7 +9,7 @@ import org.koin.core.context.startKoin
 class InternshipApp : Application() {
 
     private val appModules by lazy{
-        listOf(viewModelModule, providerModule)
+        listOf(viewModelModule)
     }
 
     override fun onCreate() {

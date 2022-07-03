@@ -15,6 +15,6 @@ class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragm
         }
     }
     private fun showWifiFragment() {
-        navigate(R.id.translatorFragment)
+
     }
 }

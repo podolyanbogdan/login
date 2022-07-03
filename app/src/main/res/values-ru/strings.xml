@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dictionary</string>
+    <string name="translate">Перевод</string>
+    <string name="translate_click">Перевести</string>
+    <string name="empty_data">Пустое значение</string>
+    <string name="choice_lang">Выберите язык</string>
+    <string name="back">Назад</string>
+    <string name="input_word">Введите слово</string>
+    <string name="loading">Загрузка…</string>
+</resources>

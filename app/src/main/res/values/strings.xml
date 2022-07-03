@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Wifi Locator</string>
+    <string name="app_name">Dictionary</string>
+    <string name="translate">Translate</string>
+    <string name="empty_data">Empty data</string>
+    <string name="patern" translatable="false">HH:mm:ss</string>
+    <string name="choice_lang">Choose language:</string>
+    <string name="translate_click">To translate</string>
+    <string name="back">Back</string>
+    <string name="input_word">Input word</string>
+    <string name="loading">Loading…</string>
 </resources>

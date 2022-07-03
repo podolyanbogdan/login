@@ -7,5 +7,35 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_translatorFragment"
+            app:destination="@id/translatorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/translatorFragment"
+        android:name="com.example.login.ui.translator.TranslatorFragment"
+        android:label="TranslatorFragment" >
+        <action
+            android:id="@+id/fromTransToResult"
+            app:destination="@id/translatedWordFragment" />
+        <argument
+            android:name="historyData"
+            app:argType="com.example.login.data.WordTranslatedModel[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/translatedWordFragment"
+        android:name="com.example.login.ui.translated.TranslatedWordFragment"
+        android:label="fragment_translated_word"
+        tools:layout="@layout/fragment_translated_word" >
+        <action
+            android:id="@+id/fromResultToTrans"
+            app:destination="@id/translatorFragment" />
+        <argument
+            android:name="word"
+            app:argType="string" />
+        <argument
+            android:name="language"
+            app:argType="string" />
+    </fragment>
 </navigation>

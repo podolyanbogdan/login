@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.translator.TranslatorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4C7DE6">
+
+        <EditText
+            android:id="@+id/edTranslateWord"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="228dp"
+            android:theme="@style/EditTextHint"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/input_word"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvChoiceLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/choice_lang"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ukraine_flag"
+            android:onClick="@{() -> viewmodel.clickLanguage()}"
+            app:layout_constraintEnd_toEndOf="@+id/tvChoiceLanguage"
+            app:layout_constraintStart_toStartOf="@+id/tvChoiceLanguage"
+            app:layout_constraintTop_toBottomOf="@+id/tvChoiceLanguage" />
+
+        <TextView
+            android:id="@+id/tvInputWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/input_word"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/edTranslateWord"
+            app:layout_constraintEnd_toEndOf="@+id/edTranslateWord"
+            app:layout_constraintStart_toStartOf="@+id/edTranslateWord" />
+
+        <Button
+            android:id="@+id/btnToTranslate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewmodel.goResultFrag()}"
+            android:text="@string/translate_click"
+            android:backgroundTint="@color/white"
+            android:textColor="#4C7DE6"
+            app:layout_constraintEnd_toEndOf="@+id/edTranslateWord"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/edTranslateWord"
+            app:layout_constraintTop_toBottomOf="@+id/edTranslateWord" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTranslatorHistory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnToTranslate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

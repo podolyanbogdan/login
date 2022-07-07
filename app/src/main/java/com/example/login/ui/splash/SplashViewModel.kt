@@ -12,7 +12,7 @@ class SplashViewModel(
     init {
         onLoading(true)
         launch {
-            delay(5000)
+            delay(2000)
             initEvent.postValue(true)
         }
     }

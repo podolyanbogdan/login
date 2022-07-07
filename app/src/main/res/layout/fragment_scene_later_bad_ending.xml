@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.gamesViewModel.SceneLaterBadEndingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{() -> viewmodel.nextText()}"
+        tools:context=".ui.menu.MenuFragment">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="1141dp"
+            android:layout_height="575dp"
+            android:src="@drawable/black_screen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/imgOptions1"
+            android:layout_width="600dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="70dp"
+            android:onClick="@{() -> viewmodel.firstOptionClick()}"
+            android:src="@drawable/options"
+            android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgOptions2"
+            android:layout_width="600dp"
+            android:layout_height="41dp"
+            android:onClick="@{() -> viewmodel.secondOptionClick()}"
+            android:src="@drawable/options"
+            android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/imgOptions1"
+            app:layout_constraintStart_toStartOf="@+id/imgOptions1"
+            app:layout_constraintTop_toBottomOf="@+id/imgOptions1" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Сыграть еще раз"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/imgOptions1"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/imgOptions1"
+            app:layout_constraintTop_toTopOf="@+id/imgOptions1" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="13dp"
+            android:text="Выйти"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/imgOptions2"
+            app:layout_constraintEnd_toEndOf="@+id/imgOptions2"
+            app:layout_constraintStart_toStartOf="@+id/imgOptions2"
+            app:layout_constraintTop_toTopOf="@+id/imgOptions2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="131dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.862">
+
+            <ImageView
+                android:id="@+id/imgNextText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/textbox"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/tvMainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="@font/acme"
+                android:text="@{viewmodel.displayText}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.154"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgNextText"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="lalalala" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imgSettings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.013"
+            app:srcCompat="@drawable/ic_game_settings" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

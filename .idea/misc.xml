@@ -47,9 +47,20 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_log_in.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_main.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_main_questions.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_menu.xml" value="0.2" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_question_edit_text.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_questions_with_few_variant.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_result.xml" value="0.25" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_book.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_game.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_later_bad_ending.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_marry.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_meadow.xml" value="0.2" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_right_away.xml" value="0.33" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_uni.xml" value="0.22" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_screen_meadow.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_start_screen.xml" value="0.19" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_tic_tac_toe.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_translated_word.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_translator.xml" value="0.20416666666666666" />
@@ -62,7 +73,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/recylerresult_word.xml" value="0.33" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/row.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/simple_list_item.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/splash_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/splash_fragment.xml" value="0.18" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/wifi_item.xml" value="0.67" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/mipmap-anydpi-v26/ic_my_icon.xml" value="0.1765" />

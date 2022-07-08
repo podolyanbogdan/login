@@ -1,111 +1,119 @@
 package com.example.login.repository
 
-object ScenarioRepository {
+import android.content.Context
+import com.example.login.R
+
+class ScenarioRepository constructor(private val context: Context) {
     val sceneLectureHall = mutableListOf(
-        "Только когда я услышал шорох ног и сумок, я понял, что лекция кончилась.",
-        "Лекции профессора Эйлин обычно интересные, \nно сегодня я просто не смог сконцентрироваться.",
-        "У меня было много разных мыслей в голове… \nи все эти мысли кульминировались вопросом.",
-        "Вопросом, который я давно хотел задать определённому человеку.",
-        "Когда мы вышли из университета, я тут же заметил её.",
-        "Я знал Сильви ещё с тех лет, когда мы были детьми. \nУ неё большое сердце и она всегда была мне хорошим другом.",
-        "Но в последнее время… Я почувствовал, что мне хочется чего-то большего.",
-        "Большего, чем просто разговоры. \nБольше, чем просто ходить домой вместе с концом наших занятий.",
-        "Как только она поймала мои глаза. Я решил..."
+        context.getString(R.string.lecture1),
+        context.getString(R.string.lecture2),
+        context.getString(R.string.lecture3),
+        context.getString(R.string.lecture4),
+        context.getString(R.string.lecture5),
+        context.getString(R.string.lecture6),
+        context.getString(R.string.lecture7),
+        context.getString(R.string.lecture8),
+        context.getString(R.string.lecture9),
     )
-    fun getSceneLectureHall(index: Int): String{
+
+    fun getSceneLectureHall(index: Int): String {
         return sceneLectureHall[index]
     }
 
-
     val sceneRightAway = mutableListOf(
-        "@ Привет! Как тебе урок?",
-        "# Хорошо…",
-        "Я не мог собраться и признать, \nчто весь он сначала влетел в одно ухо, а затем вылетел в другом.",
-        "# Ты сейчас идёшь домой? Хочешь пройтись вместе со мной?",
-        "@ Конечно!",
-        "Через некоторое время мы дошли до луга, \nначинавшегося за нашим родным городом, в котором мы жили.",
-        "Здесь живописный вид, к которому я уже привык. \nОсень здесь была особенно прекрасна.",
-        "Когда мы были детьми, мы много играли на этих лугах. \nТак много здесь воспоминаний.",
-        "# Эй… Эмм…",
-        "Она повернулась ко мне и улыбнулась.Она выглядела настолько дружелюбной, что вся моя нервозность улетучилась.",
-        "Я спрошу её..!",
-        "# Эммм… Хотела бы ты…",
-        "# Хотела бы ты стать художницей моей визуальной новеллы?",
-        "Тишина.",
-        "Она выглядела столь шокированной, что я начал бояться худшего. Но затем…",
-        "@ Конечно, но что такое \"визуальная новелла?\"",
+        context.getString(R.string.right1),
+        context.getString(R.string.right2),
+        context.getString(R.string.right3),
+        context.getString(R.string.right4),
+        context.getString(R.string.right5),
+        context.getString(R.string.right6),
+        context.getString(R.string.right7),
+        context.getString(R.string.right8),
+        context.getString(R.string.right9),
+        context.getString(R.string.right10),
+        context.getString(R.string.right11),
+        context.getString(R.string.right12),
+        context.getString(R.string.right13),
+        context.getString(R.string.right14),
+        context.getString(R.string.right15),
+        context.getString(R.string.right16),
     )
-    fun getSceneRightAway(index: Int): String{
+
+    fun getSceneRightAway(index: Int): String {
         return sceneRightAway[index]
     }
 
     val sceneGame = mutableListOf(
-        "# Это вроде видеоигры, в которую ты можешь играть на своём компьютере или консоли.",
-        "# В визуальных новеллах рассказывается история с картинками и музыкой.",
-        "# Иногда ты также можешь делать выборы, которые влияют на конец истории.",
-        "@ То есть это как те книги-игры?",
-        "# Точно! У меня есть много разных идей, которые, по-моему, могут сработать.",
-        "# И я думал, что ты могла бы помочь мне… так как я знаю, как тебе нравится рисовать.",
-        "# Мне одному будет трудно делать визуальную новеллу.",
-        "@ Ну конечно! Я могу попытаться. Надеюсь, я тебя не разочарую.",
-        "# Сильви, ты же знаешь, ты никогда не сможешь меня разочаровать."
+        context.getString(R.string.game1),
+        context.getString(R.string.game2),
+        context.getString(R.string.game3),
+        context.getString(R.string.game4),
+        context.getString(R.string.game5),
+        context.getString(R.string.game6),
+        context.getString(R.string.game7),
+        context.getString(R.string.game8),
+        context.getString(R.string.game9)
     )
-    fun getSceneGame(index: Int): String{
+
+    fun getSceneGame(index: Int): String {
         return sceneGame[index]
     }
 
     val sceneBook = mutableListOf(
-        "# Это как интерактивная книга, которую ты можешь читать на компьютере или консоли.",
-        "@ Интерактивная?",
-        "# Ты можешь делать выборы, которые ведут к различным событиям и концовкам истории.",
-        "@ А когда в дело вступает \"визуальная\" часть?",
-        "# В визуальных новеллах есть картинки и даже музыка, \nзвуковые эффекты, и иногда озвучка, которая идёт наравне с текстом.",
-        "@ Ясно! Это определённо кажется весёлым. Если честно, \nя раньше делала веб-комиксы, так что у меня есть много идей.",
-        "# Это отлично! Так… ты хочешь работать со мной в качестве художницы?",
-        "@ Хочу!"
+        context.getString(R.string.book1),
+        context.getString(R.string.book2),
+        context.getString(R.string.book3),
+        context.getString(R.string.book4),
+        context.getString(R.string.book5),
+        context.getString(R.string.book6),
+        context.getString(R.string.book7),
+        context.getString(R.string.book8)
     )
-    fun getSceneBook(index: Int): String{
+
+    fun getSceneBook(index: Int): String {
         return sceneBook[index]
     }
 
     val sceneMarry = mutableListOf(
-        "И так мы стали командой разработки визуальных новелл.",
-        "За долгие годы мы сделали много игр, получив при этом много веселья.",
-        "Наша первая игра была основана на одной из идей Сильви, \nно затем я начал давать и свои идеи.",
-        "Мы по очереди придумывали истории и персонажей, \nи поддерживали друг друга в разработке отличных игр!",
-        "И в один день…",
-        "@ Эй...",
-        "# Да?",
-        "@ Ты женишься на мне?",
-        "# Что? С чего это ты вдруг?",
-        "@ Да ладно тебе, сколько мы уже встречаемся?",
-        "# Некоторое время…",
-        "@ Последнюю пару лет мы делаем визуальные новеллы \nи проводим время вместе, помогаем друг другу…",
-        "@ Я узнала тебя и заботилась о тебе больше, чем о ком-либо ещё. \nИ я думаю, что ты чувствуешь то же самое, верно?",
-        "# Сильви...",
-        "@ Но я знаю, что ты нерешительный. \nЕсли бы я сдержалась, кто знает, когда бы ты сделал мне предложение?",
-        "@ Так ты женишься на мне?",
-        "# Конечно, я женюсь! \nНа самом деле я действительно хотел сделать тебе предложение, клянусь!",
-        "@ Я знаю, знаю.",
-        "# Думаю… Я просто слишком волновался о времени. \nЯ хотел задать правильный вопрос в правильное время.",
-        "@ Ты слишком сильно волнуешься. \nЕсли бы это была визуальная новелла, то я бы выбрала придать тебе смелости!",
-        "Мы поженились вскоре после этого.",
-        "Наш дуэт разработки жил и после нашей свадьбы… \nи я изо всех сил старался стать решительнее.",
-        "Вместе мы жили долго и счастливо.",
-        "Хорошая концовка",
+        context.getString(R.string.marry1),
+        context.getString(R.string.marry2),
+        context.getString(R.string.marry3),
+        context.getString(R.string.marry4),
+        context.getString(R.string.marry5),
+        context.getString(R.string.marry6),
+        context.getString(R.string.marry7),
+        context.getString(R.string.marry8),
+        context.getString(R.string.marry9),
+        context.getString(R.string.marry10),
+        context.getString(R.string.marry11),
+        context.getString(R.string.marry12),
+        context.getString(R.string.marry13),
+        context.getString(R.string.marry14),
+        context.getString(R.string.marry15),
+        context.getString(R.string.marry17),
+        context.getString(R.string.marry18),
+        context.getString(R.string.marry19),
+        context.getString(R.string.marry20),
+        context.getString(R.string.marry21),
+        context.getString(R.string.marry22),
+        context.getString(R.string.marry23),
+        context.getString(R.string.marry24),
+        context.getString(R.string.marry25),
     )
-    fun getSceneMarry(index: Int): String{
+
+    fun getSceneMarry(index: Int): String {
         return sceneMarry[index]
     }
 
     val sceneBadEnding = mutableListOf(
-        "У меня не было сил собраться и спросить её в эту секунду. \nСглотнув, я решил спросить её позже.",
-        "Но я был нерешителен.",
-        "Я не спросил у неё в тот день и не смог спросить больше никогда.",
-        "Полагаю, теперь я никогда не узнаю ответ на мой вопрос…",
-        "Плохая концовка..."
+        context.getString(R.string.badEnd1),
+        context.getString(R.string.badEnd2),
+        context.getString(R.string.badEnd3),
+        context.getString(R.string.badEnd4),
+        context.getString(R.string.badEnd5)
     )
-    fun getSceneBadEnding(index: Int): String{
+
+    fun getSceneBadEnding(index: Int): String {
         return sceneBadEnding[index]
     }
 }

@@ -22,6 +22,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_avatar_dummy.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_dic_icon_background.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_getstarted_icon.xml" value="0.2203125" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_music_off.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_wave.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_wifi.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_x.xml" value="0.1765" />
@@ -51,7 +52,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_question_edit_text.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_questions_with_few_variant.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_result.xml" value="0.25" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_book.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_book.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_game.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_later_bad_ending.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_scene_marry.xml" value="0.20416666666666666" />

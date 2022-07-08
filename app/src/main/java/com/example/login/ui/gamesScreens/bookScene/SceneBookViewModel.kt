@@ -1,16 +1,17 @@
-package com.example.login.ui.gamesViewModel
+package com.example.login.ui.gamesScreens.bookScene
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.example.login.ME
-import com.example.login.SYLVIE
 import com.example.login.arch.BaseViewModel
+import com.example.login.constants.*
 import com.example.login.repository.ScenarioRepository
 
-class SceneGameViewModel: BaseViewModel() {
+class SceneBookViewModel(context: Context): BaseViewModel() {
+    private val scenario = ScenarioRepository(context)
     private var current = 0
     val displayText: MutableLiveData<String> = MutableLiveData()
     val displayCharacter: MutableLiveData<String> = MutableLiveData()
-    private var text: String = ScenarioRepository.getSceneGame(current)
+    private var text: String = scenario.getSceneBook(current)
     private var showSilvia: MutableLiveData<Boolean> = MutableLiveData()
     var showCharacter: MutableLiveData<Boolean> = MutableLiveData()
     var changeSilviaPic : MutableLiveData<Boolean> = MutableLiveData()
@@ -18,32 +19,31 @@ class SceneGameViewModel: BaseViewModel() {
     var showOptions: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
-       nextText()
+        nextText()
     }
 
     fun nextText() {
-        showSilvia.value = true
-        if (current != ScenarioRepository.sceneGame.size) {
-            text = ScenarioRepository.getSceneGame(current)
-            val resultText = text.replace("@", "").replace("#", "")
-            if(current == 7) changeSilviaPic.value = true
+        if (current != scenario.sceneBook.size) {
+            text = scenario.getSceneBook(current)
+            val resultText = text.replace("1", "").replace("2", "")
+            if(current == 5) changeSilviaPic.value = true
+            if(current == 1) showSilvia.value = true
             when{
-                text[0] == '@' -> {
+                text[0] == SYLVIE_SAY -> {
                     showCharacter.value = true
                     displayCharacter.value = SYLVIE
                 }
-                text[0] == '#' -> {
+                text[0] == ME_SAY -> {
                     showCharacter.value = true
                     displayCharacter.value = ME
                 }
-                else -> displayCharacter.value = ""
+                else -> displayCharacter.value = EMPTY
             }
             displayText.value = resultText
         }
-        if (current == ScenarioRepository.sceneGame.size) {
+        if (current == scenario.sceneBook.size) {
             jumpMarry.value = true
         }
         current++
     }
-
 }

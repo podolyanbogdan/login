@@ -1,14 +1,16 @@
-package com.example.login.ui.gamesViewModel
+package com.example.login.ui.gamesScreens.lectureHallScene
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 import com.example.login.repository.ScenarioRepository
 
 
-class SceneLectureHallViewModel : BaseViewModel() {
+class SceneLectureHallViewModel(context: Context) : BaseViewModel() {
+    private val scenario = ScenarioRepository(context)
     private var current = 1
     val displayText: MutableLiveData<String> = MutableLiveData()
-    private var text: String = ScenarioRepository.getSceneLectureHall(0)
+    private var text: String = scenario.getSceneLectureHall(0)
     var changeBackground : MutableLiveData<Boolean> = MutableLiveData()
     var showOptions: MutableLiveData<Boolean> = MutableLiveData()
     var jumpSceneLater: MutableLiveData<Boolean> = MutableLiveData()
@@ -23,12 +25,12 @@ class SceneLectureHallViewModel : BaseViewModel() {
     fun nextText() {
         if(current == 4) changeBackground.value = true
         if(current == 5) showSilviaa.value = true
-        if (current != ScenarioRepository.sceneLectureHall.size) {
-            text = ScenarioRepository.getSceneLectureHall(current)
+        if (current != scenario.sceneLectureHall.size) {
+            text = scenario.getSceneLectureHall(current)
             displayText.value = text
             current++
         }
-        if(current == ScenarioRepository.sceneLectureHall.size){
+        if(current == scenario.sceneLectureHall.size){
             showOptions.value = true
         }
     }

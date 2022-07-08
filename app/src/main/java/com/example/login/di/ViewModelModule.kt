@@ -1,6 +1,11 @@
 package com.example.login.di
 
-import com.example.login.ui.gamesViewModel.*
+import com.example.login.ui.gamesScreens.badEndingScene.SceneLaterBadEndingViewModel
+import com.example.login.ui.gamesScreens.bookScene.SceneBookViewModel
+import com.example.login.ui.gamesScreens.gameScene.SceneGameViewModel
+import com.example.login.ui.gamesScreens.lectureHallScene.SceneLectureHallViewModel
+import com.example.login.ui.gamesScreens.marryScene.SceneMarryViewModel
+import com.example.login.ui.gamesScreens.rigthAwayScene.SceneRightAwayModel
 import com.example.login.ui.main.MainViewModel
 import com.example.login.ui.menu.MenuViewModel
 import com.example.login.ui.settings.SettingsViewModel
@@ -12,11 +17,11 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashViewModel() }
     viewModel { MenuViewModel() }
-    viewModel { SceneLectureHallViewModel() }
-    viewModel { SceneLaterBadEndingViewModel() }
-    viewModel { SceneRightAwayModel() }
-    viewModel { SceneGameViewModel() }
-    viewModel { SceneBookViewModel() }
-    viewModel { SceneMarryViewModel() }
+    viewModel { SceneLectureHallViewModel(get()) }
+    viewModel { SceneLaterBadEndingViewModel(get()) }
+    viewModel { SceneRightAwayModel(get()) }
+    viewModel { SceneGameViewModel(get()) }
+    viewModel { SceneBookViewModel(get()) }
+    viewModel { SceneMarryViewModel(get()) }
     viewModel { SettingsViewModel() }
 }

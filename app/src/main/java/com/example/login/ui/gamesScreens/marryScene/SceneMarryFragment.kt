@@ -1,4 +1,4 @@
-package com.example.login.ui.gamesScreens
+package com.example.login.ui.gamesScreens.marryScene
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,16 +11,13 @@ import androidx.activity.addCallback
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.login.ME
+import com.example.login.constants.ME
 import com.example.login.R
-import com.example.login.SYLVIE
+import com.example.login.constants.SYLVIE
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.databinding.FragmentSceneMarryBinding
-import com.example.login.ui.gamesViewModel.SceneMarryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

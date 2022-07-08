@@ -1,4 +1,4 @@
-package com.example.login.ui.gamesScreens
+package com.example.login.ui.gamesScreens.lectureHallScene
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,11 @@ import androidx.activity.addCallback
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.databinding.FragmentStartScreenBinding
-import com.example.login.ui.gamesViewModel.SceneLectureHallViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SceneLectureHall1Fragment : BaseFragment<FragmentStartScreenBinding>(R.layout.fragment_start_screen) {

@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewmodel"
-            type="com.example.login.ui.gamesViewModel.SceneBookViewModel" />
+            type="com.example.login.ui.gamesScreens.bookScene.SceneBookViewModel" />
     </data>
 
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="@{() -> viewmodel.nextText()}"
-        tools:context=".ui.gamesScreens.SceneLectureHall1Fragment">
+        tools:context=".ui.gamesScreens.lectureHallScene.SceneLectureHall1Fragment">
 
         <ImageView
             android:id="@+id/imgBg"
@@ -61,7 +61,7 @@
 
             <ImageView
                 android:id="@+id/imgNextText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/textbox"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -79,11 +79,10 @@
                 android:fontFamily="@font/acme"
                 android:text="@{viewmodel.displayText}"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.154"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imgNextText"
                 app:layout_constraintVertical_bias="0.0"
@@ -93,15 +92,15 @@
                 android:id="@+id/tvCharacter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/acme"
                 android:text="@{viewmodel.displayCharacter}"
-                android:textColor="#56D83A"
+                android:textColor="@color/sylvie_color"
                 android:textSize="24sp"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:visibility="@{viewmodel.showCharacter ? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.142"
+                app:layout_constraintHorizontal_bias="0.499"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

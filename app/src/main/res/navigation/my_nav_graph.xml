@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/startScreenFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneLectureHall1Fragment"
+        android:name="com.example.login.ui.gamesScreens.lectureHallScene.SceneLectureHall1Fragment"
         android:label="fragment_start_screen"
         tools:layout="@layout/fragment_start_screen" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/sceneLaterBadEndingFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneLaterBadEndingFragment"
+        android:name="com.example.login.ui.gamesScreens.badEndingScene.SceneLaterBadEndingFragment"
         android:label="SceneLaterBadEndingFragment" >
         <action
             android:id="@+id/fromBadToStartGame"
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/sceneRightAwayFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneRightAwayFragment"
+        android:name="com.example.login.ui.gamesScreens.rigthAwayScene.SceneRightAwayFragment"
         android:label="SceneRightAwayFragment" >
         <action
             android:id="@+id/fromRightAwayToGame"
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/sceneGameFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneGameFragment"
+        android:name="com.example.login.ui.gamesScreens.gameScene.SceneGameFragment"
         android:label="SceneGameFragment" >
         <action
             android:id="@+id/fromGameToMarry"
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/sceneBookFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneBookFragment"
+        android:name="com.example.login.ui.gamesScreens.bookScene.SceneBookFragment"
         android:label="SceneBookFragment" >
         <action
             android:id="@+id/fromBookToMarry"
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/sceneMarryFragment"
-        android:name="com.example.login.ui.gamesScreens.SceneMarryFragment"
+        android:name="com.example.login.ui.gamesScreens.marryScene.SceneMarryFragment"
         android:label="SceneMarryFragment" >
         <action
             android:id="@+id/fromHappyEndToStartGame"

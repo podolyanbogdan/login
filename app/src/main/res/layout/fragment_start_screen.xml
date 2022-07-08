@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewmodel"
-            type="com.example.login.ui.gamesViewModel.SceneLectureHallViewModel" />
+            type="com.example.login.ui.gamesScreens.lectureHallScene.SceneLectureHallViewModel" />
     </data>
 
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="@{() -> viewmodel.nextText()}"
-        tools:context=".ui.gamesScreens.SceneLectureHall1Fragment">
+        tools:context=".ui.gamesScreens.lectureHallScene.SceneLectureHall1Fragment">
 
         <ImageView
             android:id="@+id/imgBg"
@@ -63,7 +63,7 @@
 
             <ImageView
                 android:id="@+id/imgNextText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/textbox"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,11 +81,10 @@
                 android:fontFamily="@font/acme"
                 android:text="@{viewmodel.displayText}"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.154"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imgNextText"
                 app:layout_constraintVertical_bias="0.0"
@@ -122,7 +121,7 @@
             android:layout_marginTop="12dp"
             android:text="Спросить ее прямо сейчас"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="@+id/imgOptions1"
             app:layout_constraintHorizontal_bias="0.497"
@@ -137,7 +136,7 @@
             android:layout_marginBottom="13dp"
             android:text="Спросить ее позже"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:visibility="@{viewmodel.showOptions ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/imgOptions2"
             app:layout_constraintEnd_toEndOf="@+id/imgOptions2"

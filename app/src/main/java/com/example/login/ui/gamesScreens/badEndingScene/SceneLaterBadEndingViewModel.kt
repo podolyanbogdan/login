@@ -1,13 +1,15 @@
-package com.example.login.ui.gamesViewModel
+package com.example.login.ui.gamesScreens.badEndingScene
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 import com.example.login.repository.ScenarioRepository
 
-class SceneLaterBadEndingViewModel: BaseViewModel() {
+class SceneLaterBadEndingViewModel(context: Context): BaseViewModel() {
+    private val scenario = ScenarioRepository(context)
     private var current = 1
     val displayText: MutableLiveData<String> = MutableLiveData()
-    private var text: String = ScenarioRepository.getSceneBadEnding(0)
+    private var text: String = scenario.getSceneBadEnding(0)
     var returnInToMenu : MutableLiveData<Boolean> = MutableLiveData()
     var exit : MutableLiveData<Boolean> = MutableLiveData()
     var showOptions: MutableLiveData<Boolean> = MutableLiveData()
@@ -18,12 +20,12 @@ class SceneLaterBadEndingViewModel: BaseViewModel() {
     }
 
     fun nextText() {
-        if (current != ScenarioRepository.sceneBadEnding.size) {
-            text = ScenarioRepository.getSceneBadEnding(current)
+        if (current != scenario.sceneBadEnding.size) {
+            text = scenario.getSceneBadEnding(current)
             displayText.value = text
             current++
         }
-        if(current == ScenarioRepository.sceneBadEnding.size){
+        if(current == scenario.sceneBadEnding.size){
             showOptions.value = true
         }
     }

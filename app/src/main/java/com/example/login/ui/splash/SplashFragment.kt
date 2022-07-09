@@ -11,10 +11,10 @@ class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragm
     override val viewModel: SplashViewModel by viewModel()
     override fun setObservers() {
         viewModel.initEvent.observe(this) {
-            if (it) showWifiFragment()
+            if (it) showStartScreen()
         }
     }
-    private fun showWifiFragment() {
-
+    private fun showStartScreen() {
+        navigate(R.id.menuFragment)
     }
 }

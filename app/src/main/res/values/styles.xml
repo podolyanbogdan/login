@@ -1,25 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CellStyle">
-        <item name="android:layout_rowWeight">1</item>
-        <item name="android:layout_columnWeight">1</item>
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:adjustViewBounds">true</item>
-    </style>
-
-    <style name="EditTextHint" parent="TextAppearance.AppCompat">
-        <item name="colorAccent">@android:color/white</item>
-        <item name="android:textColorHint">@color/white</item>
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
-        <item name="colorControlHighlight">@color/white</item>
-    </style>
-
-    <style name="Animation">
-        <item name="android:windowEnterAnimation">@anim/fade_in</item>
-        <item name="android:windowExitAnimation">@anim/fade_out</item>
-    </style>
-
 </resources>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_corners">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="31dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="32dp"
+        android:text="m"
+        android:textColor="@color/purple_700"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/secondPicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/secondPicker"
+        app:layout_constraintTop_toTopOf="@+id/secondPicker"
+        app:layout_constraintVertical_bias="0.47000003" />
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/secondPicker"
+        android:layout_width="100dp"
+        android:layout_height="309dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvReminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toEndOf="@+id/firstPicker"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditTime"
+        app:layout_constraintVertical_bias="0.827"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="40dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="180dp"
+
+        app:np_max="59"
+        app:np_min="0"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="50dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="3"
+        app:np_wheelItemCount="5"
+        app:np_width="64dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/firstPicker"
+        android:layout_width="100dp"
+        android:layout_height="309dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditTime"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="40dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="180dp"
+        app:np_max="24"
+        app:np_min="0"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="50dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="12"
+        app:np_wheelItemCount="5"
+        app:np_width="64dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+
+    <TextView
+        android:id="@+id/tvEditTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/edit_time"
+        android:textColor="@color/textColorHardBlue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvReminder"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconDrawable="@drawable/ic_stroke_reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstPicker"
+        app:prefixText="Reminder Mode"
+        app:prefixTextColor="@color/textColorHardBlue">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:inputType="none"
+            android:text="@string/ring"
+            android:textAlignment="textEnd"
+            android:textColor="@color/textColorHardBlue"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/btn_clr"
+        android:text="@string/cancel"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/tvReminder"
+        app:layout_constraintTop_toBottomOf="@+id/tvReminder"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/btn_clr"
+        android:text="@string/save"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvReminder"
+        app:layout_constraintTop_toBottomOf="@+id/tvReminder"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="h"
+        android:textColor="@color/purple_700"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/firstPicker"
+        app:layout_constraintStart_toEndOf="@+id/firstPicker"
+        app:layout_constraintTop_toTopOf="@+id/firstPicker"
+        app:layout_constraintVertical_bias="0.493" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,32 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
 
-    <data>
-<variable
-    name="viewmodel"
-    type="com.example.login.ui.main.MainViewModel" />
-    </data>
+    <fragment
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="405dp"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/my_nav_graph" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.MainScreen">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/corrd"
+        android:layout_width="409dp"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView"
+        app:layout_constraintVertical_bias="1.0">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/homeHostNavFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/my_nav_graph" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
-        <View
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/bottom_nav_corners"
+                android:foregroundGravity="bottom"
+                app:itemTextColor="@color/purple_700"
+                app:labelVisibilityMode="unlabeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.949"
+                app:menu="@menu/bottom_menu">
+
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/purple_700"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            app:layout_anchor="@+id/bottomAppBar"
+            app:srcCompat="@drawable/ic_add_plusik"
+            app:tint="@android:color/white" />
 
-        </View>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </FrameLayout>
-</layout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

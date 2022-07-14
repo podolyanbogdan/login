@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.login.data.DaysModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recConstrain"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:background="@drawable/recycler_corners">
+
+        <TextView
+            android:id="@+id/tvDayWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="true"
+            android:text="@{data.dayWord.toString()}"
+            android:textColor="@color/textColorHardBlue"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDayNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@{data.dayNumber.toString()}"
+            android:textColor="@color/textColorHardBlue"
+            app:layout_constraintEnd_toEndOf="@+id/tvDayWord"
+            app:layout_constraintStart_toStartOf="@+id/tvDayWord"
+            app:layout_constraintTop_toBottomOf="@+id/tvDayWord" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

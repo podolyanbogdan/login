@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorControlActivated">@color/purple_700</item>
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+    </style>
+
+
+
 </resources>

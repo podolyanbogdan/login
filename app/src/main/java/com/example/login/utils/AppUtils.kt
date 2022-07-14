@@ -1,9 +1,12 @@
 package com.example.login.utils
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.random.Random
+
 
 class AppUtils {
 
@@ -36,5 +39,11 @@ class AppUtils {
             return SimpleDateFormat(DATE_APP_SHORT_FORMAT, Locale.getDefault()).format(date)
         }
 
+        fun randomColor(): Int {
+            val randomRed = Random.nextInt(80, 180)
+            val randomGreen = Random.nextInt(80, 180)
+            val randomBlue = Random.nextInt(80, 180)
+            return Color.argb(255, randomRed, randomGreen, randomBlue)
+        }
     }
 }

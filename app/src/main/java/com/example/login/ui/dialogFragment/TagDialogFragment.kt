@@ -17,7 +17,6 @@ class TagDialogFragment(
     private val onSaveClickListener: (String) -> Unit
 ) : DialogFragment() {
     private lateinit var binding: FragmentCreateTagBinding
-    private val viewModel: TagDialogViewModel by activityViewModels()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = FragmentCreateTagBinding.inflate(LayoutInflater.from(context))
@@ -25,12 +24,13 @@ class TagDialogFragment(
         builder.setView(binding.root)
 
         binding.btnSave.setOnClickListener {
-           if(binding.edDialogTag.text.isNullOrEmpty()){
-               Toast.makeText(context, getString(R.string.add_tag_name_pls), Toast.LENGTH_SHORT).show()
-           } else {
-               onSaveClickListener.invoke(binding.edDialogTag.text.toString())
-               dismiss()
-           }
+            if (binding.edDialogTag.text.isNullOrEmpty()) {
+                Toast.makeText(context, getString(R.string.add_tag_name_pls), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                onSaveClickListener.invoke(binding.edDialogTag.text.toString())
+                dismiss()
+            }
         }
         binding.btnCancel.setOnClickListener {
             dismiss()

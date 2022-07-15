@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/add_task"
-                android:textColor="@color/textColorHardBlue"
+                android:textColor="@color/appLightColorBlack"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -112,14 +112,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.161" />
+                app:layout_constraintVertical_bias="0.172" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edTitle"
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +171,7 @@
                 android:text="@{viewmodel.setDate}"
                 android:minHeight="48dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/textColorHardBlue"
+                android:textColor="@color/appLightColorBlack"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -214,7 +214,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/time"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -229,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:text="@{viewmodel.setTimeFirst}"
-                android:textColor="@color/textColorHardBlue"
+                android:textColor="@color/appLightColorBlack"
                 android:textSize="20sp"
                 android:onClick="@{() -> viewmodel.takeTimeFirst()}"
                 android:textStyle="bold"
@@ -247,7 +247,7 @@
                 android:text="@{viewmodel.setTimeSecond}"
                 android:onClick="@{() -> viewmodel.takeTimeSecond()}"
                 tools:text="7:00 PM"
-                android:textColor="@color/textColorHardBlue"
+                android:textColor="@color/appLightColorBlack"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -272,7 +272,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/description"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -331,7 +331,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/type"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -359,7 +359,7 @@
                     android:checked="true"
                     android:textSize="16sp"
                     android:button="@drawable/radio_pointer"
-                    android:buttonTint="@color/purple_700"
+                    android:buttonTint="@color/appLightColorButton"
                     android:text="@string/personal">
                 </RadioButton>
 
@@ -371,7 +371,7 @@
                     android:gravity="center_vertical"
                     android:layout_marginLeft="35dp"
                     android:button="@drawable/radio_pointer"
-                    android:buttonTint="@color/purple_700"
+                    android:buttonTint="@color/appLightColorButton"
                     android:text="@string/privatexd">
 
                 </RadioButton>
@@ -383,7 +383,7 @@
                     android:textSize="16sp"
                     android:button="@drawable/radio_pointer"
                     android:layout_marginLeft="35dp"
-                    android:buttonTint="@color/purple_700"
+                    android:buttonTint="@color/appLightColorButton"
                     android:text="@string/secret">
 
                 </RadioButton>
@@ -407,7 +407,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tags"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -424,7 +424,7 @@
                 android:layout_marginEnd="130dp"
                 android:onClick="@{() -> viewmodel.showTagDialog()}"
                 android:text="@string/add_new_tag"
-                android:textColor="@color/textColorLightBlue"
+                android:textColor="@color/appLightColorLight"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -447,7 +447,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/you_have_never_added_any_tag"
-                android:textColor="@color/textColorHardBlue"
+                android:textColor="@color/appLightColorBlack"
                 android:visibility="@{viewmodel.hideTvTag ? View.INVISIBLE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -481,7 +481,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:cornerRadius="50dp"
-                android:backgroundTint="@color/btn_clr"
+                android:backgroundTint="@color/appLightColorButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

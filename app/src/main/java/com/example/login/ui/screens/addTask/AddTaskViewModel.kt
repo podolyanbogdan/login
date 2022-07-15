@@ -3,17 +3,19 @@ package com.example.login.ui.screens.addTask
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 import com.example.login.constants.Constants.dateDefaultValue
+import com.example.login.constants.Constants.empty
 import com.example.login.constants.Constants.timeDefaultValue1
 import com.example.login.constants.Constants.timeDefaultValue2
 import com.example.login.data.TagsModel
 import com.example.login.data.TaskModel
 import com.example.login.repository.TaskRepository
 
-class AddTaskViewModel: BaseViewModel() {
-    private var taskTitle: String = ""
+class AddTaskViewModel : BaseViewModel() {
+    private var taskTitle: String = empty
     fun putTaskTitle(s: CharSequence) {
         this.taskTitle = s.toString()
     }
+
     private var descTitle: String = ""
     fun putDateTitle(s: CharSequence) {
         this.descTitle = s.toString()
@@ -45,27 +47,32 @@ class AddTaskViewModel: BaseViewModel() {
         setDate.value = dateDefaultValue
     }
 
-    fun descSettingsClick(){
+    fun descSettingsClick() {
         descSettings.value = true
     }
 
-    fun backClicked(){
+    fun backClicked() {
         backPressed.value = true
     }
-    fun takeDate(){
+
+    fun takeDate() {
         takeDate.value = true
     }
-    fun takeTimeFirst(){
+
+    fun takeTimeFirst() {
         takeTimeFirst.value = true
     }
-    fun takeTimeSecond(){
+
+    fun takeTimeSecond() {
         takeTimeSecond.value = true
     }
-    fun showTagDialog(){
+
+    fun showTagDialog() {
         showTagDialog.value = true
         hideTvTag.value = true
     }
-    fun createTask(){
+
+    fun createTask() {
         createTask.value = true
         val data = TaskModel(
             title = taskTitle,

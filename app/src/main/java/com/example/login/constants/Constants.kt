@@ -11,4 +11,12 @@ object Constants{
     const val timeDefaultValue1 = "00:00 AM"
     const val timeDefaultValue2 = "00:30 PM"
     const val dateDefaultValue = "Your date"
+    const val langFormat = "en_US"
+    const val dateFormat = "EEEE d MMMM"
+    const val dateFormatMonth = "MMMM"
+    const val forceIcon = "setForceShowIcon"
+    const val delete = "Delete"
+    const val edit = "Edit"
+    const val dialog2 = "dialog2"
+    const val empty = "Empty"
 }

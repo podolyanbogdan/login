@@ -1,7 +1,5 @@
 package com.example.login.ui.screens.addTask
 
-import android.annotation.SuppressLint
-import android.nfc.Tag
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +11,12 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.adapters.TagsAdapter
+import com.example.login.adapters.TagsInsideAdapter
 import com.example.login.arch.BaseFragment
+import com.example.login.arch.ext.navigate
 import com.example.login.constants.Constants.dialogDate
 import com.example.login.constants.Constants.dialogTag
 import com.example.login.constants.Constants.dialogTime
@@ -25,22 +25,17 @@ import com.example.login.constants.Constants.forceShowIcon
 import com.example.login.data.TagsModel
 import com.example.login.databinding.FragmentAddTaskBinding
 import com.example.login.repository.TaskRepository
+import com.example.login.repository.TaskRepository.getTagInside
 import com.example.login.repository.TaskRepository.hide
 import com.example.login.ui.datePicker.DatePickerDialog
 import com.example.login.ui.dialogFragment.TagDialogFragment
 import com.example.login.ui.timePicker.TimePickerDialog
-import com.example.login.utils.AppUtils.Companion.randomColor
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_add_task) {
     override val viewModel: AddTaskViewModel by viewModel()
-    private lateinit var navBar: BottomNavigationView
     private lateinit var corrd: CoordinatorLayout
     private var tagName: String = ""
     private val tagsList = mutableListOf<TagsModel>()
@@ -61,7 +56,7 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
     override fun setObservers() {
         super.setObservers()
         viewModel.backPressed.observe(this) {
-            if (it) moveBack()
+            if (it) clickBack()
         }
         viewModel.takeDate.observe(this) {
             if (it) setDate()
@@ -84,12 +79,9 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
         }
         viewModel.createTask.observe(this) {
             if (it) {
-                if (binding.edTitle.text.isNullOrEmpty()) {
-                    Toast.makeText(context, getString(R.string.you_need_to_add_name), Toast.LENGTH_SHORT).show()
-                } else {
-                    moveBack()
-                }
+                createTask()
             }
+
         }
         viewModel.descSettings.observe(this) {
             if (it) showPopup()
@@ -111,6 +103,7 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
             popupMenu.show()
         }
     }
+
 
     private fun hideNavBar() {
         corrd = requireActivity().findViewById(R.id.corrd)
@@ -141,6 +134,7 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
         val tag = TagsModel(tagName)
         tagsList.add(tag)
         tag.randomColor()
+        getTagInside(tagsList)
         viewModel.tags.value = tagsList
         viewModel.tags.observe(viewLifecycleOwner) {
             binding.recTags.also {
@@ -158,13 +152,21 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
 
     private fun setDate() {
         DatePickerDialog(
-            onSaveClickListener = { date ->
+            onSaveClickListenerDate = { date ->
                 viewModel.setDate.value = date
+            },
+            onSaveClickListenerMonth = {
+
             }
         ).show(parentFragmentManager, dialogDate)
     }
 
-    private fun moveBack() =
+    private fun clickBack() {
+        navigate(R.id.mainScreenFragment)
+        corrd.visibility = View.VISIBLE
+    }
+
+    private fun createTask() =
         findNavController().safeNavigate(AddTaskFragmentDirections.fromAddTaskToMain())
 
     private fun NavController.safeNavigate(direction: NavDirections) {

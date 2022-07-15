@@ -4,13 +4,16 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
+import com.example.login.constants.Constants.langFormat
 import com.example.login.constants.Constants.patternDayNumber
 import com.example.login.constants.Constants.patternDayWord
 import com.example.login.data.DaysModel
+import com.example.login.data.TagsModel
 import com.example.login.data.TaskModel
 import com.example.login.repository.TaskRepository
+import com.example.login.utils.AppUtils.Companion.getCurrentMonth
+import com.example.login.utils.AppUtils.Companion.getCurrentTime
 import java.text.SimpleDateFormat
-import java.time.ZoneId
 import java.util.*
 
 
@@ -19,19 +22,21 @@ class MainScreenViewModel(context: Context) : BaseViewModel() {
     val clearEd: MutableLiveData<Boolean> = MutableLiveData()
     val searchEd: MutableLiveData<Boolean> = MutableLiveData()
     val choiceMonth: MutableLiveData<Boolean> = MutableLiveData()
-
     val hideImgAndTv: MutableLiveData<Boolean> = MutableLiveData()
-
+    val currentTime: MutableLiveData<String> = MutableLiveData()
+    val currentMonth: MutableLiveData<String> = MutableLiveData()
     private val tasksRepo = TaskRepository.getTask()
     val tasks: MutableLiveData<List<TaskModel>> = MutableLiveData()
+    val tags: MutableLiveData<List<TagsModel>> = MutableLiveData()
 
     init {
+        currentMonth.value = getCurrentMonth()
+        currentTime.value = getCurrentTime()
         days.value = getDaysList(context = context)
         tasks.value = tasksRepo
     }
 
     fun choiceMonth() {
-
         choiceMonth.value = true
     }
 
@@ -47,7 +52,7 @@ class MainScreenViewModel(context: Context) : BaseViewModel() {
     private fun getDaysList(context: Context): MutableList<DaysModel> {
         val daysList = mutableListOf<DaysModel>()
 
-        val locale = Locale("en_US")
+        val locale = Locale(langFormat)
         Locale.setDefault(locale)
         val config = Configuration()
         config.locale = locale
@@ -61,11 +66,12 @@ class MainScreenViewModel(context: Context) : BaseViewModel() {
             daysList.add(
                 DaysModel(
                     dayWord = sdf.format(cal.time).slice(0..1),
-                    dayNumber = sdf2.format(cal.time)
+                    dayNumber = sdf2.format(cal.time),
                 )
             )
             cal.add(Calendar.DAY_OF_WEEK, 1)
         }
         return daysList
     }
+
 }

@@ -8,16 +8,19 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
+import com.example.login.constants.Constants.dateFormat
+import com.example.login.constants.Constants.dateFormatMonth
+import com.example.login.constants.Constants.langFormat
 import com.example.login.databinding.FragmentDatePickerBinding
-import com.example.login.ui.screens.addTask.AddTaskViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class DatePickerDialog(
-    private val onSaveClickListener: (String) -> Unit
+    private val onSaveClickListenerDate: (String) -> Unit,
+    private val onSaveClickListenerMonth: (String) -> Unit,
 ) : DialogFragment() {
     private lateinit var binding: FragmentDatePickerBinding
 
@@ -27,18 +30,21 @@ class DatePickerDialog(
         builder.setView(binding.root)
 
         var date = ""
-        val locale = Locale("en_US")
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        context!!.applicationContext.resources.updateConfiguration(config, null)
+        var currentMonth = ""
+
+        setLocale()
+
         binding.calendarView.setOnDateChangeListener { calendarView, year, month, day ->
-            val sdf = SimpleDateFormat("EEEE d MMMM")
-            val selectedDates = sdf.format(Date(year - 1900, month, day))
-            date = selectedDates
+            val sdfDate = SimpleDateFormat(dateFormat)
+            val sdfMonth = SimpleDateFormat(dateFormatMonth)
+            val selectedDates = sdfDate.format(Date(year - 1900, month, day))
+            val selectedMonth = sdfMonth.format(Date(year - 1900, month, day))
+            date = selectedDates.format()
+            currentMonth = selectedMonth.format()
         }
         binding.btnSave.setOnClickListener {
-            onSaveClickListener.invoke(date)
+            onSaveClickListenerDate.invoke(date)
+            onSaveClickListenerMonth.invoke(currentMonth)
             dismiss()
         }
         binding.btnCancel.setOnClickListener {
@@ -51,5 +57,12 @@ class DatePickerDialog(
         return dialog
     }
 
+    private fun setLocale() {
+        val locale = Locale(langFormat)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        context!!.applicationContext.resources.updateConfiguration(config, null)
+    }
 
 }

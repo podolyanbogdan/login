@@ -6,31 +6,31 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.data.TagsModel
-import com.example.login.databinding.RecTagItemBinding
+import com.example.login.databinding.RecInsideTagItemBinding
 
-class TagsAdapter(
+
+class TagsInsideAdapter(
     private val tags: List<TagsModel>
-) : RecyclerView.Adapter<TagsAdapter.TagsViewHolder>() {
+) : RecyclerView.Adapter<TagsInsideAdapter.TagsInsideViewHolder>() {
 
-    inner class TagsViewHolder(
-        val recTagsItemBinding: RecTagItemBinding
-    ) : RecyclerView.ViewHolder(recTagsItemBinding.root)
+    inner class TagsInsideViewHolder(
+        val recInsideTagItemBinding: RecInsideTagItemBinding
+    ) : RecyclerView.ViewHolder(recInsideTagItemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        TagsViewHolder(
+        TagsInsideViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.rec_tag_item,
+                R.layout.rec_inside_tag_item,
                 parent,
                 false
             )
         )
+    
 
-
-    override fun onBindViewHolder(holder: TagsViewHolder, position: Int) {
-        holder.recTagsItemBinding.data = tags[position]
+    override fun onBindViewHolder(holder: TagsInsideViewHolder, position: Int) {
+        holder.recInsideTagItemBinding.data = tags[position]
     }
-
 
     override fun getItemCount() = tags.size
 }

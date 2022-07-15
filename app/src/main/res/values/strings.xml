@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Task App</string>
+    <string name="app_name" translatable="false">Task Manager</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="current_screen_in_development">Current screen in development</string>
@@ -43,6 +43,15 @@
     <string name="ring">Ring</string>
     <string name="you_need_to_add_name">You need to add Title name</string>
     <string name="add_tag_name_pls">Add Tag Name please</string>
+    <string name="edit_title">You need to edit Title</string>
+    <string name="edit_title2">Edit Title</string>
+    <string name="secondtime">SecondTime</string>
+    <string name="first_time">First Time</string>
+    <string name="today">Today</string>
+    <string name="search">search</string>
+    <string name="clear">clear</string>
+    <string name="h">h</string>
+    <string name="m">m</string>
 
     <string-array name="description">
         <item>Align Left</item>

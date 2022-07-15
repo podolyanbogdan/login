@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/new_tag"
-            android:textColor="@color/textColorHardBlue"
+            android:textColor="@color/appLightColorBlack"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
 
         <EditText
             android:id="@+id/edDialogTag"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/ed_corners"
@@ -47,10 +47,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancel"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
-            app:cornerRadius="50dp"
-            android:backgroundTint="@color/btn_clr"
+            app:cornerRadius="10dp"
+            android:backgroundTint="@color/appLightColorButton"
             android:layout_marginStart="4dp"
             android:layout_marginTop="48dp"
             android:layout_marginBottom="32dp"
@@ -62,10 +62,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
-            app:cornerRadius="50dp"
-            android:backgroundTint="@color/btn_clr"
+            app:cornerRadius="10dp"
+            android:backgroundTint="@color/appLightColorButton"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="32dp"

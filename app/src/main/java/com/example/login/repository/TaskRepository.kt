@@ -1,7 +1,6 @@
 package com.example.login.repository
 
-import androidx.databinding.ObservableField
-import com.example.login.data.DaysModel
+import com.example.login.data.TagsModel
 import com.example.login.data.TaskModel
 
 object TaskRepository {
@@ -19,6 +18,14 @@ object TaskRepository {
     }
     fun setTag(): String{
         return tagResult
+    }
+
+    private var tagInside = mutableListOf<TagsModel>()
+    fun getTagInside(tags: MutableList<TagsModel>){
+        this.tagInside = tags
+    }
+    fun setTagInside(): MutableList<TagsModel> {
+        return tagInside
     }
 
     var hideImgAndTv = false

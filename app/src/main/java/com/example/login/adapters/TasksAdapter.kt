@@ -2,16 +2,20 @@ package com.example.login.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
+import com.example.login.constants.Constants.delete
+import com.example.login.constants.Constants.dialog2
+import com.example.login.constants.Constants.edit
+import com.example.login.constants.Constants.fieldPopup
+import com.example.login.constants.Constants.forceIcon
 import com.example.login.data.TaskModel
 import com.example.login.databinding.RecTaskItemBinding
 import com.example.login.repository.TaskRepository
@@ -24,9 +28,8 @@ class TasksAdapter(
 ) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
     private lateinit var tvTitle: TextView
     private lateinit var tvTimeBoth: TextView
-    private lateinit var cardView: CardView
-    private lateinit var tvDisabled: TextView
     private lateinit var dots: ImageButton
+    private lateinit var recTags: RecyclerView
 
     inner class TasksViewHolder(
         val recTaskItem: RecTaskItemBinding
@@ -48,8 +51,9 @@ class TasksAdapter(
         dots = holder.itemView.findViewById(R.id.btnDots)
         tvTitle = holder.itemView.findViewById(R.id.tvTitleTask)
         tvTimeBoth = holder.itemView.findViewById(R.id.tvTimeBoth)
-        cardView = holder.itemView.findViewById(R.id.cardRec)
-        tvDisabled = holder.itemView.findViewById(R.id.tvDisabled)
+        recTags = holder.itemView.findViewById(R.id.recTagsInside)
+
+        initTags()
         dots.setOnClickListener {
             showPopup(dots, position)
         }
@@ -62,23 +66,20 @@ class TasksAdapter(
         popupMenu.inflate(R.menu.rec_dots_main)
         popupMenu.show()
         try {
-            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+            val fieldMPopup = PopupMenu::class.java.getDeclaredField(fieldPopup)
             fieldMPopup.isAccessible = true
             val mPopup = fieldMPopup.get(popupMenu)
             mPopup.javaClass
-                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                .getDeclaredMethod(forceIcon, Boolean::class.java)
                 .invoke(mPopup, true)
         } finally {
             popupMenu.show()
         }
         popupMenu.setOnMenuItemClickListener { item ->
-            if (item.title == "Disable") {
-                disableAt(position)
-            }
-            if (item.title == "Delete") {
+            if (item.title == delete) {
                 removeAt(position)
             }
-            if (item.title == "Edit") {
+            if (item.title == edit) {
                 editAt(position)
             }
             true
@@ -99,14 +100,13 @@ class TasksAdapter(
             timeBoth = { data ->
                 tvTimeBoth.text = data
             }
-        ).show(fragment, "dialog2")
+        ).show(fragment, dialog2)
         notifyItemChanged(position)
     }
 
-    private fun disableAt(position: Int) {
-        tvDisabled.visibility = View.VISIBLE
-        tvTitle.visibility = View.INVISIBLE
-        tvTimeBoth.visibility = View.INVISIBLE
-        notifyItemChanged(position)
+    private fun initTags() {
+        recTags.layoutManager = GridLayoutManager(context, 3)
+        recTags.adapter = TagsInsideAdapter(TaskRepository.setTagInside())
     }
+
 }

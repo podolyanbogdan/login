@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.example.login.R
 import com.example.login.databinding.FragmentEditRecItemBinding
 import com.example.login.ui.screens.addTask.AddTaskViewModel
 
@@ -47,15 +48,15 @@ class EditRecItemDialog(
         }
 
         binding.btnSave.setOnClickListener {
-           if(binding.edTitleEdit.text.isNullOrEmpty()){
-               Toast.makeText(context, "You need to edit Title", Toast.LENGTH_SHORT).show()
-           } else {
-               var result = "$first:$second - $third:$fourth"
-               val title = binding.edTitleEdit.text.toString()
-               titleRes.invoke(title)
-               timeBoth.invoke(result)
-               dismiss()
-           }
+            if (binding.edTitleEdit.text.isNullOrEmpty()) {
+                Toast.makeText(context, getString(R.string.edit_title), Toast.LENGTH_SHORT).show()
+            } else {
+                var result = "$first:$second - $third:$fourth"
+                val title = binding.edTitleEdit.text.toString()
+                titleRes.invoke(title)
+                timeBoth.invoke(result)
+                dismiss()
+            }
         }
         binding.btnCancel.setOnClickListener {
             dismiss()

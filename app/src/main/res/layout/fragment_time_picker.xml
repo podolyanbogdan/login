@@ -12,8 +12,8 @@
         android:layout_width="31dp"
         android:layout_height="45dp"
         android:layout_marginEnd="32dp"
-        android:text="m"
-        android:textColor="@color/purple_700"
+        android:text="@string/m"
+        android:textColor="@color/appLightColorButton"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/secondPicker"
@@ -40,12 +40,11 @@
         app:np_dividerThickness="8dp"
         app:np_dividerType="underline"
         app:np_height="180dp"
-
         app:np_max="59"
         app:np_min="0"
-        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextColor="@color/appLightColorButton"
         app:np_selectedTextSize="50dp"
-        app:np_textColor="@color/purple_700"
+        app:np_textColor="@color/appLightColorButton"
         app:np_textSize="20dp"
         app:np_value="3"
         app:np_wheelItemCount="5"
@@ -68,9 +67,9 @@
         app:np_height="180dp"
         app:np_max="24"
         app:np_min="0"
-        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextColor="@color/appLightColorButton"
         app:np_selectedTextSize="50dp"
-        app:np_textColor="@color/purple_700"
+        app:np_textColor="@color/appLightColorButton"
         app:np_textSize="20dp"
         app:np_value="12"
         app:np_wheelItemCount="5"
@@ -84,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/edit_time"
-        android:textColor="@color/textColorHardBlue"
+        android:textColor="@color/appLightColorBlack"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +109,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstPicker"
         app:prefixText="Reminder Mode"
-        app:prefixTextColor="@color/textColorHardBlue">
+        app:prefixTextColor="@color/appLightColorBlack">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
@@ -121,19 +120,19 @@
             android:inputType="none"
             android:text="@string/ring"
             android:textAlignment="textEnd"
-            android:textColor="@color/textColorHardBlue"
+            android:textColor="@color/appLightColorBlack"
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancel"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
+        app:cornerRadius="10dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/btn_clr"
+        android:backgroundTint="@color/appLightColorButton"
         android:text="@string/cancel"
-        app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
         app:layout_constraintHorizontal_bias="0.44"
@@ -141,28 +140,28 @@
         app:layout_constraintTop_toBottomOf="@+id/tvReminder"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/btn_clr"
+        android:backgroundTint="@color/appLightColorButton"
         android:text="@string/save"
-        app:cornerRadius="50dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvReminder"
         app:layout_constraintTop_toBottomOf="@+id/tvReminder"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="h"
-        android:textColor="@color/purple_700"
+        android:text="@string/h"
+        android:textColor="@color/appLightColorButton"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/firstPicker"

@@ -29,28 +29,26 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancel"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/btn_clr"
+            android:backgroundTint="@color/appLightColorButton"
             android:text="@string/cancel"
-            app:cornerRadius="50dp"
+            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnSave"
-            app:layout_constraintHorizontal_bias="0.347"
             app:layout_constraintStart_toStartOf="@+id/calendarView"
             app:layout_constraintTop_toBottomOf="@+id/calendarView"
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="32dp"
-            android:backgroundTint="@color/btn_clr"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/appLightColorButton"
             android:text="@string/save"
-            app:cornerRadius="50dp"
+            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/calendarView"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />

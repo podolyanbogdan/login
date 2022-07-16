@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_corners">
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="@string/first_time"
+        android:textColor="@color/appLightColorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="344dp"
+        android:text="@string/secondtime"
+        android:textColor="@color/appLightColorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/edit"
+        android:textColor="@color/appLightColorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edTitleEdit"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/ed_corners"
+        android:backgroundTint="#F3F0F0"
+        android:ems="10"
+        android:hint="@string/edit_title2"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        app:cornerRadius="10dp"
+        android:backgroundTint="@color/appLightColorButton"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thirdPicker"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        app:cornerRadius="10dp"
+        android:backgroundTint="@color/appLightColorButton"
+        android:layout_marginEnd="60dp"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fourthPicker"
+        app:layout_constraintVertical_bias="0.584" />
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/secondPicker"
+        android:layout_width="104dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toEndOf="@+id/firstPicker"
+        app:layout_constraintTop_toBottomOf="@+id/edTitleEdit"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="50dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="150dp"
+        app:np_max="59"
+        app:np_min="00"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="40dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="30"
+        app:np_wheelItemCount="5"
+        app:np_width="48dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/firstPicker"
+        android:layout_width="104dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTitleEdit"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="50dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="150dp"
+        app:np_max="24"
+        app:np_min="00"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="40dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="12"
+        app:np_wheelItemCount="5"
+        app:np_width="48dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/fourthPicker"
+        android:layout_width="104dp"
+        android:layout_height="145dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondPicker"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/thirdPicker"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.126"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="50dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="150dp"
+        app:np_max="59"
+        app:np_min="00"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="40dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="20"
+        app:np_wheelItemCount="5"
+        app:np_width="48dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/thirdPicker"
+        android:layout_width="104dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/firstPicker"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.125"
+        app:np_dividerColor="@color/white"
+        app:np_dividerDistance="50dp"
+        app:np_dividerThickness="8dp"
+        app:np_dividerType="underline"
+        app:np_height="150dp"
+        app:np_max="24"
+        app:np_min="00"
+        app:np_selectedTextColor="@color/purple_700"
+        app:np_selectedTextSize="40dp"
+        app:np_textColor="@color/purple_700"
+        app:np_textSize="20dp"
+        app:np_value="15"
+        app:np_wheelItemCount="5"
+        app:np_width="48dp">
+
+    </com.shawnlin.numberpicker.NumberPicker>
+</androidx.constraintlayout.widget.ConstraintLayout>

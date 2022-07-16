@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorControlActivated">@color/appLightColorButton</item>
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+    </style>
+
+
+    <style name="SearchViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="round">@dimen/shape_radius</item>
+        <item name="android:searchIcon">@drawable/ic_search</item>
+        <item name="android:closeIcon">@drawable/ic_clear</item>
+        <item name="android:searchHintIcon">@drawable/ic_search</item>
+        <item name="android:paddingStart">@dimen/paddingStart</item>
+        <item name="android:backgroundTint">@color/bgcTint</item>
+        <item name="android:background">@drawable/ed_corners</item>
+        <item name="android:queryBackground">@android:color/transparent</item>
+        <item name="android:hint">@string/search_for</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_marginStart">@dimen/layout_marginStart</item>
+        <item name="android:layout_marginEnd">@dimen/layout_marginEnd</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+    </style>
+
+    <style name="TextViews">
+        <item name="android:textColor">@color/appLightColorBlack</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/layout_marginStartTv</item>
+    </style>
+
+
 </resources>

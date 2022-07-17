@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name" translatable="false">Scary meets</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="are_you_age_more_then_16">Are you age more then 16?</string>
+    <string name="next">Next</string>
+    <string name="what_is_your_level">What is your level?</string>
+    <string name="prev">Prev</string>
+    <string name="you_need_confirm_age">You need to confirm your Age</string>
+    <string name="hero">Hero</string>
+    <string name="player">Player</string>
+    <string name="master">Master</string>
+    <string name="what_is_your_class">What is your class?</string>
+    <string name="title_activity_parent">ParentActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

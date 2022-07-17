@@ -1,10 +1,10 @@
-package com.example.login.ui.screens.splash
+package com.example.login.ui.splash
+
 import com.example.login.arch.BaseViewModel
 import com.example.login.arch.lifecycle.SingleLiveEvent
 import kotlinx.coroutines.delay
 
-class SplashViewModel(
-) : BaseViewModel() {
+class SplashViewModel: BaseViewModel() {
 
     val initEvent = SingleLiveEvent<Boolean>()
 
@@ -16,4 +16,3 @@ class SplashViewModel(
         }
     }
 }
-   

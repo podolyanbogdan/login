@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.age.AgeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_white_def">
+
+        <ImageView
+            android:id="@+id/imgAge"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="72dp"
+            android:src="@drawable/ic_age"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_white_def"
+            android:padding="15dp"
+            android:theme="@style/SCBSwitch"
+            android:background="@color/primary_green_def"
+            android:layout_marginTop="96dp"
+            android:onCheckedChanged="@{(switch, checked) -> viewmodel.onCheckedChanged(checked)}"
+            android:text="@string/are_you_age_more_then_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAge" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:layout_marginTop="32dp"
+            android:padding="15dp"
+            android:onClick="@{() -> viewmodel.btnClicked()}"
+            android:drawableEnd="@drawable/ic_btn_next_arrow"
+            android:textColor="@color/primary_white_def"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/switchAge"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/switchAge"
+            app:layout_constraintTop_toBottomOf="@+id/switchAge" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

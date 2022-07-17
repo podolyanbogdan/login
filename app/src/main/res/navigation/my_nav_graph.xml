@@ -3,32 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav_graph"
-    app:startDestination="@id/mainScreenFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
-        android:id="@+id/mainScreenFragment"
-        android:name="com.example.login.ui.screens.mainScreen.MainScreenFragment"
-        android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
-    <fragment
-        android:id="@+id/firstFakeFragment"
-        android:name="com.example.login.ui.screens.firstFakeScreen.FirstFakeFragment"
-        android:label="fragment_first_fake"
-        tools:layout="@layout/fragment_first_fake" />
-    <fragment
-        android:id="@+id/fourthFakeFragment"
-        android:name="com.example.login.ui.screens.fourthFakeScreen.FourthFakeFragment"
-        android:label="FourthFakeFragment" />
-    <fragment
-        android:id="@+id/addTaskFragment"
-        android:name="com.example.login.ui.screens.addTask.AddTaskFragment"
-        android:label="fragment_add_task"
-        tools:layout="@layout/fragment_add_task" >
-        <action
-            android:id="@+id/fromAddTaskToMain"
-            app:destination="@id/mainScreenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdFakeFragment"
-        android:name="com.example.login.ui.screens.thirdFakeScreen.ThirdFakeFragment"
-        android:label="ThirdFakeFragment" />
+        android:id="@+id/splashFragment"
+        android:name="com.example.login.ui.screens.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>

@@ -15,9 +15,5 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Button.CustomBlue" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">#2165D5</item>
-    </style>
-
 
 </resources>

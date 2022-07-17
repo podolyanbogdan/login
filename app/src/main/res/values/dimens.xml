@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">1sp</dimen>
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">1sp</dimen>
-    <dimen name="shape_radius" tools:override="true">12dp</dimen>
-    <dimen name="font_size_14" tools:override="true">14sp</dimen>
-    <dimen name="paddingStart" tools:override="true">50dp</dimen>
-    <dimen name="layout_marginEnd" tools:override="true">32dp</dimen>
-    <dimen name="layout_marginStart" tools:override="true">32dp</dimen>
-    <dimen name="min_height" tools:override="true">48dp</dimen>
-    <dimen name="text_size" tools:override="true">24sp</dimen>
-    <dimen name="layout_marginStartTv" tools:override="true">16dp</dimen>
-
 </resources>

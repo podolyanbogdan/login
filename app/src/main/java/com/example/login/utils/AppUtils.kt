@@ -1,13 +1,9 @@
 package com.example.login.utils
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
-import android.graphics.Color
-import com.example.login.constants.Constants
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.random.Random
 
 
 class AppUtils {
@@ -39,21 +35,6 @@ class AppUtils {
         fun getDate(dateTime: String): String {
             val date = getDateShortFormat(dateTime)
             return SimpleDateFormat(DATE_APP_SHORT_FORMAT, Locale.getDefault()).format(date)
-        }
-
-        fun getCurrentTime(): String {
-            val sdf = SimpleDateFormat("HH:mm")
-            return sdf.format(Date())
-        }
-
-        fun getCurrentMonth(): String {
-            val locale = Locale(Constants.langFormat)
-            Locale.setDefault(locale)
-            val config = Configuration()
-            config.locale = locale
-            val sdf = SimpleDateFormat("MMMM")
-            val currentDate = sdf.format(Date())
-            return currentDate.toString()
         }
 
     }

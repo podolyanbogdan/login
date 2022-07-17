@@ -4,16 +4,8 @@
     <color name="purple_400">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="myPurple">#8C5AFD</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="rec_bgc_blue">#F9FAFC</color>
-
-    <color name="appLightColorLight">#8A8AB2</color>
-    <color name="appLightColorButton">#5B67Ca</color>
-    <color name="appLightColorBlack">#10275A</color>
-    <color name="bgcTint">#F3F0F0</color>
 </resources>

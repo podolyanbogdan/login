@@ -46,4 +46,5 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
     }
 
 
+
 }

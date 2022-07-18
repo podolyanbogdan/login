@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/without_all_graph"
+    app:startDestination="@id/parentActivity2">
+
+    <activity
+        android:id="@+id/parentActivity2"
+        android:name="com.example.login.ui.parentScreen.ParentActivity"
+        android:label="activity_parent"
+        tools:layout="@layout/activity_parent" />
+</navigation>

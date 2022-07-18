@@ -5,11 +5,10 @@ import com.example.login.arch.BaseViewModel
 import com.example.login.repository.MyRepository
 
 class MapViewModel: BaseViewModel() {
-    val level: MutableLiveData<String> = MutableLiveData()
-    val character: MutableLiveData<String> = MutableLiveData()
+    val positionClicked: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        level.value = MyRepository.setLevel().toString()
-        character.value = MyRepository.setCharacter()
+
+    fun exportPosition(){
+        positionClicked.value = true
     }
 }

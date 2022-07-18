@@ -1,6 +1,5 @@
 package com.example.login.ui.character
 
-import android.widget.RadioGroup
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 

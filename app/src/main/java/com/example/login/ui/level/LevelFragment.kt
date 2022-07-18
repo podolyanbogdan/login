@@ -8,8 +8,11 @@ import android.widget.Toast
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.constants.Constants
+import com.example.login.constants.Constants.LEVEL_SCREEN
 import com.example.login.databinding.FragmentLevelBinding
 import com.example.login.repository.MyRepository
+import com.example.login.repository.PreferenceStorage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,6 +28,7 @@ class LevelFragment : BaseFragment<FragmentLevelBinding>(R.layout.fragment_level
         return view
     }
 
+
     override fun setObservers() {
         super.setObservers()
         viewModel.prevClick.observe(this){
@@ -32,7 +36,10 @@ class LevelFragment : BaseFragment<FragmentLevelBinding>(R.layout.fragment_level
         }
         viewModel.nextClick.observe(this){
             if(viewModel.levelValue.value == "0") showToast("You need to choice your level!")
-            else navigate(R.id.characterFragment)
+            else {
+                PreferenceStorage(requireContext()).saveAgeScreen(LEVEL_SCREEN, true)
+                navigate(R.id.characterFragment)
+            }
         }
     }
 }

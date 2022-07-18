@@ -15,9 +15,9 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashViewModel() }
     viewModel { AgeViewModel() }
-    viewModel { LevelViewModel() }
+    viewModel { LevelViewModel(get()) }
     viewModel { CharacterViewModel() }
     viewModel { MapViewModel() }
-    viewModel { PointsViewModel() }
-    viewModel { SettingsViewModel() }
+    viewModel { PointsViewModel(get()) }
+    viewModel { SettingsViewModel(get()) }
 }

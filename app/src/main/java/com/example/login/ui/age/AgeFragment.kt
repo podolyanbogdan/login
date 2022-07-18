@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.Toast
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.constants.Constants.AGE_SCREEN
 import com.example.login.databinding.FragmentAgeBinding
+import com.example.login.repository.PreferenceStorage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -29,7 +29,10 @@ class AgeFragment : BaseFragment<FragmentAgeBinding>(R.layout.fragment_age) {
     override fun setObservers() {
         super.setObservers()
         viewModel.btnClicked.observe(this) {
-            if (viewModel.switchState.value == true) navigate(R.id.levelFragment)
+            if (viewModel.switchState.value == true) {
+                PreferenceStorage(requireContext()).saveAgeScreen(AGE_SCREEN, true)
+                navigate(R.id.levelFragment)
+            }
             else showToast("You need to confirm your age!")
         }
     }

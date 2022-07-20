@@ -65,7 +65,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.5.0-alpha02"
     kapt 'androidx.room:room-compiler:2.5.0-alpha02'
     implementation 'com.shawnlin:number-picker:2.4.12'
-
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:0.10.5"
     implementation("androidx.compose.material3:material3:1.0.0-alpha14")

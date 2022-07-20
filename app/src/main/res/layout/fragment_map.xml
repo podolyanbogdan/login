@@ -32,7 +32,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:onClick="@{() -> viewmodel.exportPosition()}"
             android:text="@string/export_n_my_position"
             android:textAlignment="center"
             android:textColor="@color/primary_white_def"

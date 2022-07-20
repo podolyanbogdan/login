@@ -7,7 +7,7 @@
     <data>
         <variable
             name="data"
-            type="com.example.login.data.PointsModel" />
+            type="com.example.login.data.UserModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

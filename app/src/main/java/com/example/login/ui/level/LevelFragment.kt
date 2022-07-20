@@ -37,7 +37,7 @@ class LevelFragment : BaseFragment<FragmentLevelBinding>(R.layout.fragment_level
         viewModel.nextClick.observe(this){
             if(viewModel.levelValue.value == "0") showToast("You need to choice your level!")
             else {
-                PreferenceStorage(requireContext()).saveAgeScreen(LEVEL_SCREEN, true)
+                PreferenceStorage(requireContext()).saveLevelScreen(LEVEL_SCREEN, true)
                 navigate(R.id.characterFragment)
             }
         }

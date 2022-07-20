@@ -2,20 +2,28 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/without_all_graph"
-    app:startDestination="@id/splashFragment2">
+    android:id="@+id/char_main"
+    app:startDestination="@id/splashFragment4">
 
+    <fragment
+        android:id="@+id/characterFragment3"
+        android:name="com.example.login.ui.character.CharacterFragment"
+        android:label="CharacterFragment" >
+        <action
+            android:id="@+id/action_characterFragment3_to_parentActivity4"
+            app:destination="@id/parentActivity" />
+    </fragment>
     <activity
         android:id="@+id/parentActivity"
         android:name="com.example.login.ui.parentScreen.ParentActivity"
         android:label="activity_parent"
         tools:layout="@layout/activity_parent" />
     <fragment
-        android:id="@+id/splashFragment2"
+        android:id="@+id/splashFragment4"
         android:name="com.example.login.ui.splash.SplashFragment"
         android:label="SplashFragment" >
         <action
-            android:id="@+id/action_splashFragment2_to_parentActivity2"
-            app:destination="@id/parentActivity" />
+            android:id="@+id/action_splashFragment4_to_characterFragment3"
+            app:destination="@id/characterFragment3" />
     </fragment>
 </navigation>

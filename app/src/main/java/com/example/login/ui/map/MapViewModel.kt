@@ -7,6 +7,9 @@ import com.example.login.repository.MyRepository
 class MapViewModel: BaseViewModel() {
     val positionClicked: MutableLiveData<Boolean> = MutableLiveData()
 
+    init {
+        positionClicked.value = false
+    }
 
     fun exportPosition(){
         positionClicked.value = true

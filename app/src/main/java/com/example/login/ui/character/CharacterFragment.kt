@@ -12,12 +12,12 @@ import com.example.login.constants.Constants.CHARACTER_ID_KEY
 import com.example.login.constants.Constants.CHARACTER_NAME_KEY
 import com.example.login.constants.Constants.CHARACTER_SCREEN
 import com.example.login.databinding.FragmentCharacterBinding
+import com.example.login.repository.MyRepository
 import com.example.login.repository.PreferenceStorage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CharacterFragment : BaseFragment<FragmentCharacterBinding>(R.layout.fragment_character) {
-
     override val viewModel: CharacterViewModel by viewModel()
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class CharacterFragment : BaseFragment<FragmentCharacterBinding>(R.layout.fragme
         viewModel.nextClick.observe(this) {
             if (viewModel.radioValue.value == 0) showToast("You need to choice a class")
             else {
-                PreferenceStorage(requireContext()).saveAgeScreen(CHARACTER_SCREEN, true)
+                PreferenceStorage(requireContext()).saveCharacterScreen(CHARACTER_SCREEN, true)
                 navigate(R.id.parentActivity)
             }
         }

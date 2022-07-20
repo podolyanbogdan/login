@@ -14,8 +14,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AgeFragment : BaseFragment<FragmentAgeBinding>(R.layout.fragment_age) {
-
     override val viewModel: AgeViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

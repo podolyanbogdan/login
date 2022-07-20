@@ -15,7 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment_settings) {
-
     override val viewModel: SettingsViewModel by viewModel()
 
     override fun onCreateView(

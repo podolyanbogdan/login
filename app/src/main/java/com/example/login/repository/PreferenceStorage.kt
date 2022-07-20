@@ -6,6 +6,7 @@ const val PREFS_FILE_NAME = "storage"
 
 class PreferenceStorage constructor(private val context: Context) {
 
+    // data
     fun saveLevel(_key: String, _value: Float) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
@@ -49,6 +50,21 @@ class PreferenceStorage constructor(private val context: Context) {
     }
 
 
+    fun saveLocation(_key: String, _value: String) {
+        val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
+        val prefsEdit = prefs.edit()
+
+        prefsEdit.putString(_key, _value)
+        prefsEdit.apply()
+    }
+
+    fun getLocation(_key: String, default: String = ""): String? {
+        val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
+        return prefs.getString(_key, default)
+    }
+
+
+    // screen states, is chose
     fun saveAgeScreen(_key: String, _value: Boolean) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()

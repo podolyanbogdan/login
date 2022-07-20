@@ -8,6 +8,7 @@ import com.example.login.ui.map.MapViewModel
 import com.example.login.ui.points.PointsViewModel
 import com.example.login.ui.settings.SettingsViewModel
 import com.example.login.ui.splash.SplashViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

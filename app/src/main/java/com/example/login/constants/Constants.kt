@@ -11,4 +11,8 @@ object Constants {
     const val AGE_SCREEN = "AGE_SCREEN"
     const val LEVEL_SCREEN = "LEVEL_SCREEN"
     const val CHARACTER_SCREEN = "CHARACTER_SCREEN"
+    const val LABEL = "label"
+    const val HERO = "Hero"
+    const val PLAYER = "Player"
+    const val MASTER = "Master"
 }

@@ -7,7 +7,7 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import com.example.login.constants.Constants
 
-class PermissionLoc {
+class PermissionLoc() {
      fun setUpMap(context: Context, activity: Activity) {
         if (context.let {
                 ActivityCompat.checkSelfPermission(
@@ -24,4 +24,6 @@ class PermissionLoc {
             return
         }
     }
+
+
 }

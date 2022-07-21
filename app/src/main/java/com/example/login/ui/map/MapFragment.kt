@@ -1,19 +1,18 @@
 package com.example.login.ui.map
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
+import android.app.AlertDialog
+import android.content.*
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.login.R
 import com.example.login.arch.BaseFragment
@@ -112,6 +111,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         myMap.uiSettings.isZoomControlsEnabled = true
         myMap.setOnMarkerClickListener(this)
         PermissionLoc().setUpMap(requireActivity(), requireActivity())
+        statusCheck()
     }
 
     private fun moveToPosition() {
@@ -161,6 +161,25 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         vectorDrawable.draw(Canvas(bitmap))
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
+
+    private fun statusCheck() {
+        val manager =
+            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+        if (!manager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps()
+        }
+    }
+
+    private fun buildAlertMessageNoGps() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { _, _ -> startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)) }
+            .setNegativeButton("No") { dialog, _ -> dialog.cancel() }
+        val alert: AlertDialog = builder.create()
+        alert.show()
+    }
+
 
     override fun onMarkerClick(p0: Marker) = false
 }

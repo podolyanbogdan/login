@@ -1,18 +1,54 @@
 package com.example.login.ui.splash
 
+import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
-import com.example.login.arch.lifecycle.SingleLiveEvent
+import com.example.login.data.ScreensState
+import com.example.login.repository.MyRepository
 import kotlinx.coroutines.delay
 
-class SplashViewModel: BaseViewModel() {
-
-    val initEvent = SingleLiveEvent<Boolean>()
+class SplashViewModel(private val repo: MyRepository) : BaseViewModel() {
+    val currentNavigation = MutableLiveData<ScreensState>()
 
     init {
         onLoading(true)
         launch {
             delay(2000)
-            initEvent.postValue(true)
+            checkScreenStates()
         }
     }
+
+    private fun checkScreenStates() {
+        if (
+            repo.getAgeScreenState() &&
+            repo.getLevelScreenState() &&
+            repo.getCharacterScreenState()
+        ) {
+            currentNavigation.value = ScreensState.MAP
+        }
+
+        if (
+            !repo.getAgeScreenState() &&
+            !repo.getLevelScreenState() &&
+            !repo.getCharacterScreenState()
+        ) {
+            currentNavigation.value = ScreensState.AGE
+        }
+
+        if (
+            repo.getAgeScreenState() &&
+            !repo.getLevelScreenState() &&
+            !repo.getCharacterScreenState()
+        ) {
+            currentNavigation.value = ScreensState.LEVEL
+        }
+
+        if (
+            repo.getAgeScreenState() &&
+            repo.getLevelScreenState() &&
+            !repo.getCharacterScreenState()
+        ) {
+            currentNavigation.value = ScreensState.CHARACTER
+        }
+    }
+
 }

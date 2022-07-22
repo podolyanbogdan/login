@@ -1,31 +1,21 @@
 package com.example.login.ui.map
 
-import android.app.AlertDialog
 import android.content.*
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.login.R
 import com.example.login.arch.BaseFragment
-import com.example.login.constants.Constants.CHARACTER_NAME_KEY
-import com.example.login.constants.Constants.HERO
 import com.example.login.constants.Constants.LABEL
-import com.example.login.constants.Constants.MASTER
-import com.example.login.constants.Constants.PLAYER
+import com.example.login.constants.Constants.SHARE_INTENT_TYPE
 import com.example.login.databinding.FragmentMapBinding
 import com.example.login.json.JsonConverter
-import com.example.login.permissions.PermissionLoc
 import com.example.login.repository.MyRepository
-import com.example.login.repository.PreferenceStorage
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -42,8 +32,8 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
     private lateinit var myMap: GoogleMap
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var stop = false
     private lateinit var clipboard: ClipboardManager
+    var stop = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,19 +42,8 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         val view = super.onCreateView(inflater, container, savedInstanceState)
         initMap()
         showGamer()
-        focusToMarker()
         binding.viewmodel = viewModel
         return view
-    }
-
-    private fun focusToMarker(){
-        val arg = arguments?.getBoolean("focus")
-        if (arg == true) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                moveToPosition()
-            }, 500)
-        }
-
     }
 
     private fun Context.copyToClipboard(clipLabel: String, text: CharSequence) {
@@ -79,10 +58,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
 
     private fun showGamer() {
         binding.btnCurrPos.setOnClickListener {
-            requireContext().copyToClipboard(
-                LABEL,
-                JsonConverter(PreferenceStorage(requireContext())).jsonString
-            )
+            requireContext().copyToClipboard(LABEL, JsonConverter(requireContext()).jsonString)
             shareMyPosition()
         }
     }
@@ -91,7 +67,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, pasteClipboard())
-            type = "text/plain"
+            type = SHARE_INTENT_TYPE
         }
 
         val shareIntent = Intent.createChooser(sendIntent, null)
@@ -103,6 +79,9 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
             childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        Handler(Looper.getMainLooper()).postDelayed({
+            moveToPosition()
+        }, 500)
     }
 
 
@@ -110,9 +89,9 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         myMap = googleMap
         myMap.uiSettings.isZoomControlsEnabled = true
         myMap.setOnMarkerClickListener(this)
-        PermissionLoc().setUpMap(requireActivity(), requireActivity())
-        statusCheck()
+        GpsAlert(requireContext()).statusCheck()
     }
+
 
     private fun moveToPosition() {
         myMap.isMyLocationEnabled = true
@@ -120,66 +99,17 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
             if (location != null) {
                 lastLocation = location
                 val currentLatLong = LatLng(location.latitude, location.longitude)
-                if (!stop) placeMarkerOnMap(currentLatLong)
-                myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 16f))
+                MyRepository(requireContext()).saveLocation(currentLatLong)
+                if(!stop){
+                    val init = MyRepository(requireContext()).getJsonModel()
+                    MyRepository(requireContext()).markersQuantity(init)
+                }
                 stop = true
+                MarkerCreator(requireContext()).placeMarkerOnMap(currentLatLong, myMap)
+                myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 16f))
             }
         }
-
     }
-
-    private fun placeMarkerOnMap(currentLatLong: LatLng) {
-        val markerOptions = MarkerOptions().position(currentLatLong)
-        markerOptions.title(MyRepository(requireContext()).splitUserData())
-        markerOptions.snippet("${currentLatLong.longitude} - ${currentLatLong.latitude}")
-        markerOptions.icon(requireContext().bitmapDescriptorFromVector(whichImage()))
-        myMap.addMarker(markerOptions)
-    }
-
-    private fun whichImage(): Int {
-        return when (PreferenceStorage(requireContext()).getCharacterName(CHARACTER_NAME_KEY)) {
-            HERO -> return R.drawable.hero_icon1
-            PLAYER -> return R.drawable.hero_icon2
-            MASTER -> return R.drawable.hero_icon3
-            else -> return R.drawable.ic_character
-        }
-    }
-
-    private fun Context.bitmapDescriptorFromVector(vectorResId: Int): BitmapDescriptor {
-        val vectorDrawable = ContextCompat.getDrawable(this, vectorResId)
-        vectorDrawable!!.setBounds(
-            0,
-            0,
-            vectorDrawable.intrinsicWidth,
-            vectorDrawable.intrinsicHeight
-        )
-        val bitmap = Bitmap.createBitmap(
-            vectorDrawable.intrinsicWidth,
-            vectorDrawable.intrinsicHeight,
-            Bitmap.Config.ARGB_8888
-        )
-        vectorDrawable.draw(Canvas(bitmap))
-        return BitmapDescriptorFactory.fromBitmap(bitmap)
-    }
-
-    private fun statusCheck() {
-        val manager =
-            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-        if (!manager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps()
-        }
-    }
-
-    private fun buildAlertMessageNoGps() {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
-            .setCancelable(false)
-            .setPositiveButton("Yes") { _, _ -> startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)) }
-            .setNegativeButton("No") { dialog, _ -> dialog.cancel() }
-        val alert: AlertDialog = builder.create()
-        alert.show()
-    }
-
 
     override fun onMarkerClick(p0: Marker) = false
 }

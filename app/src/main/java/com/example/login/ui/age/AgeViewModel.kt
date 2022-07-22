@@ -2,15 +2,22 @@ package com.example.login.ui.age
 
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
+import com.example.login.repository.MyRepository
 
-class AgeViewModel : BaseViewModel() {
-    val btnClicked: MutableLiveData<Boolean> = MutableLiveData()
-    val switchState: MutableLiveData<Boolean> = MutableLiveData()
+class AgeViewModel(private val repo: MyRepository) : BaseViewModel() {
+    val goNextScreen: MutableLiveData<Boolean> = MutableLiveData()
+    private val isAgeAvailable: MutableLiveData<Boolean> = MutableLiveData()
 
     fun btnClicked() {
-        btnClicked.value = true
+        if (isAgeAvailable.value == true) {
+            repo.saveAgeScreenState(true)
+            goNextScreen.value = true
+        } else {
+            goNextScreen.value = false
+        }
     }
-    fun onCheckedChanged(checked: Boolean){
-        switchState.value = checked
+
+    fun onCheckedChanged(checked: Boolean) {
+        isAgeAvailable.value = checked
     }
 }

@@ -39,12 +39,21 @@
             android:id="@+id/action_characterFragment_to_levelFragment"
             app:destination="@id/levelFragment" />
         <action
-            android:id="@+id/action_characterFragment_to_parentActivity"
-            app:destination="@id/parentActivity" />
+            android:id="@+id/action_characterFragment_to_permisionFragment"
+            app:destination="@id/permisionFragment" />
     </fragment>
     <activity
         android:id="@+id/parentActivity"
         android:name="com.example.login.ui.parentScreen.ParentActivity"
         android:label="activity_parent"
         tools:layout="@layout/activity_parent" />
+    <fragment
+        android:id="@+id/permisionFragment"
+        android:name="com.example.login.ui.permision.PermisionFragment"
+        android:label="fragment_permision"
+        tools:layout="@layout/fragment_permision" >
+        <action
+            android:id="@+id/action_permisionFragment_to_parentActivity"
+            app:destination="@id/parentActivity" />
+    </fragment>
 </navigation>

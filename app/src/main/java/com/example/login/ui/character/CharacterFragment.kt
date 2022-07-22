@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.constants.Constants.CHARACTER_ID_KEY
-import com.example.login.constants.Constants.CHARACTER_NAME_KEY
-import com.example.login.constants.Constants.CHARACTER_SCREEN
+import com.example.login.data.Characters
 import com.example.login.databinding.FragmentCharacterBinding
-import com.example.login.repository.MyRepository
-import com.example.login.repository.PreferenceStorage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,19 +29,16 @@ class CharacterFragment : BaseFragment<FragmentCharacterBinding>(R.layout.fragme
     override fun setObservers() {
         super.setObservers()
         viewModel.prevClick.observe(this) {
-            navigate(R.id.levelFragment)
+            if (it) navigate(R.id.levelFragment)
         }
         viewModel.nextClick.observe(this) {
-            if (viewModel.radioValue.value == 0) showToast("You need to choice a class")
-            else {
-                PreferenceStorage(requireContext()).saveCharacterScreen(CHARACTER_SCREEN, true)
-                navigate(R.id.parentActivity)
-            }
+            if (it) navigate(R.id.permisionFragment)
+            else showToast(getString(R.string.you_need_choice_class))
         }
         viewModel.radioValue.observe(this) {
             val result = requireActivity().findViewById<RadioButton>(it)
-            PreferenceStorage(requireContext()).saveCharacterId(CHARACTER_ID_KEY, result?.id)
-            PreferenceStorage(requireContext()).saveCharacterName(CHARACTER_NAME_KEY, result?.text.toString())
+            viewModel.resultRadioId.value = result?.id
+            viewModel.resultRadioName.value = result?.text.toString()
         }
     }
 

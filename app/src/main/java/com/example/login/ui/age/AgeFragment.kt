@@ -7,15 +7,12 @@ import android.view.ViewGroup
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.constants.Constants.AGE_SCREEN
 import com.example.login.databinding.FragmentAgeBinding
-import com.example.login.repository.PreferenceStorage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AgeFragment : BaseFragment<FragmentAgeBinding>(R.layout.fragment_age) {
     override val viewModel: AgeViewModel by viewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,12 +25,9 @@ class AgeFragment : BaseFragment<FragmentAgeBinding>(R.layout.fragment_age) {
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.btnClicked.observe(this) {
-            if (viewModel.switchState.value == true) {
-                PreferenceStorage(requireContext()).saveAgeScreen(AGE_SCREEN, true)
-                navigate(R.id.levelFragment)
-            }
-            else showToast("You need to confirm your age!")
+        viewModel.goNextScreen.observe(this) {
+            if (it) navigate(R.id.levelFragment)
+            else showToast(getString(R.string.you_need_confirm_your_age))
         }
     }
 }

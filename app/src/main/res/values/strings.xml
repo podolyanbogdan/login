@@ -24,4 +24,13 @@
 
     <string name="dateInfo">%1$s at %2$s</string>
     <string name="pointsInfo">%1$s level %2$s</string>
+    <string name="you_need_confirm_your_age">You need to confirm your age!</string>
+    <string name="you_need_choice_class">You need to choice a class</string>
+    <string name="you_need_to_choice_level">You need to choice your level!</string>
+    <string name="your_gps_disabled">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="sorry_but_you_accept_it">Sorry but you need to accept it</string>
+    <string name="you_denied_permission_if_you_want_to_continue_using_the_application_click_here">You denied permission</string>
+    <string name="permissions">Permissions</string>
 </resources>

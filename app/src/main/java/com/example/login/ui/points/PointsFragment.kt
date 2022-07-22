@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
@@ -26,17 +27,18 @@ class PointsFragment : BaseFragment<FragmentPointsBinding>(R.layout.fragment_poi
         return view
     }
 
+
+
     private fun initRecycler() {
         viewModel.points.observe(viewLifecycleOwner) {
             binding.recPoints.also {
-                it.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                it.adapter = parentFragment?.let { frag ->
-                    PointsAdapter(
-                        viewModel.points.value as MutableList<UserModel>,
-                        frag,
-                        requireContext(),
-                    )
-                }
+                it.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                it.adapter = PointsAdapter(
+                    viewModel.points.value as MutableList<UserModel>,
+                    requireContext()
+                )
+
             }
         }
     }

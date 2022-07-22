@@ -31,8 +31,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         super.setObservers()
         viewModel.radioValue.observe(this) {
             val result = requireActivity().findViewById<RadioButton>(it)
-            PreferenceStorage(requireContext()).saveCharacterId(Constants.CHARACTER_ID_KEY, result?.id)
-            PreferenceStorage(requireContext()).saveCharacterName(Constants.CHARACTER_NAME_KEY, result?.text.toString())
+            PreferenceStorage(requireContext()).saveCharacterId(result?.id)
+            PreferenceStorage(requireContext()).saveCharacterName(result?.text.toString())
         }
     }
 

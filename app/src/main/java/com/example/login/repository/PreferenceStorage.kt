@@ -3,102 +3,95 @@ package com.example.login.repository
 import android.content.Context
 
 const val PREFS_FILE_NAME = "storage"
-
+const val LEVEL_KEY = "LEVEL_KEY"
+const val CHARACTER_ID_KEY = "CHARACTER_KEY_ID"
+const val CHARACTER_NAME_KEY = "CHARACTER_KEY_NAME"
+const val AGE_SCREEN = "AGE_SCREEN"
+const val LEVEL_SCREEN = "LEVEL_SCREEN"
+const val CHARACTER_SCREEN = "CHARACTER_SCREEN"
 class PreferenceStorage constructor(private val context: Context) {
 
     // data
-    fun saveLevel(_key: String, _value: Float) {
+    fun saveLevel(_value: Float) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
-        prefsEdit.putFloat(_key, _value)
+        prefsEdit.putFloat(LEVEL_KEY, _value)
         prefsEdit.apply()
     }
 
-    fun getLevel(_key: String, default: Float = 0f): Float {
+    fun getLevel(default: Float = 0f): Float {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getFloat(_key, default)
+        return prefs.getFloat(LEVEL_KEY, default)
     }
 
-    fun saveCharacterId(_key: String, _value: Int?) {
+    fun saveCharacterId(_value: Int?) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
         if (_value != null) {
-            prefsEdit.putInt(_key, _value)
+            prefsEdit.putInt(CHARACTER_ID_KEY, _value)
         }
         prefsEdit.apply()
     }
 
 
-    fun getCharacterId(_key: String, default: Int = 0): Int {
+    fun getCharacterId(default: Int = 0): Int {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getInt(_key, default)
+        return prefs.getInt(CHARACTER_ID_KEY, default)
     }
 
-    fun saveCharacterName(_key: String, _value: String) {
-        val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        val prefsEdit = prefs.edit()
-
-        prefsEdit.putString(_key, _value)
-        prefsEdit.apply()
-    }
-
-    fun getCharacterName(_key: String, default: String = ""): String? {
-        val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(_key, default)
-    }
-
-
-    fun saveLocation(_key: String, _value: String) {
+    fun saveCharacterName( _value: String) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
-        prefsEdit.putString(_key, _value)
+        prefsEdit.putString(CHARACTER_NAME_KEY, _value)
         prefsEdit.apply()
     }
 
-    fun getLocation(_key: String, default: String = ""): String? {
+    fun getCharacterName(default: String = ""): String? {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(_key, default)
+        return prefs.getString(CHARACTER_NAME_KEY, default)
     }
+
 
 
     // screen states, is chose
-    fun saveAgeScreen(_key: String, _value: Boolean) {
+    fun saveAgeScreen( _value: Boolean) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
-        prefsEdit.putBoolean(_key, _value)
+        prefsEdit.putBoolean(AGE_SCREEN, _value)
         prefsEdit.apply()
     }
-    fun checkAgeScreen(_key: String, default: Boolean = false): Boolean {
+    fun checkAgeScreen(default: Boolean = false): Boolean {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getBoolean(_key, default)
+        return prefs.getBoolean(AGE_SCREEN, default)
     }
 
-    fun saveLevelScreen(_key: String, _value: Boolean) {
+
+    fun saveLevelScreen(_value: Boolean) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
-        prefsEdit.putBoolean(_key, _value)
+        prefsEdit.putBoolean(LEVEL_SCREEN, _value)
         prefsEdit.apply()
     }
-    fun checkLevelScreen(_key: String, default: Boolean = false): Boolean {
+    fun checkLevelScreen(default: Boolean = false): Boolean {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getBoolean(_key, default)
+        return prefs.getBoolean(LEVEL_SCREEN, default)
     }
 
-    fun saveCharacterScreen(_key: String, _value: Boolean) {
+    fun saveCharacterScreen(_value: Boolean) {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         val prefsEdit = prefs.edit()
 
-        prefsEdit.putBoolean(_key, _value)
+        prefsEdit.putBoolean(CHARACTER_SCREEN, _value)
         prefsEdit.apply()
     }
-    fun checkCharacterScreen(_key: String, default: Boolean = false): Boolean {
+    fun checkCharacterScreen(default: Boolean = false): Boolean {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-        return prefs.getBoolean(_key, default)
+        return prefs.getBoolean(CHARACTER_SCREEN, default)
     }
 
 }

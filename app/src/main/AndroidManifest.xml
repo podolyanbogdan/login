@@ -18,7 +18,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDJypFCRTD5d-5KV4CjBSAAZWWDtcMXj0IXD"/>
+            android:value="AIzaSyDJypFCRTD5d-5KV4CjBSAAZWWDtcMXj0I"/>
 
         <activity
             android:name=".ui.parentScreen.ParentActivity"

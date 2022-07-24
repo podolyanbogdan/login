@@ -68,6 +68,8 @@ dependencies {
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:0.10.5"
+    implementation "it.xabaras.android:recyclerview-swipedecorator:1.2.3"
+
     implementation("androidx.compose.material3:material3:1.0.0-alpha14")
     implementation("androidx.compose.material3:material3-window-size-class:1.0.0-alpha14")
 }

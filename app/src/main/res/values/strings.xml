@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name" translatable="false">Scary meets</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="are_you_age_more_then_16">Are you age more then 16?</string>
+    <string name="next">Next</string>
+    <string name="what_is_your_level">What is your level?</string>
+    <string name="prev">Prev</string>
+    <string name="you_need_confirm_age">You need to confirm your Age</string>
+    <string name="hero">Hero</string>
+    <string name="player">Player</string>
+    <string name="master">Master</string>
+    <string name="what_is_your_class">What is your class?</string>
+    <string name="title_activity_parent">ParentActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="export_n_my_position">Export \n my position</string>
+    <string name="share">Share</string>
+
+    <string name="dateInfo">%1$s at %2$s</string>
+    <string name="pointsInfo">%1$s level %2$s</string>
+    <string name="you_need_confirm_your_age">You need to confirm your age!</string>
+    <string name="you_need_choice_class">You need to choice a class</string>
+    <string name="you_need_to_choice_level">You need to choice your level!</string>
+    <string name="your_gps_disabled">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="sorry_but_you_accept_it">Sorry but you need to accept it</string>
+    <string name="you_denied_permission_if_you_want_to_continue_using_the_application_click_here">You denied permission</string>
+    <string name="permissions">Permissions</string>
 </resources>

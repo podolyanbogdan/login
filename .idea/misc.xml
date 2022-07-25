@@ -38,6 +38,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_calendar_img.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_character.xml" value="0.1855" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_clear.xml" value="0.1765" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_delete.xml" value="0.193" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_desc_dots.xml" value="0.1825" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_dic_icon_background.xml" value="0.1765" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/drawable/ic_document.xml" value="0.1765" />
@@ -76,13 +77,14 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/auth_fragment.xml" value="0.18" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/canvas_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/canvas_view.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/color_picker_item.xml" value="0.33" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/content_parent.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/custom_radio_pointer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/datab.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/dialog.xml" value="0.203125" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/drop_down_reminder.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/dropdown_item.xml" value="0.22" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_add_note.xml" value="0.33" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_add_note.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_add_task.xml" value="0.33" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_age.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_canvas_view.xml" value="0.18888888888888888" />
@@ -92,6 +94,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_custom_dialog.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_custom_splashh.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_date_picker.xml" value="0.25" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_edit_note.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_edit_rec_item.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_emergency.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_first_fake.xml" value="0.2" />
@@ -101,7 +104,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_game_mode.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_get_started.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_hello_user.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_help.xml" value="0.1" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_help.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_introduce_your_self.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_introduce_yourself.xml" value="0.1" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/fragment_level.xml" value="0.22" />
@@ -141,7 +144,7 @@
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/one_word_item.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/point_item_rec.xml" value="0.25" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_inside_tag_item.xml" value="0.203125" />
-        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_note_item.xml" value="0.33" />
+        <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_note_item.xml" value="0.22" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_tag_item.xml" value="0.33" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_tags_inside_item.xml" value="0.5" />
         <entry key="..\:/Users/kvtvnv/AndroidStudioProjects/login/app/src/main/res/layout/rec_task_item.xml" value="0.33" />

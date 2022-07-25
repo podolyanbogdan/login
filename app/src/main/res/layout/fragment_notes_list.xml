@@ -19,15 +19,15 @@
             android:id="@+id/fabNoteAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="52dp"
             android:clickable="true"
-            android:src="@drawable/ic_add_fab"
+            android:contentDescription="@string/add_note"
             android:onClick="@{() -> viewmodel.addNote()}"
+            android:src="@drawable/ic_add_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.861"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/add_note" />
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcNotes"

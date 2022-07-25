@@ -14,17 +14,21 @@
     <fragment
         android:id="@+id/nav_emergency"
         android:name="com.example.login.ui.emergency.EmergencyFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_emergency"
         tools:layout="@layout/fragment_emergency" />
 
     <fragment
         android:id="@+id/nav_help"
         android:name="com.example.login.ui.help.HelpFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_help"
         tools:layout="@layout/fragment_help" />
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.example.login.ui.addNote.AddNoteFragment"
-        android:label="fragment_add_note"
+        android:label="@string/add_note"
         tools:layout="@layout/fragment_add_note" />
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.example.login.ui.editNote.EditNoteFragment"
+        android:label="@string/menu_edit_note" />
 </navigation>

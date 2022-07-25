@@ -3,6 +3,8 @@ package com.example.login.utils
 import android.annotation.SuppressLint
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -35,6 +37,12 @@ class AppUtils {
         fun getDate(dateTime: String): String {
             val date = getDateShortFormat(dateTime)
             return SimpleDateFormat(DATE_APP_SHORT_FORMAT, Locale.getDefault()).format(date)
+        }
+
+        fun getCurrentDate(): String {
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            return current.format(formatter)
         }
 
     }

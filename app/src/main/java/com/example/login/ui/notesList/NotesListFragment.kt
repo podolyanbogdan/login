@@ -18,7 +18,6 @@ import com.example.login.utils.SwipeToDeleteCallback
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotesListFragment : BaseFragment<FragmentNotesListBinding>(R.layout.fragment_notes_list) {
-
     override val viewModel: NotesListViewModel by viewModel()
 
     override fun onCreateView(
@@ -43,7 +42,11 @@ class NotesListFragment : BaseFragment<FragmentNotesListBinding>(R.layout.fragme
         viewModel.notes.observe(viewLifecycleOwner) {
             binding.rcNotes.also {
                 it.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                it.adapter = NoteAdapter(viewModel.notes.value as MutableList<NoteModel>, Application())
+                it.adapter = parentFragment?.let { it1 ->
+                    NoteAdapter(viewModel.notes.value as MutableList<NoteModel>, Application(),
+                        it1
+                    )
+                }
                 delete(it.adapter as NoteAdapter)
             }
         }

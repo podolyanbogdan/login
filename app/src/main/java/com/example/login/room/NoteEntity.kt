@@ -17,6 +17,8 @@ data class NoteModel(
     @ColumnInfo(name = "date")
     var date: String = "",
     @ColumnInfo(name = "isEditable")
-    var isEditable: Boolean = false
+    var isEditable: Boolean = false,
+    @ColumnInfo(name = "isExpanded")
+    var isExpanded:Boolean = false
 
 )

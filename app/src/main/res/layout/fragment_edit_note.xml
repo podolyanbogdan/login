@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.login.ui.addNote.AddNoteViewModel" />
+            type="com.example.login.ui.editNote.EditNoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,28 +44,17 @@
             app:layout_constraintTop_toBottomOf="@+id/edTiItle" />
 
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="@string/is_editable"
-            android:checked="@={viewmodel.checkedValue}"
-            app:layout_constraintEnd_toEndOf="@+id/recColor"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/recColor"
-            app:layout_constraintTop_toBottomOf="@+id/recColor" />
-
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="68dp"
             android:onClick="@{() -> viewmodel.createNote()}"
             android:text="@string/add"
             app:layout_constraintEnd_toEndOf="@+id/recColor"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/recColor"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+            app:layout_constraintTop_toBottomOf="@+id/recColor" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recColor"

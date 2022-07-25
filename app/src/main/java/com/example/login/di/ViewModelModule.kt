@@ -1,5 +1,6 @@
 package com.example.login.di
 
+import com.example.login.ui.editNote.EditNoteViewModel
 import com.example.login.ui.addNote.AddNoteViewModel
 import com.example.login.ui.emergency.EmergencyViewModel
 import com.example.login.ui.help.HelpViewModel
@@ -16,5 +17,6 @@ val viewModelModule = module {
     viewModel { EmergencyViewModel(get()) }
     viewModel { HelpViewModel() }
     viewModel { AddNoteViewModel(get()) }
+    viewModel { EditNoteViewModel(get()) }
 
 }

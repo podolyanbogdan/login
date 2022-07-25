@@ -17,6 +17,6 @@ interface NoteDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(noteModel: NoteModel)
 
-    @Update
-    fun updateUsers(noteModel: NoteModel)
+    @Query("UPDATE noteTbl SET title = :title ,content= :content,color= :color WHERE id LIKE :id")
+    fun editUser(id: Int, title: String, content: String, color: Int)
 }

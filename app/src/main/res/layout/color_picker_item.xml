@@ -20,7 +20,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginBottom="16dp"
             app:backgroundResource="@{data.bgcColor}"
             app:layout_constraintBottom_toBottomOf="parent"

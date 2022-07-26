@@ -2,10 +2,8 @@ package com.example.login.ui.notesList
 
 import android.app.Application
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import android.view.*
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +14,7 @@ import com.example.login.databinding.FragmentNotesListBinding
 import com.example.login.room.NoteModel
 import com.example.login.utils.SwipeToDeleteCallback
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NotesListFragment : BaseFragment<FragmentNotesListBinding>(R.layout.fragment_notes_list) {
     override val viewModel: NotesListViewModel by viewModel()
@@ -36,17 +35,17 @@ class NotesListFragment : BaseFragment<FragmentNotesListBinding>(R.layout.fragme
         viewModel.fabAddNote.observe(this){
             navigate(R.id.addNoteFragment)
         }
+        viewModel.notes.observe(this){
+            Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun initRecycler() {
         viewModel.notes.observe(viewLifecycleOwner) {
             binding.rcNotes.also {
                 it.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                it.adapter = parentFragment?.let { it1 ->
-                    NoteAdapter(viewModel.notes.value as MutableList<NoteModel>, Application(),
-                        it1
-                    )
-                }
+                it.adapter = parentFragment?.let { frag -> NoteAdapter(viewModel.notes.value as MutableList<NoteModel>, Application(), frag) }
                 delete(it.adapter as NoteAdapter)
             }
         }

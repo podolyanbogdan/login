@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface NoteDao{
+interface NoteDao {
     @Query("SELECT * FROM noteTbl ORDER BY id DESC")
     fun takeAllNotes(): LiveData<List<NoteModel>>
 
@@ -19,4 +19,19 @@ interface NoteDao{
 
     @Query("UPDATE noteTbl SET title = :title ,content= :content,color= :color WHERE id LIKE :id")
     fun editUser(id: Int, title: String, content: String, color: Int)
+
+
+    @Query(
+        "SELECT * FROM noteTbl ORDER BY " +
+                "CASE WHEN :sortBy = 'date' AND :isAsc = 1 THEN date END ASC," +
+                "CASE WHEN :sortBy = 'date' AND :isAsc = 2 THEN date END DESC," +
+                "CASE WHEN :sortBy = 'title' AND :isAsc = 1 THEN title END ASC," +
+                "CASE WHEN :sortBy = 'title' AND :isAsc = 2 THEN title END DESC," +
+                "CASE WHEN :sortBy = 'color' AND :isAsc = 1 THEN color END ASC," +
+                "CASE WHEN :sortBy = 'color' AND :isAsc = 2 THEN color END DESC," +
+                "CASE WHEN :sortBy = 'content' AND :isAsc = 1 THEN content END ASC," +
+                "CASE WHEN :sortBy = 'content' AND :isAsc = 2 THEN content END DESC"
+    )
+    fun sortBy(sortBy: String, isAsc: Int): LiveData<List<NoteModel>>
+
 }

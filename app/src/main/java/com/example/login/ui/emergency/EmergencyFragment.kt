@@ -2,12 +2,15 @@ package com.example.login.ui.emergency
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.databinding.FragmentEmergencyBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragment_emergency) {
 
@@ -21,6 +24,9 @@ class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragme
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+        val menu = toolbar.findViewById<View>(R.id.sortMenu)
+        menu.visibility = View.INVISIBLE
         return view
     }
 

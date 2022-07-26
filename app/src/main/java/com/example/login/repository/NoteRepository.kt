@@ -1,17 +1,18 @@
 package com.example.login.repository
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.login.data.ColorModel
 import com.example.login.data.NoteColors
 import com.example.login.room.NoteModel
-import com.example.login.room.NoteDao
 import com.example.login.room.RoomSingleton
 import com.example.login.utils.AppUtils
 
 var col = 0
+
 class NoteRepository(application: Application) {
+
     // room
     private val db: RoomSingleton = RoomSingleton.getInstance(application)
 
@@ -25,6 +26,11 @@ class NoteRepository(application: Application) {
     fun deleteById(id: Int) = db.noteDao().deleteByUserId(id)
 
     fun clearNotes() = db.noteDao().clearNotes()
+
+    //sort
+    fun sortBy(sortBy: String, isAsc: Int): LiveData<List<NoteModel>> =
+        db.noteDao().sortBy(sortBy, isAsc)
+
 
     //for recycler adapters
     fun setColors(): List<ColorModel> {
@@ -46,7 +52,7 @@ class NoteRepository(application: Application) {
         return col
     }
 
-    fun getDate(): String{
+    fun getDate(): String {
         return AppUtils.getCurrentDate()
     }
 

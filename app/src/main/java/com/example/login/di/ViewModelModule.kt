@@ -15,8 +15,8 @@ val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { NotesListViewModel(get()) }
     viewModel { EmergencyViewModel(get()) }
-    viewModel { HelpViewModel() }
     viewModel { AddNoteViewModel(get()) }
     viewModel { EditNoteViewModel(get()) }
+    viewModel { HelpViewModel() }
 
 }

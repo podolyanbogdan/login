@@ -5,7 +5,6 @@
     tools:context=".ui.help.HelpFragment">
 
     <data>
-
         <variable
             name="viewmodel"
             type="com.example.login.ui.help.HelpViewModel" />
@@ -14,6 +13,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imSwipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_up"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.718"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.099" />
 
         <TextView
             android:id="@+id/textView3"
@@ -41,7 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgSortHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -66,7 +78,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imghelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -125,7 +137,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imgExpandContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -182,7 +194,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/imgEditNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"

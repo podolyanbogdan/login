@@ -32,6 +32,11 @@
     <string name="msg_if_empty">You need to write a data at least at one</string>
     <string name="expanded_notes_title">Expanded notes title</string>
     <string name="contenta_of_notes_a_couple_of_text_line">Contenta of notes \na couple of text line</string>
+    <string name="add_notes">Add notes</string>
+    <string name="expand_content">Expand Content</string>
+    <string name="edit_notes">Edit Notes</string>
+    <string name="swipe_to_delete">Swipe to Delete</string>
+    <string name="sort_notes">Sort Notes</string>
 
 
 </resources>

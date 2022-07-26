@@ -1,11 +1,13 @@
 package com.example.login.ui.addNote
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.login.arch.BaseViewModel
 import com.example.login.data.ColorModel
 import com.example.login.repository.NoteRepository
 import com.example.login.room.NoteModel
 import com.example.login.utils.AppUtils.Companion.getCurrentDate
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 
 
@@ -15,7 +17,6 @@ class AddNoteViewModel(private val repository: NoteRepository) : BaseViewModel()
     val titleValue: MutableLiveData<String> = MutableLiveData()
     val contentValue: MutableLiveData<String> = MutableLiveData()
     var colors: MutableLiveData<List<ColorModel>> = MutableLiveData()
-    var emptyTextTrigger: MutableLiveData<Boolean> = MutableLiveData()
     var checkedValue: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
@@ -27,11 +28,11 @@ class AddNoteViewModel(private val repository: NoteRepository) : BaseViewModel()
         val title = titleValue.value ?: ""
         val content = contentValue.value ?: ""
         val color = repository.getColorNote()
-        val isEditable = checkedValue.value?: false
+        val isEditable = checkedValue.value ?: false
         val date = repository.getDate()
 
         if (title.isEmpty() || content.isEmpty()) {
-            emptyTextTrigger.value = true
+            createNoteTrigger.value = false
         } else {
             val note = NoteModel(
                 title = title,
@@ -44,7 +45,6 @@ class AddNoteViewModel(private val repository: NoteRepository) : BaseViewModel()
                 repository.insertNotes(note)
             }
             createNoteTrigger.value = true
-
         }
     }
 }

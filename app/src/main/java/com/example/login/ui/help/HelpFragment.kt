@@ -1,18 +1,16 @@
 package com.example.login.ui.help
 
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.Toolbar
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.databinding.FragmentHelpBinding
 import com.skydoves.balloon.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help){
 
-class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help) {
     override val viewModel: HelpViewModel by viewModel()
 
     override fun onCreateView(
@@ -22,12 +20,15 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help) {
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
+        initBalloons()
+        return view
+    }
 
-
-        val balloon = Balloon.Builder(requireContext())
-            .setWidthRatio(1.0f)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setText("Edit your profile here!")
+    private fun createBalloon(text: String): Balloon {
+        return Balloon.Builder(requireContext())
+            .setWidth(300)
+            .setHeight(80)
+            .setText(text)
             .setTextColorResource(R.color.primary_white_def)
             .setTextSize(15f)
             .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
@@ -36,14 +37,23 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help) {
             .setPadding(12)
             .setCornerRadius(8f)
             .setBackgroundColorResource(R.color.green)
-            .setBalloonAnimation(BalloonAnimation.ELASTIC)
+            .setBalloonHighlightAnimation(BalloonHighlightAnimation.SHAKE)
             .setLifecycleOwner(viewLifecycleOwner)
             .build()
 
-        binding.floatingActionButton.showAlignTop(balloon)
-
-        return view
     }
 
+    private fun initBalloons(){
+        with(binding) {
+            floatingActionButton.showAlignTop(createBalloon(getString(R.string.add_notes)))
+            imgExpandContent.showAlignBottom(createBalloon(getString(R.string.expand_content)))
+            imgEditNotes.showAlignBottom(createBalloon(getString(R.string.edit_notes)))
+            imSwipe.showAlignBottom(createBalloon(getString(R.string.swipe_to_delete)))
+        }
+        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
+        val menu = toolbar.findViewById<View>(R.id.sortMenu)
+        menu.setOnClickListener {}
+        menu.showAlignBottom(createBalloon(getString(R.string.sort_notes)))
+    }
 
 }

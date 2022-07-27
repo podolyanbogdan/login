@@ -37,6 +37,7 @@
     <string name="edit_notes">Edit Notes</string>
     <string name="swipe_to_delete">Swipe to Delete</string>
     <string name="sort_notes">Sort Notes</string>
+    <string name="remove_sort">Remove Sort</string>
 
 
 </resources>

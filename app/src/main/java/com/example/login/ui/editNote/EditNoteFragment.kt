@@ -49,7 +49,7 @@ class EditNoteFragment : BaseFragment<FragmentEditNoteBinding>(R.layout.fragment
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application())
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(), requireContext())
             }
         }
     }

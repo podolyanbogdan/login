@@ -18,5 +18,4 @@ val viewModelModule = module {
     viewModel { AddNoteViewModel(get()) }
     viewModel { EditNoteViewModel(get()) }
     viewModel { HelpViewModel() }
-
 }

@@ -2,6 +2,7 @@ package com.example.login.ui.help
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.login.R
 import com.example.login.arch.BaseFragment
@@ -23,6 +24,18 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help){
         initBalloons()
         return view
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.parent, menu)
+        super.onCreateOptionsMenu(menu,inflater)
+    }
+
 
     private fun createBalloon(text: String): Balloon {
         return Balloon.Builder(requireContext())

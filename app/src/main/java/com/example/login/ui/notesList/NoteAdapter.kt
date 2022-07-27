@@ -40,7 +40,7 @@ class NoteAdapter(
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.recNoteItemBinding.data = notes[position]
-        editItem(position, holder)
+        editItem(holder)
         expanded(holder, position)
 
     }
@@ -74,13 +74,13 @@ class NoteAdapter(
         notifyDataSetChanged()
     }
 
-    private fun editItem(position: Int, holder: NoteViewHolder) {
+
+    private fun editItem(holder: NoteViewHolder) {
         val params = holder.recNoteItemBinding.data?.id
         val bundle = bundleOf("title" to params)
         holder.recNoteItemBinding.imgEdit.setOnClickListener {
             fragment.navigate(R.id.editNoteFragment, bundle)
         }
     }
-
 
 }

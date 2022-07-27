@@ -18,7 +18,6 @@ class EditNoteViewModel(private val repository: NoteRepository) : BaseViewModel(
 
     init {
         colors.value = repository.setColors()
-
     }
 
     fun createNote() {
@@ -30,7 +29,14 @@ class EditNoteViewModel(private val repository: NoteRepository) : BaseViewModel(
             editNoteTrigger.value = false
         } else {
             doAsync {
-                idToCheck.value?.let { repository.updateNotes(it, title, content, color) }
+                idToCheck.value?.let { id ->
+                    repository.updateNotes(
+                        title = title,
+                        content = content,
+                        color = color,
+                        id = id
+                    )
+                }
             }
             editNoteTrigger.value = true
         }

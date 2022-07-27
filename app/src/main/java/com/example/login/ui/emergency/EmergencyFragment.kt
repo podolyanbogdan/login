@@ -24,9 +24,6 @@ class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragme
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
-        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
-        val menu = toolbar.findViewById<View>(R.id.sortMenu)
-        menu.visibility = View.INVISIBLE
         return view
     }
 

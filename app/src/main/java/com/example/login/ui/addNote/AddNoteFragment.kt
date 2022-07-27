@@ -2,10 +2,12 @@ package com.example.login.ui.addNote
 
 import android.app.Application
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
@@ -15,7 +17,8 @@ import com.example.login.databinding.FragmentAddNoteBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_add_note) {
+class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_add_note),
+    MenuProvider {
     override val viewModel: AddNoteViewModel by viewModel()
 
 
@@ -26,11 +29,23 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_a
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
-        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
-        val menu = toolbar.findViewById<View>(R.id.sortMenu)
-        menu.setBackgroundResource(R.drawable.ic_save_note)
         initRecycler()
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
         return view
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.save, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.saveMenu -> {
+                viewModel.createNote()
+            }
+        }
+        return false
     }
 
     override fun setObservers() {
@@ -47,7 +62,7 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_a
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application())
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(), requireContext())
             }
         }
     }

@@ -1,30 +1,36 @@
 package com.example.login.ui.notesList
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 import com.example.login.repository.NoteRepository
 import com.example.login.room.NoteModel
-import org.jetbrains.anko.doAsync
+import com.example.login.room.SortName
+import com.example.login.room.SortType
 
-class NotesListViewModel(private val repository: NoteRepository) : BaseViewModel(){
+class NotesListViewModel(private val repository: NoteRepository) : BaseViewModel() {
     val fabAddNote: MutableLiveData<Boolean> = MutableLiveData()
-    var notes: LiveData<List<NoteModel>> = repository.getAllNotes()
+    val notes = MediatorLiveData<List<NoteModel>>()
 
+    fun loadCurrencyList() {
+        notes.addSource(repository.getAllNotes()) {
+            notes.value = it
+        }
+    }
 
-    fun addNote(){
+    fun sortBy(sortName: SortName, sortType: SortType) {
+        notes.addSource(repository.sortBy(sortName.type, sortType.type)) {
+            notes.value = it
+        }
+    }
+
+    init {
+        loadCurrencyList()
+    }
+
+    fun addNote() {
         fabAddNote.value = true
     }
 
-    fun asc(){
-        doAsync {
-            notes = repository.sortBy("content", 1)
-        }
-    }
-    fun desc(){
-       doAsync {
-           notes  = repository.sortBy("content", 2)
-       }
-    }
-
 }
+

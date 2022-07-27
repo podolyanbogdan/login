@@ -2,6 +2,7 @@ package com.example.login.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
@@ -18,7 +19,7 @@ interface NoteDao {
     fun insertNote(noteModel: NoteModel)
 
     @Query("UPDATE noteTbl SET title = :title ,content= :content,color= :color WHERE id LIKE :id")
-    fun editUser(id: Int, title: String, content: String, color: Int)
+    fun editUser(title: String, content: String, color: Int, id: Int)
 
 
     @Query(

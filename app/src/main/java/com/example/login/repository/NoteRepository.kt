@@ -21,7 +21,7 @@ class NoteRepository(application: Application) {
     fun insertNotes(noteModel: NoteModel) = db.noteDao().insertNote(noteModel)
 
     fun updateNotes(title: String, content: String, color: Int, id: Int) =
-        db.noteDao().editUser(title, content, color,id)
+        db.noteDao().editUser(title, content, color, id)
 
     fun deleteById(id: Int) = db.noteDao().deleteByUserId(id)
 
@@ -31,10 +31,11 @@ class NoteRepository(application: Application) {
     fun sortBy(sortBy: String, isAsc: Int): LiveData<List<NoteModel>> =
         db.noteDao().sortBy(sortBy, isAsc)
 
-    fun requestForSort(sortBy: String){
+    fun requestForSort(sortBy: String) {
         req = sortBy
     }
-    fun checkRequest():String{
+
+    fun checkRequest(): String {
         return req
     }
 
@@ -42,12 +43,12 @@ class NoteRepository(application: Application) {
     //for recycler adapters
     fun setColors(): List<ColorModel> {
         return listOf(
-            ColorModel(0,NoteColors.Red.colName, NoteColors.Red.col),
-            ColorModel(1,NoteColors.Yellow.colName, NoteColors.Yellow.col),
-            ColorModel(2,NoteColors.Green.colName, NoteColors.Green.col),
-            ColorModel(3,NoteColors.Pink.colName, NoteColors.Pink.col),
-            ColorModel(4,NoteColors.Blue.colName, NoteColors.Blue.col),
-            ColorModel(5,NoteColors.LightBlue.colName, NoteColors.LightBlue.col),
+            ColorModel(0, NoteColors.Red.col),
+            ColorModel(1, NoteColors.Yellow.col),
+            ColorModel(2, NoteColors.Green.col),
+            ColorModel(3, NoteColors.Pink.col),
+            ColorModel(4, NoteColors.Blue.col),
+            ColorModel(5, NoteColors.LightBlue.col),
         )
     }
 

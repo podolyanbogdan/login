@@ -8,8 +8,11 @@ import org.jetbrains.anko.doAsync
 class EmergencyViewModel(private val repository: NoteRepository) : BaseViewModel() {
     val trigger: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun deleteNotes() {
+    fun deleteNotes(){
         doAsync { repository.clearNotes() }
+    }
+
+    fun deleteTrigger() {
         trigger.value = true
     }
 

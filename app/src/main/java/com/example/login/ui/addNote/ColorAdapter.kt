@@ -15,7 +15,6 @@ import com.example.login.repository.NoteRepository
 class ColorAdapter(
     private var colors: MutableList<ColorModel>,
     private val application: Application,
-    private val context: Context
 ) : RecyclerView.Adapter<ColorAdapter.ColorViewHolder>() {
 
     inner class ColorViewHolder(
@@ -35,14 +34,14 @@ class ColorAdapter(
     override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
         holder.colorPickerItemBinding.data = colors[position]
         NoteRepository(application).saveColor(R.color.black)
-        getColor(position, holder)
+        getColor(holder)
 
 
     }
 
     override fun getItemCount() = colors.size
 
-    private fun getColor(position: Int, holder: ColorViewHolder) {
+    private fun getColor(holder: ColorViewHolder) {
         val viewColor = holder.colorPickerItemBinding.textView2
         viewColor.setOnClickListener {
             holder.colorPickerItemBinding.data?.bgcColor?.let { color ->

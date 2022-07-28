@@ -30,8 +30,22 @@ class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragme
     override fun setObservers() {
         super.setObservers()
         viewModel.trigger.observe(this) {
-            if (it) showToast("Notes deleted")
+            if (it) {
+                setDeleteNotes()
+                viewModel.trigger.value = false
+            }
         }
+    }
+
+    private fun setDeleteNotes() {
+        EmergencyDialog(
+            onSaveClickResult = { result ->
+                if (result) {
+                    viewModel.deleteNotes()
+                    showToast(getString(R.string.notes_deleted))
+                }
+            },
+        ).show(parentFragmentManager, getString(R.string.key_dialog))
     }
 
 }

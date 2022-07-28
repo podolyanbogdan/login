@@ -2,17 +2,17 @@ package com.example.login.ui.help
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
+import androidx.core.view.*
+import androidx.lifecycle.Lifecycle
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.databinding.FragmentHelpBinding
 import com.skydoves.balloon.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help){
-
+class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help), MenuProvider {
     override val viewModel: HelpViewModel by viewModel()
+    private lateinit var menuHost: MenuHost
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,20 +22,17 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help){
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
         initBalloons()
+        menuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
         return view
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.parent, menu)
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.parent, menu)
-        super.onCreateOptionsMenu(menu,inflater)
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return false
     }
-
 
     private fun createBalloon(text: String): Balloon {
         return Balloon.Builder(requireContext())
@@ -63,10 +60,6 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(R.layout.fragment_help){
             imgEditNotes.showAlignBottom(createBalloon(getString(R.string.edit_notes)))
             imSwipe.showAlignBottom(createBalloon(getString(R.string.swipe_to_delete)))
         }
-        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
-        val menu = toolbar.findViewById<View>(R.id.sortMenu)
-        menu.setOnClickListener {}
-        menu.showAlignBottom(createBalloon(getString(R.string.sort_notes)))
     }
 
 }

@@ -29,7 +29,7 @@ class EditNoteFragment : BaseFragment<FragmentEditNoteBinding>(R.layout.fragment
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
-        val bundle = arguments?.getInt("title")
+        val bundle = arguments?.getInt(getString(R.string.title_bundle_key))
         viewModel.idToCheck.value = bundle
         initRecycler()
         return view
@@ -49,7 +49,7 @@ class EditNoteFragment : BaseFragment<FragmentEditNoteBinding>(R.layout.fragment
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(), requireContext())
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application())
             }
         }
     }

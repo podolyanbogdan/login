@@ -62,7 +62,7 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_a
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(), requireContext())
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(),)
             }
         }
     }

@@ -1,8 +1,10 @@
 package com.example.login.ui.parent
 
+import android.media.Image
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -33,7 +35,6 @@ class ParentActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_parent)
 
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_notes, R.id.nav_emergency, R.id.nav_help
@@ -42,8 +43,6 @@ class ParentActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_parent)

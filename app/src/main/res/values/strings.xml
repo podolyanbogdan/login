@@ -38,6 +38,13 @@
     <string name="swipe_to_delete">Swipe to Delete</string>
     <string name="sort_notes">Sort Notes</string>
     <string name="remove_sort">Remove Sort</string>
+    <string name="helpmenu">Help</string>
+    <string name="are_you_sure_want_do_delete_notes">Are you sure want do delete notes?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="key_dialog">key</string>
+    <string name="notes_deleted">Notes deleted</string>
+    <string name="title_bundle_key">title</string>
 
 
 </resources>

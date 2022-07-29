@@ -5,5 +5,5 @@ import androidx.annotation.ColorRes
 class ColorModel(
     val id: Int = 0,
     @ColorRes
-    val bgcColor: Int
+    var bgcColor: Int = 0
 )

@@ -19,8 +19,30 @@ class NotesListViewModel(private val repository: NoteRepository) : BaseViewModel
     }
 
     fun sortBy(sortName: SortName, sortType: SortType) {
-        notes.addSource(repository.sortBy(sortName.type, sortType.type)) {
-            notes.value = it
+        when(sortName.type){
+            SortName.Date.type -> {
+                notes.addSource(repository.sortByDate(sortType.type)) {
+                    notes.value = it
+                }
+            }
+
+            SortName.Title.type -> {
+                notes.addSource(repository.sortByTitle(sortType.type)) {
+                    notes.value = it
+                }
+            }
+
+            SortName.Color.type -> {
+                notes.addSource(repository.sortByColor(sortType.type)) {
+                    notes.value = it
+                }
+            }
+
+            SortName.Content.type -> {
+                notes.addSource(repository.sortByContent(sortType.type)) {
+                    notes.value = it
+                }
+            }
         }
     }
 

@@ -24,15 +24,26 @@ interface NoteDao {
 
     @Query(
         "SELECT * FROM noteTbl ORDER BY " +
-                "CASE WHEN :sortBy = 'date' AND :isAsc = 1 THEN date END ASC," +
-                "CASE WHEN :sortBy = 'date' AND :isAsc = 2 THEN date END DESC," +
-                "CASE WHEN :sortBy = 'title' AND :isAsc = 1 THEN title END ASC," +
-                "CASE WHEN :sortBy = 'title' AND :isAsc = 2 THEN title END DESC," +
-                "CASE WHEN :sortBy = 'color' AND :isAsc = 1 THEN color END ASC," +
-                "CASE WHEN :sortBy = 'color' AND :isAsc = 2 THEN color END DESC," +
-                "CASE WHEN :sortBy = 'content' AND :isAsc = 1 THEN content END ASC," +
-                "CASE WHEN :sortBy = 'content' AND :isAsc = 2 THEN content END DESC"
-    )
-    fun sortBy(sortBy: String, isAsc: Int): LiveData<List<NoteModel>>
+                "CASE WHEN :isAsc = 1 THEN date END ASC," +
+                "CASE WHEN :isAsc = 2 THEN date END DESC")
+    fun sortByDate(isAsc: Int): LiveData<List<NoteModel>>
+
+    @Query(
+        "SELECT * FROM noteTbl ORDER BY " +
+                "CASE WHEN :isAsc = 1 THEN title END ASC," +
+                "CASE WHEN :isAsc = 2 THEN title END DESC")
+    fun sortByTitle(isAsc: Int): LiveData<List<NoteModel>>
+
+    @Query(
+        "SELECT * FROM noteTbl ORDER BY " +
+                "CASE WHEN :isAsc = 1 THEN color END ASC," +
+                "CASE WHEN :isAsc = 2 THEN color END DESC")
+    fun sortByColor(isAsc: Int): LiveData<List<NoteModel>>
+
+    @Query(
+        "SELECT * FROM noteTbl ORDER BY " +
+                "CASE WHEN :isAsc = 1 THEN content END ASC," +
+                "CASE WHEN :isAsc = 2 THEN content END DESC")
+    fun sortByContent(isAsc: Int): LiveData<List<NoteModel>>
 
 }

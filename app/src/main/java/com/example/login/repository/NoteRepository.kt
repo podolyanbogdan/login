@@ -28,27 +28,29 @@ class NoteRepository(application: Application) {
     fun clearNotes() = db.noteDao().clearNotes()
 
     //sort
-    fun sortBy(sortBy: String, isAsc: Int): LiveData<List<NoteModel>> =
-        db.noteDao().sortBy(sortBy, isAsc)
+    fun sortByDate(isAsc: Int): LiveData<List<NoteModel>> =
+        db.noteDao().sortByDate(isAsc)
 
-    fun requestForSort(sortBy: String) {
-        req = sortBy
-    }
+    fun sortByTitle(isAsc: Int): LiveData<List<NoteModel>> =
+        db.noteDao().sortByTitle(isAsc)
 
-    fun checkRequest(): String {
-        return req
-    }
+    fun sortByColor(isAsc: Int): LiveData<List<NoteModel>> =
+        db.noteDao().sortByColor(isAsc)
+
+    fun sortByContent(isAsc: Int): LiveData<List<NoteModel>> =
+        db.noteDao().sortByContent(isAsc)
 
 
     //for recycler adapters
+
     fun setColors(): List<ColorModel> {
         return listOf(
-            ColorModel(0, NoteColors.Red.col),
-            ColorModel(1, NoteColors.Yellow.col),
-            ColorModel(2, NoteColors.Green.col),
-            ColorModel(3, NoteColors.Pink.col),
-            ColorModel(4, NoteColors.Blue.col),
-            ColorModel(5, NoteColors.LightBlue.col),
+            ColorModel(NoteColors.Red.value),
+            ColorModel(NoteColors.Yellow.value),
+            ColorModel(NoteColors.Green.value),
+            ColorModel(NoteColors.Pink.value),
+            ColorModel(NoteColors.Blue.value),
+            ColorModel(NoteColors.LightBlue.value),
         )
     }
 

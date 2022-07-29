@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import com.example.login.R
 import com.example.login.arch.BaseFragment
+import com.example.login.arch.ext.navigate
 import com.example.login.databinding.FragmentEmergencyBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragment_emergency) {
-
     override val viewModel: EmergencyViewModel by viewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,21 +30,9 @@ class EmergencyFragment : BaseFragment<FragmentEmergencyBinding>(R.layout.fragme
         super.setObservers()
         viewModel.trigger.observe(this) {
             if (it) {
-                setDeleteNotes()
+                navigate(R.id.emergencyDialog)
                 viewModel.trigger.value = false
             }
         }
     }
-
-    private fun setDeleteNotes() {
-        EmergencyDialog(
-            onSaveClickResult = { result ->
-                if (result) {
-                    viewModel.deleteNotes()
-                    showToast(getString(R.string.notes_deleted))
-                }
-            },
-        ).show(parentFragmentManager, getString(R.string.key_dialog))
-    }
-
 }

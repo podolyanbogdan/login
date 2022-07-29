@@ -4,7 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.login.arch.BaseViewModel
 import com.example.login.data.ColorModel
+import com.example.login.data.NoteTempModel
 import com.example.login.repository.NoteRepository
+import com.example.login.room.MyMapper
 import com.example.login.room.NoteModel
 import com.example.login.utils.AppUtils.Companion.getCurrentDate
 import kotlinx.coroutines.launch
@@ -27,22 +29,20 @@ class AddNoteViewModel(private val repository: NoteRepository) : BaseViewModel()
     fun createNote() {
         val title = titleValue.value ?: ""
         val content = contentValue.value ?: ""
-        val color = repository.getColorNote()
-        val isEditable = checkedValue.value ?: false
-        val date = repository.getDate()
+
+        val temp = NoteTempModel(
+            titleTemp = title,
+            contentTemp = content,
+            colorTemp = repository.getColorNote(),
+            isEditableTemp = checkedValue.value ?: false,
+            dateTemp = repository.getDate()
+        )
 
         if (title.isEmpty() || content.isEmpty()) {
             createNoteTrigger.value = false
         } else {
-            val note = NoteModel(
-                title = title,
-                content = content,
-                color = color,
-                isEditable = isEditable,
-                date = date
-            )
             doAsync {
-                repository.insertNotes(note)
+                repository.insertNotes(MyMapper().tempToNote(temp))
             }
             createNoteTrigger.value = true
         }

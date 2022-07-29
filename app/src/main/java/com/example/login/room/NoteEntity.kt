@@ -20,5 +20,4 @@ data class NoteModel(
     var isEditable: Boolean = false,
     @ColumnInfo(name = "isExpanded")
     var isExpanded:Boolean = false
-
 )

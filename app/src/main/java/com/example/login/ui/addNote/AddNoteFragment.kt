@@ -14,6 +14,7 @@ import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.ColorModel
 import com.example.login.databinding.FragmentAddNoteBinding
+import com.example.login.repository.NoteRepository
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -62,7 +63,7 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(R.layout.fragment_a
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application(),)
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, NoteRepository(Application()))
             }
         }
     }

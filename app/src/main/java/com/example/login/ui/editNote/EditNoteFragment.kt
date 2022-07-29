@@ -13,6 +13,7 @@ import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.ColorModel
 import com.example.login.databinding.FragmentEditNoteBinding
+import com.example.login.repository.NoteRepository
 import com.example.login.ui.addNote.AddNoteViewModel
 import com.example.login.ui.addNote.ColorAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -49,7 +50,7 @@ class EditNoteFragment : BaseFragment<FragmentEditNoteBinding>(R.layout.fragment
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 it.adapter =
-                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, Application())
+                    ColorAdapter(viewModel.colors.value as MutableList<ColorModel>, NoteRepository(Application()))
             }
         }
     }

@@ -31,4 +31,8 @@
         android:name="com.example.login.ui.help.HelpFragment"
         android:label="@string/help"
         tools:layout="@layout/fragment_help" />
+    <dialog
+        android:id="@+id/emergencyDialog"
+        android:name="com.example.login.ui.emergency.EmergencyDialog"
+        android:label="EmergencyDialog" />
 </navigation>

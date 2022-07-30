@@ -38,12 +38,5 @@ class AppUtils {
             val date = getDateShortFormat(dateTime)
             return SimpleDateFormat(DATE_APP_SHORT_FORMAT, Locale.getDefault()).format(date)
         }
-
-        fun getCurrentDate(): String {
-            val current = LocalDateTime.now()
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-            return current.format(formatter)
-        }
-
     }
 }

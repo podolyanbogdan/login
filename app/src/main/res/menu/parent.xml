@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sortMenu"
+        android:icon="@drawable/ic_sort_"
+        android:title="menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/byDate"
+                android:title="@string/by_date"/>
+            <item
+                android:id="@+id/byTitle"
+                android:title="@string/by_title" />
+
+            <item
+                android:id="@+id/byColor"
+                android:title="@string/by_color"/>
+
+            <item
+                android:id="@+id/byContent"
+                android:title="@string/by_content" />
+            <item
+                android:id="@+id/removeSort"
+                android:title="@string/remove_sort" />
+        </menu>
+    </item>
+</menu>
+
+

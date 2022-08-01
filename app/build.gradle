@@ -38,7 +38,6 @@ android {
         viewBinding = true
         dataBinding = true
     }
-
 }
 
 dependencies {
@@ -75,4 +74,6 @@ dependencies {
 
     implementation("androidx.compose.material3:material3:1.0.0-alpha14")
     implementation("androidx.compose.material3:material3-window-size-class:1.0.0-alpha14")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0-RC")
+    implementation("org.jsoup:jsoup:1.14.3")
 }

@@ -8,28 +8,36 @@ import com.example.login.data.House
 import com.example.login.repository.SensorRepository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
-class SensorListViewModel(private val repo: SensorRepository): BaseViewModel() {
-    val sensors : MutableLiveData<List<House>> = repo.sensors
+class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel() {
+    val sensors: MutableLiveData<List<House>> = repo.sensors
     val addSensorTrigger = MutableLiveData<Boolean>()
     val hidePrompt = MutableLiveData<Boolean>()
+    val showLoadingGif = MutableLiveData<Boolean>()
 
     init {
         hidePrompt.value = !sensors.value.isNullOrEmpty()
     }
 
-    private fun fetchData(){
+    private fun anyProperties() {
+        hidePrompt.value = true
+        showLoadingGif.value = sensors.value.isNullOrEmpty()
+    }
+
+    fun fetchSensorList() {
         viewModelScope.launch(IO) {
             repo.getJsonHouseString(repo.parseWebPage())
         }
         repo.syncSensors()
-        hidePrompt.value = true
+        anyProperties()
     }
 
-    fun syncSensors(){
-        fetchData()
+    fun syncSensors() {
+        fetchSensorList()
     }
-    fun addSensor(){
+
+    fun addSensor() {
         addSensorTrigger.value = true
     }
 

@@ -13,5 +13,5 @@ data class House(
     @SerializedName("type")
     val type: String = "",
     @SerializedName("value")
-    val value: String = ""
+    var value: String = "",
 )

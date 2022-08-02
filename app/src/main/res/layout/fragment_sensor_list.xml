@@ -15,16 +15,27 @@
             android:layout_height="match_parent">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recySensors"
-                android:layout_width="409dp"
-                android:layout_height="600dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnSync"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recySensors"
+                    android:layout_width="409dp"
+                    android:layout_height="600dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSync"
@@ -36,7 +47,7 @@
                 app:cornerRadius="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recySensors"
+                app:layout_constraintTop_toBottomOf="@+id/refreshLayout"
                 app:layout_constraintVertical_bias="0.506" />
 
             <com.google.android.material.button.MaterialButton
@@ -50,7 +61,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.868"
                 app:layout_constraintStart_toEndOf="@+id/btnSync"
-                app:layout_constraintTop_toBottomOf="@+id/recySensors"
+                app:layout_constraintTop_toBottomOf="@+id/refreshLayout"
                 app:layout_constraintVertical_bias="0.506" />
 
             <ImageView
@@ -81,6 +92,20 @@
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifLoading"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/loading"
+                android:visibility="@{viewmodel.showLoadingGif ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.353"
+                tools:visibility="visible" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

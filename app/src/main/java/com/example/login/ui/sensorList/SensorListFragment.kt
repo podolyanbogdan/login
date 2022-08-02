@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
@@ -23,6 +24,7 @@ class SensorListFragment : BaseFragment<FragmentSensorListBinding>(R.layout.frag
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
         initRecycler()
+        syncByRefresh()
         return view
     }
 
@@ -31,6 +33,11 @@ class SensorListFragment : BaseFragment<FragmentSensorListBinding>(R.layout.frag
         super.setObservers()
         viewModel.addSensorTrigger.observe(this) {
             if (it) navigate(R.id.addSensorFragment)
+        }
+        viewModel.sensors.observe(this) {
+            if (!it.isNullOrEmpty()) {
+                viewModel.showLoadingGif.value = false
+            }
         }
     }
 
@@ -46,4 +53,12 @@ class SensorListFragment : BaseFragment<FragmentSensorListBinding>(R.layout.frag
         }
     }
 
+    private fun syncByRefresh() {
+        with(binding) {
+            refreshLayout.setOnRefreshListener {
+                viewModel.fetchSensorList()
+                refreshLayout.isRefreshing = false
+            }
+        }
+    }
 }

@@ -16,7 +16,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -44,7 +44,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.049"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Kitchen" />
@@ -59,7 +59,6 @@
                     android:textSize="16sp"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="@+id/tvRoom"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/tvRoom"
                     app:layout_constraintTop_toBottomOf="@+id/tvRoom"
                     tools:text="Sensor" />
@@ -67,15 +66,14 @@
                 <TextView
                     android:id="@+id/tvSubType"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="22dp"
                     android:layout_marginTop="16dp"
                     android:text="@{data.subtype}"
                     android:textColor="@color/primary_white_def"
                     android:textSize="16sp"
                     android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="@+id/tvRoom"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/tvRoom"
+                    app:layout_constraintEnd_toEndOf="@+id/tvType"
+                    app:layout_constraintStart_toStartOf="@+id/tvType"
                     app:layout_constraintTop_toBottomOf="@+id/tvType"
                     tools:text="switch" />
 
@@ -83,38 +81,42 @@
                     android:id="@+id/tvValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="@{data.value.contains(`https`) ?  @string/blank : data.value}"
                     android:textColor="@color/primary_white_def"
-                    android:textSize="16sp"
+                    android:textSize="32sp"
                     android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="@+id/tvRoom"
-                    app:layout_constraintHorizontal_bias="0.031"
-                    app:layout_constraintStart_toStartOf="@+id/tvRoom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSubType"
+                    app:layout_constraintStart_toStartOf="@+id/tvSubType"
                     app:layout_constraintTop_toBottomOf="@+id/tvSubType"
+                    app:layout_constraintVertical_bias="0.51"
                     tools:text="On" />
 
                 <ImageView
                     android:id="@+id/imgValue"
                     imageUrl="@{data.value}"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="4dp"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
+                    android:layout_width="265dp"
+                    android:layout_height="96dp"
+                    android:layout_marginBottom="16dp"
+                    android:maxWidth="265dp"
+                    android:maxHeight="96dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.563"
+                    app:layout_constraintHorizontal_bias="0.53"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSubType"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:src="@android:drawable/ic_menu_gallery" />
 
                 <ImageView
                     android:id="@+id/imgDeleteItem"
-                    android:layout_width="35dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.931"
+                    app:layout_constraintStart_toEndOf="@+id/tvRoom"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_delete_item" />
             </androidx.constraintlayout.widget.ConstraintLayout>

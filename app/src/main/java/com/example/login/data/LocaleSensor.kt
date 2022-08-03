@@ -4,7 +4,6 @@ import androidx.databinding.ObservableField
 
 class LocaleSensor {
     val room = ObservableField("")
-    val subtype = ObservableField("")
-    val type = ObservableField("")
-    val value = ObservableField("")
+    var type: String = "Sensor"
+    var subtype: String = "Switch"
 }

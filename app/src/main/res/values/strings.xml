@@ -10,5 +10,21 @@
     <string name="value">Value</string>
     <string name="add">Add</string>
     <string name="add_new_sensor">Add new Sensor</string>
-    <string name="sensor_list_is_empty_n_synchronized_or_add_to_show">Sensor list is empty. \n Synchronized or add to show</string>
+    <string name="sensor_list_is_empty_n_synchronized_or_add_to_show">Sensor list is empty. \n Synchronize by down swipe \n for show</string>
+    <string name="choice_type">Choice Type</string>
+    <string name="choice_subtype">Choice Subtype</string>
+
+
+    <string-array name="Types">
+        <item>Sensor</item>
+        <item>Camera</item>
+        <item>Sound</item>
+        <item>Light</item>
+    </string-array>
+
+    <string-array name="Subtype">
+        <item>Switch</item>
+        <item>Onetime</item>
+        <item>Level</item>
+    </string-array>
 </resources>

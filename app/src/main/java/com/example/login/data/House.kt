@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class House(
     @SerializedName("room")
-    val room: String = "",
+    val room: String,
     @SerializedName("subtype")
-    val subtype: String = "",
+    val subtype: String,
     @SerializedName("type")
-    val type: String = "",
+    val type: String,
     @SerializedName("value")
-    var value: String = "",
+    var value: String,
 )

@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Toast
+import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -23,6 +28,8 @@ class AddSensorFragment : BaseFragment<FragmentAddSensorBinding>(R.layout.fragme
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
+        initDropDownType()
+        initDropDownSubType()
         return view
     }
 
@@ -32,6 +39,16 @@ class AddSensorFragment : BaseFragment<FragmentAddSensorBinding>(R.layout.fragme
             if(it) navigate(R.id.sensorFragment)
         }
     }
+    private fun initDropDownType(){
+        val types = resources.getStringArray(R.array.Types)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, types)
+        binding.autoCompleteType.setAdapter(arrayAdapter)
+    }
 
+    private fun initDropDownSubType(){
+        val subtypes = resources.getStringArray(R.array.Subtype)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, subtypes)
+        binding.autoCompleteSubtype.setAdapter(arrayAdapter)
+    }
 
 }

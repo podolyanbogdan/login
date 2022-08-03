@@ -31,73 +31,82 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edRoom"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typesLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchRoom(text)}"
-            android:inputType="textPersonName"
-            android:hint="@string/room"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/edSubType"
+            app:layout_constraintStart_toStartOf="@+id/edSubType"
+            app:layout_constraintTop_toBottomOf="@+id/edSubType">
 
-        <EditText
-            android:id="@+id/edType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchType(text)}"
-            android:inputType="textPersonName"
-            android:hint="@string/type"
-            app:layout_constraintEnd_toEndOf="@+id/edRoom"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/edRoom"
-            app:layout_constraintTop_toBottomOf="@+id/edRoom" />
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="@string/choice_type"
+                app:dropdown_text="@={viewmodel.localeSensor.type}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
             android:id="@+id/edSubType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
-            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchSubtype(text)}"
+            android:error="@{viewmodel.roomSetError}"
+            android:hint="@string/room"
             android:inputType="textPersonName"
-            android:hint="@string/subtype"
-            app:layout_constraintEnd_toEndOf="@+id/edType"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/edType"
-            app:layout_constraintTop_toBottomOf="@+id/edType" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchValue(text)}"
-            android:inputType="textPersonName"
-            android:hint="@string/value"
-            app:layout_constraintEnd_toEndOf="@+id/edSubType"
-            app:layout_constraintStart_toStartOf="@+id/edSubType"
-            app:layout_constraintTop_toBottomOf="@+id/edSubType" />
+            android:minHeight="48dp"
+            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchRoom(text)}"
+            app:backgroundTint="@color/primary_green_def"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> viewmodel.createLocaleSensor()}"
             android:text="@string/add"
             app:cornerRadius="0dp"
-            android:onClick="@{() -> viewmodel.createLocaleSensor()}"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+            app:layout_constraintEnd_toEndOf="@+id/subtypeLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/subtypeLayout"
+            app:layout_constraintTop_toBottomOf="@+id/subtypeLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/subtypeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/typesLayout"
+            app:layout_constraintStart_toStartOf="@+id/typesLayout"
+            app:layout_constraintTop_toBottomOf="@+id/typesLayout">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteSubtype"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="@string/choice_subtype"
+                app:dropdown_text="@={viewmodel.localeSensor.subtype}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+
+
+

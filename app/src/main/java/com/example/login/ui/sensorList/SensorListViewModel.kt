@@ -8,7 +8,6 @@ import com.example.login.data.House
 import com.example.login.repository.SensorRepository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel() {
     val sensors: MutableLiveData<List<House>> = repo.sensors
@@ -25,7 +24,8 @@ class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel() 
         showLoadingGif.value = sensors.value.isNullOrEmpty()
     }
 
-    fun fetchSensorList() {
+    //parse html and return json to repo
+    private fun fetchSensorList() {
         viewModelScope.launch(IO) {
             repo.getJsonHouseString(repo.parseWebPage())
         }

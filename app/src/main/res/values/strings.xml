@@ -14,17 +14,4 @@
     <string name="choice_type">Choice Type</string>
     <string name="choice_subtype">Choice Subtype</string>
 
-
-    <string-array name="Types">
-        <item>Sensor</item>
-        <item>Camera</item>
-        <item>Sound</item>
-        <item>Light</item>
-    </string-array>
-
-    <string-array name="Subtype">
-        <item>Switch</item>
-        <item>Onetime</item>
-        <item>Level</item>
-    </string-array>
 </resources>

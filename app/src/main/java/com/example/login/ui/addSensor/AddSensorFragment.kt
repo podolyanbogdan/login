@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.data.Subtypes
+import com.example.login.data.Types
 import com.example.login.databinding.FragmentAddSensorBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,19 +37,26 @@ class AddSensorFragment : BaseFragment<FragmentAddSensorBinding>(R.layout.fragme
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.createSensorTrigger.observe(this){
-            if(it) navigate(R.id.sensorFragment)
+        viewModel.createSensorTrigger.observe(this) {
+            if (it) navigate(R.id.sensorFragment)
         }
     }
-    private fun initDropDownType(){
-        val types = resources.getStringArray(R.array.Types)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, types)
+
+    private fun initDropDownType() {
+        val arrayAdapter = ArrayAdapter(
+            requireContext(),
+            R.layout.support_simple_spinner_dropdown_item,
+            Types.values()
+        )
         binding.autoCompleteType.setAdapter(arrayAdapter)
     }
 
-    private fun initDropDownSubType(){
-        val subtypes = resources.getStringArray(R.array.Subtype)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, subtypes)
+    private fun initDropDownSubType() {
+        val arrayAdapter = ArrayAdapter(
+            requireContext(),
+            R.layout.support_simple_spinner_dropdown_item,
+            Subtypes.values()
+        )
         binding.autoCompleteSubtype.setAdapter(arrayAdapter)
     }
 

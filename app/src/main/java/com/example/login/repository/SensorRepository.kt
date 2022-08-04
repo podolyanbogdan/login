@@ -9,6 +9,7 @@ import com.example.login.constants.Constants.URL_PAGE
 import com.example.login.data.FakeLocaleSync
 import com.example.login.data.House
 import com.example.login.data.HouseInfo
+import com.example.login.jsoup.JsoupParser
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.jsoup.Jsoup
@@ -22,37 +23,28 @@ class SensorRepository {
 
     //parse html page
     fun parseWebPage(): String {
-        var resultJsonString = ""
-        try {
-            val url = URL_PAGE
-            val html = Jsoup.connect(url).get()
-            val pTag = html.text()
-            resultJsonString = pTag
-                .replace("”", "\"")
-                .replace("“", "\"")
-
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return resultJsonString
+       return JsoupParser().parseWebPage()
     }
 
-
-    //get json Sensor String
+    //get json string to viewModel
     fun getJsonHouseString(value: String) {
         jsonHouseString = value
     }
 
-    //SET json Sensor String
+    //set json string from viewModel
     private fun setJsonHouseString(): String {
         return jsonHouseString
     }
 
+    //correct json string
     private fun correctJsonString(): String {
-        return setJsonHouseString().subSequence(
-            setJsonHouseString().indexOf(DATA_STARED) + DATA_STARED.length,
-            setJsonHouseString().indexOf(DATA_ENDED)
-        ).toString()
+        return setJsonHouseString()
+            .replace("”", "\"")
+            .replace("“", "\"")
+            .subSequence(
+                setJsonHouseString().indexOf(DATA_STARED) + DATA_STARED.length,
+                setJsonHouseString().indexOf(DATA_ENDED)
+            ).toString()
     }
 
     // init recycler sensors list

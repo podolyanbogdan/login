@@ -7,8 +7,8 @@ enum class FakeLocaleSync(val data: String) {
     FAKE_PIC1(IMG_KITCHEN),
     FAKE_PIC2(IMG2_TOILET),
     OFF("off"),
+    SEVEN("7"),
     F20("20.5F"),
     SWITCH("on"),
-    SEVEN("7"),
     FIVE("5.5"),
 }

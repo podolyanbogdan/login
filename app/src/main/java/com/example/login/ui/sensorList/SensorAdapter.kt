@@ -2,46 +2,49 @@ package com.example.login.ui.sensorList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login.R
 import com.example.login.data.House
 import com.example.login.databinding.SensorRecyItemBinding
-import com.example.login.repository.SensorRepository
 
 class SensorAdapter(
-    private var houses: MutableList<House>,
-    private var repo: SensorRepository
-) : RecyclerView.Adapter<SensorAdapter.SensorViewHolder>() {
+    private val sensorClickListener: SensorClickListener
+) : ListAdapter<House, SensorAdapter.ViewHolder>(DiffCallback()) {
 
-    inner class SensorViewHolder(
-        val sensorRecyItemBinding: SensorRecyItemBinding
-    ) : RecyclerView.ViewHolder(sensorRecyItemBinding.root)
+    class DiffCallback : DiffUtil.ItemCallback<House>() {
+        override fun areItemsTheSame(oldItem: House, newItem: House): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        SensorViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.sensor_recy_item,
-                parent,
-                false
-            )
-        )
-
-    override fun onBindViewHolder(holder: SensorViewHolder, position: Int) {
-        holder.sensorRecyItemBinding.data = houses[position]
-        deleteItem(position, holder)
+        override fun areContentsTheSame(oldItem: House, newItem: House): Boolean {
+            return oldItem == newItem
+        }
     }
 
-    override fun getItemCount() = houses.size
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item, sensorClickListener)
+    }
 
-    private fun deleteItem(position: Int, holder: SensorViewHolder) {
-        holder.sensorRecyItemBinding.imgDeleteItem.setOnClickListener {
-            houses.removeAt(position)
-            notifyItemRemoved(position)
-            notifyDataSetChanged()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    class ViewHolder private constructor(val binding: SensorRecyItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: House, sensorClickListener: SensorClickListener) {
+
+            binding.data = item
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = SensorRecyItemBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
+            }
         }
     }
 

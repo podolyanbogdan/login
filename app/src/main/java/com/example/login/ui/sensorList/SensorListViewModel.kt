@@ -1,5 +1,6 @@
 package com.example.login.ui.sensorList
 
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 
@@ -9,8 +10,9 @@ import com.example.login.repository.SensorRepository
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel() {
-    val sensors: MutableLiveData<List<House>> = repo.sensors
+class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel(),
+    SensorClickListener {
+    val sensors: MutableLiveData<MutableList<House>> = repo.sensors
     val addSensorTrigger = MutableLiveData<Boolean>()
     val hidePrompt = MutableLiveData<Boolean>()
     val showLoadingGif = MutableLiveData<Boolean>()
@@ -41,4 +43,7 @@ class SensorListViewModel(private val repo: SensorRepository) : BaseViewModel() 
         addSensorTrigger.value = true
     }
 
-}
+    override fun deleteSensor(sensor: House) {
+        repo.deleteItem(sensor)
+    }
+} 

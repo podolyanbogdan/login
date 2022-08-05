@@ -5,35 +5,24 @@ import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import com.example.login.constants.Constants.DATA_ENDED
 import com.example.login.constants.Constants.DATA_STARED
-import com.example.login.constants.Constants.URL_PAGE
 import com.example.login.data.FakeLocaleSync
 import com.example.login.data.House
 import com.example.login.data.HouseInfo
 import com.example.login.jsoup.JsoupParser
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import org.jsoup.Jsoup
-import java.io.IOException
+
 
 var jsonHouseString = ""
+// init recycler sensors list
+private var sensorsList = mutableListOf<House>()
 var localeSensorList = mutableListOf<House>()
-
 class SensorRepository {
-    var sensors: MutableLiveData<List<House>> = MutableLiveData()
+    var sensors: MutableLiveData<MutableList<House>> = MutableLiveData()
 
     //parse html page
     fun parseWebPage(): String {
-       return JsoupParser().parseWebPage()
-    }
-
-    //get json string to viewModel
-    fun getJsonHouseString(value: String) {
-        jsonHouseString = value
-    }
-
-    //set json string from viewModel
-    private fun setJsonHouseString(): String {
-        return jsonHouseString
+        return JsoupParser().parseWebPage()
     }
 
     //correct json string
@@ -47,16 +36,25 @@ class SensorRepository {
             ).toString()
     }
 
-    // init recycler sensors list
-    private var sensorsList = mutableListOf<House>()
+    //get json string to viewModel
+    fun getJsonHouseString(value: String) {
+        jsonHouseString = value
+    }
+
+    //set json string from viewModel
+    private fun setJsonHouseString(): String {
+        return jsonHouseString
+    }
+
 
     // fetch Sensors to list
     private fun setJsonSensorsList(): MutableList<House> {
         val tempList = mutableListOf<House>()
         val jsonString = Json.decodeFromString<HouseInfo>(correctJsonString())
-        jsonString.house.forEach { house ->
+        jsonString.house.forEachIndexed { index, house ->
             tempList.add(
                 House(
+                    id = index,
                     room = house.room,
                     subtype = house.subtype,
                     type = house.type,
@@ -70,10 +68,10 @@ class SensorRepository {
     // add list to recycler
     fun syncSensors() {
         Handler(Looper.getMainLooper()).postDelayed({
-            sensorsList = (setJsonSensorsList() + setLocaleSensorsList()) as MutableList<House>
+            sensorsList = ((setJsonSensorsList() + setLocaleSensorsList()).toMutableList())
             sensors.value = sensorsList
             updateLocaleSensor()
-        }, 2300)
+        }, 1500)
     }
 
     // add new sensor
@@ -94,13 +92,17 @@ class SensorRepository {
         return localeSensorList
     }
 
+    fun deleteItem(sensor: House){
+        sensorsList.remove(sensor)
+    }
+
     //random value for sync locale sensors
     fun getRandomValue(): String {
         return when ((0..5).random()) {
             0 -> FakeLocaleSync.FAKE_PIC1.data
-            1 -> FakeLocaleSync.SWITCH.data
+            1 -> FakeLocaleSync.F20.data
             2 -> FakeLocaleSync.OFF.data
-            3 -> FakeLocaleSync.F20.data
+            3 -> FakeLocaleSync.SWITCH.data
             4 -> FakeLocaleSync.SEVEN.data
             5 -> FakeLocaleSync.FAKE_PIC2.data
             else -> FakeLocaleSync.FIVE.data

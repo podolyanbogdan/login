@@ -10,7 +10,7 @@
             type="com.example.login.ui.addSensor.AddSensorViewModel" />
         <variable
             name="data"
-            type="com.example.login.data.LocaleSensor" />
+            type="com.example.login.data.House" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

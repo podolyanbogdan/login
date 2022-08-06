@@ -1,17 +1,3 @@
 <resources>
-    <string name="app_name" translatable="false">Scary meets</string>
-    <string name="blank" translatable="false"> </string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sync_sensors">Sync Sensors</string>
-    <string name="add_sensor">Add Sensor</string>
-    <string name="room">Room</string>
-    <string name="type">Type</string>
-    <string name="subtype">Subtype</string>
-    <string name="value">Value</string>
-    <string name="add">Add</string>
-    <string name="add_new_sensor">Add new Sensor</string>
-    <string name="sensor_list_is_empty_n_synchronized_or_add_to_show">Sensor list is empty. \n Synchronize by down swipe \n for show</string>
-    <string name="choice_type">Choice Type</string>
-    <string name="choice_subtype">Choice Subtype</string>
-
+    <string name="app_name" translatable="false">Snapseed</string>
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.addSensor.AddSensorViewModel" />
+        <variable
+            name="data"
+            type="com.example.login.data.House" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.addSensor.AddSensorFragment">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_new_sensor"
+            android:textColor="#000000"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typesLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/edSubType"
+            app:layout_constraintStart_toStartOf="@+id/edSubType"
+            app:layout_constraintTop_toBottomOf="@+id/edSubType">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="@string/choice_type"
+                app:dropdown_text="@={viewmodel.localeSensor.type}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <EditText
+            android:id="@+id/edSubType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:error="@{viewmodel.roomSetError}"
+            android:hint="@string/room"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:onTextChanged="@{(text, start, before, count) -> viewmodel.fetchRoom(text)}"
+            app:backgroundTint="@color/primary_green_def"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> viewmodel.createLocaleSensor()}"
+            android:text="@string/add"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/subtypeLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/subtypeLayout"
+            app:layout_constraintTop_toBottomOf="@+id/subtypeLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/subtypeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/typesLayout"
+            app:layout_constraintStart_toStartOf="@+id/typesLayout"
+            app:layout_constraintTop_toBottomOf="@+id/typesLayout">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteSubtype"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="@string/choice_subtype"
+                app:dropdown_text="@={viewmodel.localeSensor.subtype}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+
+
+

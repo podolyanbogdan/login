@@ -8,4 +8,20 @@
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
         android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/sensorFragment"
+        android:name="com.example.login.ui.sensorList.SensorListFragment"
+        android:label="SensorListFragment" >
+        <action
+            android:id="@+id/action_sensorFragment_to_addSensorFragment"
+            app:destination="@id/addSensorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSensorFragment"
+        android:name="com.example.login.ui.addSensor.AddSensorFragment"
+        android:label="AddSensorFragment" >
+        <action
+            android:id="@+id/action_addSensorFragment_to_sensorFragment"
+            app:destination="@id/sensorFragment" />
+    </fragment>
 </navigation>

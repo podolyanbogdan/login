@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name" translatable="false">Snapseed</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="from_galerry">From Galerry</string>
+    <string name="from_camera">From Camera</string>
+    <string name="alert_message_off_perm">You have turned off permissions</string>
+    <string name="alert_message_off_perm_2">It can be enable under App settings</string>
+    <string name="go_to_settings">Go to Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="tap_here_to_open_the_photo">Tap here to open the photo</string>
+    <string name="edit_from_camera">Edit From Camera</string>
+    <string name="edit_from_galerry">Edit from Gallery</string>
+    <string name="open_settings_for_permission">Open settings for permission</string>
 </resources>

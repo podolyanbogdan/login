@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.login">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".InternshipApp"
         android:allowBackup="false"
@@ -10,6 +13,8 @@
         android:roundIcon="@mipmap/ic_app_todo_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login">
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Theme.CropImage"/>
         <activity
             android:name=".ui.main.MainScreen"
             android:configChanges="orientation"
@@ -21,6 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

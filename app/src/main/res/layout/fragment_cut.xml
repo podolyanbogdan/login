@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.editor.CutFragment">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.editor.CutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2E4CC">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/imgToEdit"
+            android:layout_width="match_parent"
+            android:layout_height="411dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:brightness="1.0"
+            app:contrast="1.0"
+            app:crossfade="1.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnReset"
+            app:layout_constraintVertical_bias="0.0"
+            app:saturation="1.0"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> viewmodel.toHome()}"
+            android:src="@drawable/ic_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/seekBrightness"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:max="100"
+            android:min="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgToEdit"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <SeekBar
+            android:id="@+id/seekSaturation"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:max="100"
+            android:min="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBrightness"
+            app:layout_constraintVertical_bias="0.051" />
+
+        <ImageView
+            android:id="@+id/btnReset"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()-> viewmodel.resetImg()}"
+            android:src="@drawable/ic_reset"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/btnHome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnBW1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/avatar_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnBW2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/avatar_3"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/btnBW1"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnBW3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:src="@drawable/avatar_4"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/btnBW2"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnBW4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:src="@drawable/avatar_5"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/btnBW3"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnBW5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/avatar_6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/btnBW4"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnApplyChanges"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/apply_changes"
+            android:textColor="@color/primary_white_def"
+            app:cornerRadius="0dp"
+            android:onClick="@{() -> viewmodel.saveChanges()}"
+            android:backgroundTint="@color/primary_green_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnUndoChanges"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnBW1"
+            app:layout_constraintTop_toBottomOf="@+id/btnBW3"
+            app:layout_constraintVertical_bias="0.483" />
+
+        <ImageView
+            android:id="@+id/btnUndoChanges"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="@{() -> viewmodel.undoChanges()}"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_undo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_save_changs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

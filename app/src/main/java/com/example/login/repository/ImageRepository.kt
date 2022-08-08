@@ -1,8 +1,12 @@
 package com.example.login.repository
 
-import android.net.Uri
 
-
+private var currentImagePath = ""
 class ImageRepository() {
-
+    fun saveCurrentImagePath(path: String){
+        currentImagePath = path
+    }
+    fun takeCurrentImagePath(): String{
+        return currentImagePath
+    }
 }

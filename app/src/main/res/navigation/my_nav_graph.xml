@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/editorFragment"
-        android:name="com.example.login.ui.editor.EditorFragment"
+        android:name="com.example.login.ui.editor.CutFragment"
         android:label="fragment_editor"
-        tools:layout="@layout/fragment_editor" />
+        tools:layout="@layout/fragment_cut" />
 </navigation>

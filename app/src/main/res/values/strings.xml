@@ -12,4 +12,9 @@
     <string name="edit_from_camera">Edit From Camera</string>
     <string name="edit_from_galerry">Edit from Gallery</string>
     <string name="open_settings_for_permission">Open settings for permission</string>
+    <string name="failed_to_create_media_store_entry">Failed to create Media Store entry</string>
+    <string name="failed_to_save_bitmap">Failed to save Bitmap</string>
+    <string name="couldnt_save_bitmap">Couldnt save bitmap</string>
+    <string name="couldnt_create_mediastore_entry">Couldnt create MediaStore entry</string>
+    <string name="apply_changes">Apply changes</string>
 </resources>

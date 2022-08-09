@@ -17,4 +17,6 @@
     <string name="couldnt_save_bitmap">Couldnt save bitmap</string>
     <string name="couldnt_create_mediastore_entry">Couldnt create MediaStore entry</string>
     <string name="apply_changes">Apply changes</string>
+    <string name="your_image_was_save">Your image was saved</string>
+    <string name="changes_have_been_saved">Changes have been saved</string>
 </resources>

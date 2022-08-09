@@ -9,6 +9,7 @@ import com.example.login.data.BWTypes
 class CutViewModel : BaseViewModel() {
     val actions: MutableLiveData<Actions> = MutableLiveData()
     val bwTypes: MutableLiveData<BWTypes> = MutableLiveData()
+    val undoClickableState: MutableLiveData<Boolean> = MutableLiveData()
 
     fun toHome() {
         actions.value = Actions.HOME
@@ -19,6 +20,7 @@ class CutViewModel : BaseViewModel() {
     }
 
     fun saveChanges() {
+        undoClickableState.value = true
         actions.value = Actions.SAVE_CHANGES
     }
 

@@ -18,7 +18,9 @@ import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.Actions
 import com.example.login.data.BWTypes
+import com.example.login.data.constants.Constants.CACHE_IMAGE
 import com.example.login.databinding.FragmentCutBinding
+import com.example.login.imageCache.ImageCache
 import com.example.login.imageUtils.ImageUtils
 import com.example.login.repository.ImageRepository
 import com.example.login.repository.initCanvas
@@ -180,7 +182,9 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
 
 
     // save image to gallery
-    private fun Bitmap.savePhotoToExternalStorage(displayName: String): Boolean {
+    private fun Bitmap.savePhotoToExternalStorage(): Boolean {
+        val uuid = UUID.randomUUID().toString()
+
         val bitmap = copy(Bitmap.Config.ARGB_8888, true)
         val paint = Paint()
         paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
@@ -192,7 +196,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         } ?: MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         val contentValues = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, "$displayName.jpg")
+            put(MediaStore.Images.Media.DISPLAY_NAME, "$uuid.jpg")
         }
         return try {
             requireActivity().contentResolver.insert(imageCollection, contentValues)?.also { uri ->
@@ -202,6 +206,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                     }
                 }
             } ?: throw IOException(getString(R.string.couldnt_create_mediastore_entry))
+            showToast(getString(R.string.your_image_was_save))
             true
         } catch (e: IOException) {
             e.printStackTrace()
@@ -209,17 +214,19 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         }
     }
 
-
-    private fun undoImage() {
-        val bmImg =
-            BitmapFactory.decodeFile("/storage/emulated/0/Pictures/${ImageRepository().takeCurrentImagePath()}.jpg")
-        binding.imgToEdit.setImageBitmap(bmImg)
+    private fun Bitmap.saveImageToCache(){
+        val bitmap = copy(Bitmap.Config.ARGB_8888, true)
+        val paint = Paint()
+        paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
+        val canvas = Canvas(bitmap)
+        canvas.drawBitmap(bitmap, 0F, 0F, paint)
+        ImageCache.instance.saveBitmapToCahche(CACHE_IMAGE, bitmap)
+        showToast(getString(R.string.changes_have_been_saved))
     }
 
-    private fun applyChanges() {
-        val path = UUID.randomUUID().toString()
-        ImageRepository().saveCurrentImagePath(path)
-        repo.bitToSave.savePhotoToExternalStorage(path)
+    private fun getImageFromCache() {
+        val bmImg = ImageCache.instance.retrieveBitmapFromCache(CACHE_IMAGE)
+        binding.imgToEdit.setImageBitmap(bmImg)
     }
 
     //just observers
@@ -228,7 +235,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         viewModel.actions.observe(this) { act ->
             when (act) {
                 Actions.SAVE_PHOTO -> {
-
+                    repo.bitToSave.savePhotoToExternalStorage()
                 }
                 Actions.HOME -> {
                     navigate(R.id.homeFragment)
@@ -238,10 +245,10 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                     binding.seekBrightness.progress = 10
                 }
                 Actions.UNDO -> {
-                    undoImage()
+                    getImageFromCache()
                 }
                 Actions.SAVE_CHANGES -> {
-                    applyChanges()
+                    repo.bitToSave.saveImageToCache()
                 }
             }
         }

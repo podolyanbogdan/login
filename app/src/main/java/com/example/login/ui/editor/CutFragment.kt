@@ -13,15 +13,20 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.Actions
+import com.example.login.data.BWModel
 import com.example.login.data.BWTypes
 import com.example.login.data.constants.Constants.CACHE_IMAGE
+import com.example.login.data.constants.Constants.IMG_TYPE
+import com.example.login.data.constants.Constants.MODE
 import com.example.login.databinding.FragmentCutBinding
 import com.example.login.imageCache.ImageCache
 import com.example.login.imageUtils.ImageUtils
+import com.example.login.recAdapter.BWAdapter
 import com.example.login.repository.ImageRepository
 import com.example.login.repository.initCanvas
 import com.example.login.repository.sdk29AndUp
@@ -34,7 +39,6 @@ import java.util.*
 class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
     override val viewModel: CutViewModel by viewModel()
     private var repo = ImageRepository()
-
     private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
 
     override fun onCreateView(
@@ -46,25 +50,26 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         editImage()
         changeContrast()
         changeBrightness()
-
-        initBWBtns()
+        initRecycler()
         cropActivityResultLauncher.launch(null)
         return view
     }
 
-    private fun initBWBtns(){
-        setBlackWhiteToImages(binding.btnBW1, BWTypes.TYPES1)
-        setBlackWhiteToImages(binding.btnBW2, BWTypes.TYPES2)
-        setBlackWhiteToImages(binding.btnBW3, BWTypes.TYPES3)
-        setBlackWhiteToImages(binding.btnBW4, BWTypes.TYPES4)
-        setBlackWhiteToImages(binding.btnBW5, BWTypes.TYPES5)
+    //recycler for bw types
+    private fun initRecycler() {
+        binding.recyBW.also {
+            it.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            it.adapter = BWAdapter(viewModel.BWItems.value as List<BWModel>, viewModel)
+        }
     }
 
-    //convert uti to bitmap for saving
+
+    //convert uti to bitmap
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
             val parcelFileDescriptor =
-                requireActivity().contentResolver.openFileDescriptor(selectedFileUri, "r")
+                requireActivity().contentResolver.openFileDescriptor(selectedFileUri, MODE)
             val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
             repo.bitToSave = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor.close()
@@ -76,7 +81,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
     }
 
 
-    //load uri to imageView and save it to gallery
+    //load uri after crop and convert it to bitmap
     private fun editImage() {
         cropActivityResultLauncher =
             registerForActivityResult(
@@ -113,18 +118,6 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
-    }
-
-    private fun setBlackWhiteToImages(img: ImageView, type: BWTypes) {
-        val colorMatrix = floatArrayOf(
-            type.type, type.type, type.type, 0f, type.brigh,
-            type.type, type.type, type.type, 0f, type.brigh,
-            type.type, type.type, type.type, 0f, type.brigh,
-            0f, 0f, 0f, 1f, 0f,
-        )
-
-        val colorFilter = ColorMatrixColorFilter(colorMatrix)
-        img.colorFilter = colorFilter
     }
 
 
@@ -167,19 +160,10 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         return initCanvas(repo)
     }
 
-
-    private fun changeBitmapBlackWhite(type: BWTypes): Bitmap? {
-        repo.lastColorMatrix = ColorMatrix(
-            floatArrayOf(
-                type.type, type.type, type.type, 0f, type.brigh,
-                type.type, type.type, type.type, 0f, type.brigh,
-                type.type, type.type, type.type, 0f, type.brigh,
-                0f, 0f, 0f, 1f, 0f
-            )
-        )
+    private fun changeBitmapBlackWhite(type: ColorMatrix): Bitmap? {
+        repo.lastColorMatrix = type
         return initCanvas(repo)
     }
-
 
     // save image to gallery
     private fun Bitmap.savePhotoToExternalStorage(): Boolean {
@@ -190,13 +174,14 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
         val canvas = Canvas(bitmap)
         canvas.drawBitmap(bitmap, 0F, 0F, paint)
+        showToast(getString(R.string.your_image_was_save))
 
         val imageCollection = sdk29AndUp {
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
         } ?: MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         val contentValues = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, "$uuid.jpg")
+            put(MediaStore.Images.Media.DISPLAY_NAME, "$uuid$IMG_TYPE")
         }
         return try {
             requireActivity().contentResolver.insert(imageCollection, contentValues)?.also { uri ->
@@ -206,7 +191,6 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                     }
                 }
             } ?: throw IOException(getString(R.string.couldnt_create_mediastore_entry))
-            showToast(getString(R.string.your_image_was_save))
             true
         } catch (e: IOException) {
             e.printStackTrace()
@@ -214,7 +198,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         }
     }
 
-    private fun Bitmap.saveImageToCache(){
+    private fun Bitmap.saveImageToCache() {
         val bitmap = copy(Bitmap.Config.ARGB_8888, true)
         val paint = Paint()
         paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
@@ -229,6 +213,11 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         binding.imgToEdit.setImageBitmap(bmImg)
     }
 
+    private fun resetImageFilter() {
+        binding.seekSaturation.progress = 10
+        binding.seekBrightness.progress = 200
+    }
+
     //just observers
     override fun setObservers() {
         super.setObservers()
@@ -241,8 +230,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                     navigate(R.id.homeFragment)
                 }
                 Actions.RESET -> {
-                    binding.seekSaturation.progress = 100
-                    binding.seekBrightness.progress = 10
+                    resetImageFilter()
                 }
                 Actions.UNDO -> {
                     getImageFromCache()
@@ -252,44 +240,12 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                 }
             }
         }
-        viewModel.bwTypes.observe(this){ types ->
-            when(types){
-                BWTypes.TYPES1 -> {
-                    binding.imgToEdit.setImageBitmap(
-                        changeBitmapBlackWhite(
-                            type = BWTypes.TYPES1,
-                        )
-                    )
-                }
-                BWTypes.TYPES2 -> {
-                    binding.imgToEdit.setImageBitmap(
-                        changeBitmapBlackWhite(
-                            type = BWTypes.TYPES2,
-                        )
-                    )
-                }
-                BWTypes.TYPES3 -> {
-                    binding.imgToEdit.setImageBitmap(
-                        changeBitmapBlackWhite(
-                            type = BWTypes.TYPES3,
-                        )
-                    )
-                }
-                BWTypes.TYPES4 -> {
-                    binding.imgToEdit.setImageBitmap(
-                        changeBitmapBlackWhite(
-                            type = BWTypes.TYPES4,
-                        )
-                    )
-                }
-                BWTypes.TYPES5 -> {
-                    binding.imgToEdit.setImageBitmap(
-                        changeBitmapBlackWhite(
-                            type = BWTypes.TYPES5,
-                        )
-                    )
-                }
-            }
+        viewModel.bwTypes.observe(this) { types ->
+            binding.imgToEdit.setImageBitmap(
+                changeBitmapBlackWhite(
+                    type = types,
+                )
+            )
         }
     }
 }

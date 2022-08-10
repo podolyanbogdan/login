@@ -11,5 +11,5 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashViewModel() }
     viewModel { HomeViewModel() }
-    viewModel { CutViewModel() }
+    viewModel { CutViewModel(get()) }
 }

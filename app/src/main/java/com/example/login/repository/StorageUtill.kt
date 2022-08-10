@@ -20,11 +20,3 @@ fun initCanvas(repo: ImageRepository): Bitmap? {
     canvas.drawBitmap(repo.bitToSave, 0F, 0F, paint)
     return ret
 }
-
-fun Bitmap.initCanvasToSave(repo: ImageRepository){
-    val bitmap = copy(Bitmap.Config.ARGB_8888, true)
-    val paint = Paint()
-    paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
-    val canvas = Canvas(bitmap)
-    canvas.drawBitmap(bitmap, 0F, 0F, paint)
-}

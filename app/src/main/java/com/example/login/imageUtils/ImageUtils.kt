@@ -9,7 +9,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 class ImageUtils(
     private val context: Context,
 ) {
-
     val cropActivityResultContract = object : ActivityResultContract<Any?, Uri?>() {
         override fun createIntent(context: Context, input: Any?): Intent {
             return CropImage.activity()

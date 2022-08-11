@@ -1,5 +1,6 @@
 package com.example.login.recAdapter
 
+import android.graphics.ColorMatrix
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -7,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.data.BWModel
 import com.example.login.databinding.BwRecItemBinding
-import com.example.login.ui.editor.CutViewModel
 
 class BWAdapter(
     private var bwList: List<BWModel>,
-    private var viewModel: CutViewModel
+    private val setMatrix: (ColorMatrix) -> Unit
 ) : RecyclerView.Adapter<BWAdapter.BWViewHolder>() {
 
     inner class BWViewHolder(
@@ -30,15 +30,19 @@ class BWAdapter(
 
     override fun onBindViewHolder(holder: BWViewHolder, position: Int) {
         holder.bwRecItemBinding.data = bwList[position]
-        itemClicked(holder)
+        changeBW(holder)
     }
 
     override fun getItemCount() = bwList.size
 
-    private fun itemClicked(holder: BWViewHolder){
+
+    private fun changeBW(holder: BWViewHolder) {
         val item = holder.itemView
+        val matrix = holder.bwRecItemBinding.data?.type
         item.setOnClickListener {
-            viewModel.bwTypes.value = holder.bwRecItemBinding.data?.type
+            if (matrix != null) {
+                setMatrix(matrix)
+            }
         }
     }
 }

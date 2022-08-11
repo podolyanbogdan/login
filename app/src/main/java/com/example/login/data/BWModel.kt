@@ -7,5 +7,4 @@ data class BWModel(
     val type: ColorMatrix,
     @DrawableRes
     val img: Int = 0,
-    var isClicked: Boolean = false
 )

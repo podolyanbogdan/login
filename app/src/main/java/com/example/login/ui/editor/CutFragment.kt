@@ -8,10 +8,6 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.SeekBar.OnSeekBarChangeListener
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
@@ -19,7 +15,6 @@ import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.Actions
 import com.example.login.data.BWModel
-import com.example.login.data.BWTypes
 import com.example.login.data.constants.Constants.CACHE_IMAGE
 import com.example.login.data.constants.Constants.IMG_TYPE
 import com.example.login.data.constants.Constants.MODE
@@ -48,8 +43,6 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
         editImage()
-        changeContrast()
-        changeBrightness()
         initRecycler()
         cropActivityResultLauncher.launch(null)
         return view
@@ -57,10 +50,12 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
 
     //recycler for bw types
     private fun initRecycler() {
-        binding.recyBW.also {
-            it.layoutManager =
+        binding.recyBW.also { rec ->
+            rec.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            it.adapter = BWAdapter(viewModel.BWItems.value as List<BWModel>, viewModel)
+            rec.adapter = BWAdapter(
+                bwList = viewModel.BWItems.value as List<BWModel>,
+                setMatrix = { viewModel.setMatrix(it) })
         }
     }
 
@@ -93,62 +88,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
             }
     }
 
-
-    private fun changeBrightness() {
-        binding.seekBrightness.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
-            override fun onProgressChanged(
-                seekBar: SeekBar?,
-                progress: Int,
-                fromUser: Boolean
-            ) {
-                val brightness = progress.toFloat() - 200
-                val contrast = binding.seekSaturation.progress.toFloat() / 10F
-
-                binding.imgToEdit.setImageBitmap(
-                    changeBitmapContrastBrightness(
-                        brightness = brightness,
-                        contrast = contrast,
-                    )
-                )
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-            }
-        })
-    }
-
-
-    private fun changeContrast() {
-        binding.seekSaturation.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
-            override fun onProgressChanged(
-                seekBar: SeekBar?,
-                progress: Int,
-                fromUser: Boolean
-            ) {
-                val brightness = binding.seekBrightness.progress.toFloat() - 200
-                val contrast = progress.toFloat() / 10F
-
-                binding.imgToEdit.setImageBitmap(
-                    changeBitmapContrastBrightness(
-                        brightness = brightness,
-                        contrast = contrast,
-                    )
-                )
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-            }
-        })
-    }
-
-
-    fun changeBitmapContrastBrightness(contrast: Float, brightness: Float): Bitmap? {
+    private fun changeBitmapContrastBrightness(contrast: Float, brightness: Float): Bitmap? {
         repo.lastColorMatrix = ColorMatrix(
             floatArrayOf(
                 contrast, 0f, 0f, 0f, brightness,
@@ -240,6 +180,29 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                 }
             }
         }
+
+        viewModel.brightnessValue.observe(this) { value ->
+            val brightness = value.toFloat() - 200
+            val contrast = binding.seekSaturation.progress.toFloat() / 10F
+            binding.imgToEdit.setImageBitmap(
+                changeBitmapContrastBrightness(
+                    brightness = brightness,
+                    contrast = contrast,
+                )
+            )
+        }
+
+        viewModel.contrastValue.observe(this) { value ->
+            val brightness = binding.seekBrightness.progress.toFloat() - 200
+            val contrast = value.toFloat() / 10F
+            binding.imgToEdit.setImageBitmap(
+                changeBitmapContrastBrightness(
+                    brightness = brightness,
+                    contrast = contrast,
+                )
+            )
+        }
+
         viewModel.bwTypes.observe(this) { types ->
             binding.imgToEdit.setImageBitmap(
                 changeBitmapBlackWhite(

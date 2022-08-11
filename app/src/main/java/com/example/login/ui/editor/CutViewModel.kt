@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 import com.example.login.data.Actions
 import com.example.login.data.BWModel
-import com.example.login.data.BWTypes
 import com.example.login.repository.ImageRepository
 
 
@@ -17,9 +16,26 @@ class CutViewModel(
     val undoClickableState: MutableLiveData<Boolean> = MutableLiveData()
     val BWItems: MutableLiveData<List<BWModel>> = MutableLiveData()
 
+    val brightnessValue: MutableLiveData<Int> = MutableLiveData()
+    val contrastValue: MutableLiveData<Int> = MutableLiveData()
+
+
+    fun setMatrix(BWmatrix: ColorMatrix) {
+        bwTypes.value = BWmatrix
+    }
+
     init {
         BWItems.value = repo.BWList
     }
+
+    fun onValueChangedBrightness(value: Int) {
+        brightnessValue.value = value
+    }
+
+    fun onValueChangedContrast(value: Int){
+        contrastValue.value = value
+    }
+
 
     fun toHome() {
         actions.value = Actions.HOME

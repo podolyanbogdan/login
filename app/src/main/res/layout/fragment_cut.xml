@@ -5,9 +5,14 @@
     tools:context=".ui.editor.CutFragment">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.example.login.ui.editor.CutViewModel" />
+
+        <variable
+            name="repo"
+            type="com.example.login.repository.ImageRepository" />
 
     </data>
 
@@ -55,7 +60,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgToEdit"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:onValueChangeBrightness="@{(value)-> viewmodel.onValueChangedBrightness(value)}" />
 
         <SeekBar
             android:id="@+id/seekSaturation"
@@ -68,8 +74,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:onValueChangeContrast="@{(value)-> viewmodel.onValueChangedContrast(value)}"
             app:layout_constraintTop_toBottomOf="@+id/seekBrightness"
-            app:layout_constraintVertical_bias="0.051" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/btnReset"
@@ -83,74 +90,72 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnBW1"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:onClick="@{() -> viewmodel.onBwType1()}"-->
+        <!--            app:filter="@{viewmodel.matrixList[0]}"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:src="@drawable/avatar_2"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
+        <!--            tools:src="@tools:sample/avatars" />-->
 
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnBW2"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:src="@drawable/avatar_3"-->
+        <!--            android:layout_marginStart="32dp"-->
+        <!--            app:filter="@{viewmodel.matrixList[1]}"-->
+        <!--            android:onClick="@{() -> viewmodel.onBwType2()}"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/btnBW1"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
+        <!--            tools:src="@tools:sample/avatars" />-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/btnBW1"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:onClick="@{() -> viewmodel.onBwType1()}"-->
-<!--            app:filter="@{viewmodel.matrixList[0]}"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:src="@drawable/avatar_2"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
-<!--            tools:src="@tools:sample/avatars" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnBW3"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_marginStart="32dp"-->
+        <!--            android:src="@drawable/avatar_4"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            app:filter="@{viewmodel.matrixList[2]}"-->
+        <!--            android:onClick="@{() -> viewmodel.onBwType3()}"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/btnBW2"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
+        <!--            tools:src="@tools:sample/avatars" />-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/btnBW2"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:src="@drawable/avatar_3"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            app:filter="@{viewmodel.matrixList[1]}"-->
-<!--            android:onClick="@{() -> viewmodel.onBwType2()}"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btnBW1"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
-<!--            tools:src="@tools:sample/avatars" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnBW4"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_marginStart="32dp"-->
+        <!--            android:src="@drawable/avatar_5"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            app:filter="@{viewmodel.matrixList[3]}"-->
+        <!--            android:onClick="@{() -> viewmodel.onBwType4()}"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/btnBW3"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
+        <!--            tools:src="@tools:sample/avatars" />-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/btnBW3"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:src="@drawable/avatar_4"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:filter="@{viewmodel.matrixList[2]}"-->
-<!--            android:onClick="@{() -> viewmodel.onBwType3()}"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btnBW2"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
-<!--            tools:src="@tools:sample/avatars" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/btnBW4"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:src="@drawable/avatar_5"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:filter="@{viewmodel.matrixList[3]}"-->
-<!--            android:onClick="@{() -> viewmodel.onBwType4()}"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btnBW3"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
-<!--            tools:src="@tools:sample/avatars" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/btnBW5"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:src="@drawable/avatar_6"-->
-<!--            app:filter="@{viewmodel.matrixList[4]}"-->
-<!--            android:onClick="@{() -> viewmodel.onBwType5()}"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.058"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btnBW4"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
-<!--            tools:src="@tools:sample/avatars" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnBW5"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_marginStart="32dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:src="@drawable/avatar_6"-->
+        <!--            app:filter="@{viewmodel.matrixList[4]}"-->
+        <!--            android:onClick="@{() -> viewmodel.onBwType5()}"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.058"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/btnBW4"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"-->
+        <!--            tools:src="@tools:sample/avatars" />-->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnApplyChanges"
@@ -174,10 +179,10 @@
             android:id="@+id/btnUndoChanges"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:onClick="@{() -> viewmodel.undoChanges()}"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="20dp"
             android:clickable="@{viewmodel.undoClickableState ? true : false}"
+            android:onClick="@{() -> viewmodel.undoChanges()}"
             android:src="@drawable/ic_undo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

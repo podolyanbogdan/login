@@ -1,4 +1,4 @@
-package com.example.login.data
+package com.example.login.data.models
 
 import android.graphics.ColorMatrix
 import androidx.annotation.DrawableRes

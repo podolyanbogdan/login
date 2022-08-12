@@ -4,16 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.data.Direction
+import com.example.login.data.enums.Direction
+import com.example.login.data.enums.PermissionStatus
 import com.example.login.databinding.FragmentHomeBinding
-import com.example.login.ui.alert.PermAlert
-import com.example.login.ui.alert.openSettings
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -45,8 +41,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                     cameraCheckPermission()
                 }
                 Direction.SETTINGS -> {
-                    openSettings(requireActivity())
+                    navigate(R.id.settingsDialogFragment)
                 }
+            }
+        }
+        viewModel.permissionStatus.observe(this){ status ->
+            when(status){
+                PermissionStatus.GRANTED -> navigate(R.id.editorFragment)
+                PermissionStatus.NEXT_PERMISSION -> galleryCheckPermission()
+                PermissionStatus.DENIED -> navigate(R.id.settingsDialogFragment)
             }
         }
     }
@@ -56,17 +59,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             android.Manifest.permission.READ_EXTERNAL_STORAGE
         ).withListener(object : PermissionListener {
             override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-                navigate(R.id.editorFragment)
+                viewModel.setPermissionStatus(PermissionStatus.GRANTED)
             }
 
             override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-                PermAlert(requireContext(), requireActivity()).showRotationalDialogForPermission()
+                viewModel.setPermissionStatus(PermissionStatus.DENIED)
             }
 
             override fun onPermissionRationaleShouldBeShown(
                 p0: PermissionRequest?, p1: PermissionToken?
             ) {
-                PermAlert(requireContext(), requireActivity()).showRotationalDialogForPermission()
+                viewModel.setPermissionStatus(PermissionStatus.DENIED)
             }
         }).onSameThread().check()
     }
@@ -79,17 +82,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             ).withListener(
                 object : MultiplePermissionsListener {
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                        galleryCheckPermission()
+                        viewModel.setPermissionStatus(PermissionStatus.NEXT_PERMISSION)
                     }
-
                     override fun onPermissionRationaleShouldBeShown(
                         p0: MutableList<PermissionRequest>?,
                         p1: PermissionToken?
                     ) {
-                        PermAlert(
-                            requireContext(),
-                            requireActivity()
-                        ).showRotationalDialogForPermission()
+                        viewModel.setPermissionStatus(PermissionStatus.DENIED)
                     }
 
                 }

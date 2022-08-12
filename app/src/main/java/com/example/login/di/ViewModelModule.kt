@@ -1,6 +1,7 @@
 package com.example.login.di
 
-import com.example.login.ui.editor.CutViewModel
+import com.example.login.ui.alert.SettingsDialogViewModel
+import com.example.login.ui.editor.EditorViewModel
 import com.example.login.ui.home.HomeViewModel
 import com.example.login.ui.main.MainViewModel
 import com.example.login.ui.splash.SplashViewModel
@@ -11,5 +12,6 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashViewModel() }
     viewModel { HomeViewModel() }
-    viewModel { CutViewModel(get()) }
+    viewModel { EditorViewModel(get(), get()) }
+    viewModel { SettingsDialogViewModel() }
 }

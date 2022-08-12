@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
-import com.example.login.data.BWModel
+import com.example.login.data.models.BWModel
 import com.example.login.databinding.BwRecItemBinding
 
 class BWAdapter(

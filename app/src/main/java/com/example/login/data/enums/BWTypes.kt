@@ -1,4 +1,4 @@
-package com.example.login.data
+package com.example.login.data.enums
 
 enum class BWTypes(val brigh: Float, val type: Float) {
     TYPES1(0F, 0.22F),

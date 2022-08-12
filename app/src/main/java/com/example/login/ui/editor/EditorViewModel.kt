@@ -1,15 +1,20 @@
 package com.example.login.ui.editor
 
+import android.graphics.Bitmap
 import android.graphics.ColorMatrix
 import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
-import com.example.login.data.Actions
-import com.example.login.data.BWModel
+import com.example.login.data.enums.Actions
+import com.example.login.data.models.BWModel
+import com.example.login.data.enums.BitmapStates
+import com.example.login.repository.BWStorage
 import com.example.login.repository.ImageRepository
+import com.example.login.repository.initCanvas
 
 
-class CutViewModel(
-    private val repo: ImageRepository
+class EditorViewModel(
+    private val repo: ImageRepository,
+    private val bwStorage: BWStorage
 ) : BaseViewModel() {
     val actions: MutableLiveData<Actions> = MutableLiveData()
     val bwTypes: MutableLiveData<ColorMatrix> = MutableLiveData()
@@ -19,13 +24,28 @@ class CutViewModel(
     val brightnessValue: MutableLiveData<Int> = MutableLiveData()
     val contrastValue: MutableLiveData<Int> = MutableLiveData()
 
+    val mainBitmap: MutableLiveData<Bitmap?> = MutableLiveData()
+
+    val savedProcessState: MutableLiveData<BitmapStates> = MutableLiveData()
+
+
+    fun savedProcessState(state: BitmapStates){
+        savedProcessState.value = state
+    }
+
+    fun saveBit(bit: Bitmap?){
+        mainBitmap.value = bit
+    }
+    fun putBit(): Bitmap? {
+        return mainBitmap.value
+    }
 
     fun setMatrix(BWmatrix: ColorMatrix) {
         bwTypes.value = BWmatrix
     }
 
     init {
-        BWItems.value = repo.BWList
+        BWItems.value = bwStorage.BWList
     }
 
     fun onValueChangedBrightness(value: Int) {
@@ -50,9 +70,6 @@ class CutViewModel(
         actions.value = Actions.SAVE_CHANGES
     }
 
-    fun resetImg() {
-        actions.value = Actions.RESET
-    }
 
     fun undoChanges() {
         actions.value = Actions.UNDO

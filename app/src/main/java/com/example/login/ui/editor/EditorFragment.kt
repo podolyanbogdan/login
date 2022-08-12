@@ -13,12 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.data.Actions
-import com.example.login.data.BWModel
+import com.example.login.data.enums.Actions
+import com.example.login.data.models.BWModel
+import com.example.login.data.enums.BitmapStates
 import com.example.login.data.constants.Constants.CACHE_IMAGE
+import com.example.login.data.constants.Constants.DEF_BRIGHT_VALUE
+import com.example.login.data.constants.Constants.DEF_CONTRAST_VALUE
 import com.example.login.data.constants.Constants.IMG_TYPE
 import com.example.login.data.constants.Constants.MODE
-import com.example.login.databinding.FragmentCutBinding
+import com.example.login.databinding.FragmentEditorBinding
 import com.example.login.imageCache.ImageCache
 import com.example.login.imageUtils.ImageUtils
 import com.example.login.recAdapter.BWAdapter
@@ -31,8 +34,8 @@ import java.io.IOException
 import java.util.*
 
 
-class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
-    override val viewModel: CutViewModel by viewModel()
+class EditorFragment : BaseFragment<FragmentEditorBinding>(R.layout.fragment_editor) {
+    override val viewModel: EditorViewModel by viewModel()
     private var repo = ImageRepository()
     private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
 
@@ -83,7 +86,7 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                 ImageUtils(requireContext()).cropActivityResultContract
             ) {
                 it?.let { uri ->
-                    binding.imgToEdit.setImageBitmap(uriToBitmap(uri))
+                    viewModel.saveBit(uriToBitmap(uri))
                 }
             }
     }
@@ -114,7 +117,6 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         paint.colorFilter = ColorMatrixColorFilter(repo.lastColorMatrix)
         val canvas = Canvas(bitmap)
         canvas.drawBitmap(bitmap, 0F, 0F, paint)
-        showToast(getString(R.string.your_image_was_save))
 
         val imageCollection = sdk29AndUp {
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
@@ -131,9 +133,11 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                     }
                 }
             } ?: throw IOException(getString(R.string.couldnt_create_mediastore_entry))
+            viewModel.savedProcessState(BitmapStates.SAVED)
             true
         } catch (e: IOException) {
             e.printStackTrace()
+            viewModel.savedProcessState(BitmapStates.ERROR)
             false
         }
     }
@@ -145,18 +149,14 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         val canvas = Canvas(bitmap)
         canvas.drawBitmap(bitmap, 0F, 0F, paint)
         ImageCache.instance.saveBitmapToCahche(CACHE_IMAGE, bitmap)
-        showToast(getString(R.string.changes_have_been_saved))
+        viewModel.savedProcessState(BitmapStates.SAVED_CHANGES)
     }
 
     private fun getImageFromCache() {
         val bmImg = ImageCache.instance.retrieveBitmapFromCache(CACHE_IMAGE)
-        binding.imgToEdit.setImageBitmap(bmImg)
+        viewModel.saveBit(bmImg)
     }
 
-    private fun resetImageFilter() {
-        binding.seekSaturation.progress = 10
-        binding.seekBrightness.progress = 200
-    }
 
     //just observers
     override fun setObservers() {
@@ -169,9 +169,6 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
                 Actions.HOME -> {
                     navigate(R.id.homeFragment)
                 }
-                Actions.RESET -> {
-                    resetImageFilter()
-                }
                 Actions.UNDO -> {
                     getImageFromCache()
                 }
@@ -182,20 +179,20 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         }
 
         viewModel.brightnessValue.observe(this) { value ->
-            val brightness = value.toFloat() - 200
-            val contrast = binding.seekSaturation.progress.toFloat() / 10F
-            binding.imgToEdit.setImageBitmap(
+            val brightness = value.toFloat() - DEF_BRIGHT_VALUE
+            val contrast = binding.seekSaturation.progress.toFloat() / DEF_CONTRAST_VALUE
+            viewModel.saveBit(
                 changeBitmapContrastBrightness(
-                    brightness = brightness,
-                    contrast = contrast,
-                )
-            )
+                brightness = brightness,
+                contrast = contrast,
+            ))
+
         }
 
         viewModel.contrastValue.observe(this) { value ->
-            val brightness = binding.seekBrightness.progress.toFloat() - 200
-            val contrast = value.toFloat() / 10F
-            binding.imgToEdit.setImageBitmap(
+            val brightness = binding.seekBrightness.progress.toFloat() - DEF_BRIGHT_VALUE
+            val contrast = value.toFloat() / DEF_CONTRAST_VALUE
+            viewModel.saveBit(
                 changeBitmapContrastBrightness(
                     brightness = brightness,
                     contrast = contrast,
@@ -204,11 +201,19 @@ class CutFragment : BaseFragment<FragmentCutBinding>(R.layout.fragment_cut) {
         }
 
         viewModel.bwTypes.observe(this) { types ->
-            binding.imgToEdit.setImageBitmap(
+            viewModel.saveBit(
                 changeBitmapBlackWhite(
                     type = types,
                 )
             )
+        }
+
+        viewModel.savedProcessState.observe(this){ state ->
+            when(state){
+                BitmapStates.SAVED -> showToast(getString(R.string.your_image_was_save))
+                BitmapStates.ERROR -> showToast(getString(R.string.couldnt_save_bitmap))
+                BitmapStates.SAVED_CHANGES -> showToast(getString(R.string.changes_have_been_saved))
+            }
         }
     }
 }

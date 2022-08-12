@@ -11,7 +11,7 @@ import androidx.databinding.BindingAdapter
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 
 @BindingAdapter("app:imageBitmap")
-fun loadImage(iv: ImageView, bitmap: Bitmap?) {
+fun setBitmapImage(iv: ImageView, bitmap: Bitmap?) {
     iv.setImageBitmap(bitmap)
 }
 

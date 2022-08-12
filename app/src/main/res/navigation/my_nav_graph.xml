@@ -20,7 +20,12 @@
     </fragment>
     <fragment
         android:id="@+id/editorFragment"
-        android:name="com.example.login.ui.editor.CutFragment"
+        android:name="com.example.login.ui.editor.EditorFragment"
         android:label="fragment_editor"
-        tools:layout="@layout/fragment_cut" />
+        tools:layout="@layout/fragment_editor" />
+    <dialog
+        android:id="@+id/settingsDialogFragment"
+        android:name="com.example.login.ui.alert.SettingsDialogFragment"
+        android:label="fragment_settings_dialog"
+        tools:layout="@layout/fragment_settings_dialog" />
 </navigation>

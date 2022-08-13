@@ -1,22 +1,3 @@
 <resources>
-    <string name="app_name" translatable="false">Snapseed</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="from_galerry">From Galerry</string>
-    <string name="from_camera">From Camera</string>
-    <string name="alert_message_off_perm">You have turned off permissions \n It can be enable under App settings</string>
-    <string name="go_to_settings">Go to Settings</string>
-    <string name="cancel">Cancel</string>
-    <string name="tap_here_to_open_the_photo">Tap here to open the photo</string>
-    <string name="edit_from_camera">Edit From Camera</string>
-    <string name="edit_from_galerry">Edit from Gallery</string>
-    <string name="open_settings_for_permission">Open settings for permission</string>
-    <string name="failed_to_create_media_store_entry">Failed to create Media Store entry</string>
-    <string name="failed_to_save_bitmap">Failed to save Bitmap</string>
-    <string name="couldnt_save_bitmap">Couldnt save bitmap</string>
-    <string name="couldnt_create_mediastore_entry">Couldnt create MediaStore entry</string>
-    <string name="apply_changes">Apply changes</string>
-    <string name="your_image_was_save">Image has been saved</string>
-    <string name="changes_have_been_saved">Changes have been saved</string>
-    <string name="move">Move</string>
+    <string name="app_name" translatable="false">Birds song</string>
 </resources>

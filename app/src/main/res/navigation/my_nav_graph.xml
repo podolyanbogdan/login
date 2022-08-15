@@ -4,9 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav_graph"
     app:startDestination="@id/splashFragment">
-
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
         android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/birdsListFragment"
+        android:name="com.example.login.ui.screens.birdsList.BirdsListFragment"
+        android:label="fragment_birds_list"
+        tools:layout="@layout/fragment_birds_list" />
+    <fragment
+        android:id="@+id/advancedFragment"
+        android:name="com.example.login.ui.screens.advanced.AdvancedFragment"
+        android:label="AdvancedFragment" >
+        <action
+            android:id="@+id/action_advancedFragment_to_birdsListFragment"
+            app:destination="@id/birdsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/defaultFragment"
+        android:name="com.example.login.ui.screens.defaultt.DefaultFragment"
+        android:label="fragment_default_search"
+        tools:layout="@layout/fragment_default_search" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.login.ui.screens.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

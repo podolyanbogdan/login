@@ -12,7 +12,11 @@
         android:id="@+id/birdsListFragment"
         android:name="com.example.login.ui.screens.birdsList.BirdsListFragment"
         android:label="fragment_birds_list"
-        tools:layout="@layout/fragment_birds_list" />
+        tools:layout="@layout/fragment_birds_list" >
+        <argument
+            android:name="direction"
+            app:argType="com.example.login.data.enumss.From" />
+    </fragment>
     <fragment
         android:id="@+id/advancedFragment"
         android:name="com.example.login.ui.screens.advanced.AdvancedFragment"
@@ -25,7 +29,11 @@
         android:id="@+id/defaultFragment"
         android:name="com.example.login.ui.screens.defaultt.DefaultFragment"
         android:label="fragment_default_search"
-        tools:layout="@layout/fragment_default_search" />
+        tools:layout="@layout/fragment_default_search" >
+        <action
+            android:id="@+id/action_defaultFragment_to_birdsListFragment"
+            app:destination="@id/birdsListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.login.ui.screens.details.DetailsFragment"

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.editor.EditorFragment">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.editor.EditorViewModel" />
+
+        <variable
+            name="repo"
+            type="com.example.login.repository.ImageRepository" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2E4CC">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgToEdit"
+            android:layout_width="match_parent"
+            android:layout_height="411dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            app:imageBitmap="@{viewmodel.mainBitmap}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/btnHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> viewmodel.toHome()}"
+            android:src="@drawable/ic_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/seekBrightness"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:max="400"
+            android:progress="200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgToEdit"
+            app:layout_constraintVertical_bias="0.0"
+            app:onValueChangeBrightness="@{(value)-> viewmodel.onValueChangedBrightness(value)}" />
+
+        <SeekBar
+            android:id="@+id/seekSaturation"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:max="20"
+            android:progress="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:onValueChangeContrast="@{(value)-> viewmodel.onValueChangedContrast(value)}"
+            app:layout_constraintTop_toBottomOf="@+id/seekBrightness"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnApplyChanges"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary_green_light"
+            android:onClick="@{() -> viewmodel.saveChanges()}"
+            android:text="@string/apply_changes"
+            android:textColor="@color/primary_white_def"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnUndoChanges"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/recyBW"
+            app:layout_constraintTop_toBottomOf="@+id/recyBW"
+            app:layout_constraintVertical_bias="0.483" />
+
+        <ImageView
+            android:id="@+id/btnUndoChanges"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="@{viewmodel.undoClickableState ? true : false}"
+            android:onClick="@{() -> viewmodel.undoChanges()}"
+            android:src="@drawable/ic_undo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> viewmodel.saveImage()}"
+            android:src="@drawable/ic_save_changs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyBW"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnApplyChanges"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekSaturation"
+            app:layout_constraintVertical_bias="0.312" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

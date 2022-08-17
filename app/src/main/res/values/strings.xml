@@ -19,6 +19,9 @@
     <string name="countries">Countries</string>
     <string name="show_more">Show more</string>
     <string name="close">Close</string>
+    <string name="you_need_to_pass_data">You need to pass data</string>
+    <string name="you_need_to_pass_at_least">You need to pass at least Genus or Country</string>
+    <string name="music_is_loading">Music is loading...</string>
 
     <string-array name="countries_array">
         <item>Without Country</item>

@@ -9,13 +9,17 @@ import android.widget.MultiAutoCompleteTextView
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.data.enumss.FieldsStatus
 import com.example.login.databinding.FragmentAdvancedSearchBinding
+import com.example.login.internetCheckign.ConnectionLiveData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class AdvancedFragment : BaseFragment<FragmentAdvancedSearchBinding>(R.layout.fragment_advanced_search) {
+class AdvancedFragment :
+    BaseFragment<FragmentAdvancedSearchBinding>(R.layout.fragment_advanced_search) {
 
     override val viewModel: AdvancedViewModel by viewModel()
+    private lateinit var cld: ConnectionLiveData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,13 +28,29 @@ class AdvancedFragment : BaseFragment<FragmentAdvancedSearchBinding>(R.layout.fr
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
         initDropDownType()
+        checkNetworkConnection()
         return view
+    }
+
+    private fun checkNetworkConnection() {
+        cld = ConnectionLiveData(requireActivity().application)
+        cld.observe(viewLifecycleOwner) { isConnected ->
+            if (isConnected) {
+                viewModel.wifiState.value = true
+            }
+            if (isConnected == false) {
+                viewModel.wifiState.value = false
+            }
+        }
     }
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.onSearchTrigger.observe(this){
-            navigate(R.id.birdsListFragment)
+        viewModel.onSearchTrigger.observe(this) { status ->
+            when (status) {
+                FieldsStatus.FILLED -> navigate(R.id.birdsListFragment)
+                FieldsStatus.EMPTY -> showToast(getString(R.string.you_need_to_pass_at_least))
+            }
         }
     }
 

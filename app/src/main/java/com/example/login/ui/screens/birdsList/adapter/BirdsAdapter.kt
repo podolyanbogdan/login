@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
-import com.example.login.data.BirdModel
+import com.example.login.data.models.BirdModel
 import com.example.login.databinding.BirdRecItemBinding
 
 

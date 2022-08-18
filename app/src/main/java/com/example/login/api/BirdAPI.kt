@@ -12,4 +12,11 @@ interface BirdAPI {
         @Query("query", encoded = true)
         genus: String,
     ) : PageModel
+
+    //response
+    @GET("/api/2/recordings?")
+    suspend fun responseBird(
+        @Query("query", encoded = true)
+        genus: String,
+    ) : Response<PageModel>
 }

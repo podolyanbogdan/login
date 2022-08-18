@@ -15,7 +15,7 @@ import org.jetbrains.anko.doAsync
 
 
 object BirdMusic {
-    private lateinit var player: MediaPlayer
+    private var player = MediaPlayer()
 
     fun startMusic(context: Context, musicPath: String) {
        doAsync {

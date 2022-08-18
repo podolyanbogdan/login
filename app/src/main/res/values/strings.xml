@@ -21,7 +21,10 @@
     <string name="close">Close</string>
     <string name="you_need_to_pass_data">You need to pass data</string>
     <string name="you_need_to_pass_at_least">You need to pass at least Genus or Country</string>
-    <string name="music_is_loading">Music is loading...</string>
+    <string name="music_is_loading">Music is loading…</string>
+    <string name="request_was_failed">Request was failed</string>
+    <string name="no_result">No result</string>
+    <string name="nothing_was_found">It looks like nothing was found for your search.</string>
 
     <string-array name="countries_array">
         <item>Without Country</item>

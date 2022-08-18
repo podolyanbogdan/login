@@ -18,25 +18,13 @@
             app:argType="com.example.login.data.enumss.From" />
     </fragment>
     <fragment
-        android:id="@+id/advancedFragment"
-        android:name="com.example.login.ui.screens.advanced.AdvancedFragment"
-        android:label="AdvancedFragment" >
-        <action
-            android:id="@+id/action_advancedFragment_to_birdsListFragment"
-            app:destination="@id/birdsListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/defaultFragment"
-        android:name="com.example.login.ui.screens.defaultt.DefaultFragment"
-        android:label="fragment_default_search"
-        tools:layout="@layout/fragment_default_search" >
-        <action
-            android:id="@+id/action_defaultFragment_to_birdsListFragment"
-            app:destination="@id/birdsListFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.login.ui.screens.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.example.login.ui.screens.tab.TabFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_tab" />
 </navigation>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
+import androidx.activity.addCallback
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
@@ -27,6 +28,7 @@ class AdvancedFragment :
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
+        requireActivity().onBackPressedDispatcher.addCallback(this) {}
         initDropDownType()
         checkNetworkConnection()
         return view

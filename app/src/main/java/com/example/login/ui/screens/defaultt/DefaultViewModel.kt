@@ -11,7 +11,6 @@ class DefaultViewModel(
     private val repo: BirdRepository
 ): BaseViewModel() {
     val onSearchTrigger: MutableLiveData<FieldsStatus> =  MutableLiveData()
-    val goAdvancedTrigger = SingleLiveEvent<Unit>()
     val wifiState: MutableLiveData<Boolean> = MutableLiveData()
 
     val defaultRequestValue: MutableLiveData<String> = MutableLiveData()
@@ -28,9 +27,5 @@ class DefaultViewModel(
 
     fun onSearch(){
         fetchRequest()
-    }
-
-    fun goAdvanced(){
-        goAdvancedTrigger.value = Unit
     }
 }

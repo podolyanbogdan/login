@@ -16,39 +16,23 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/edMainSearch"
+            android:id="@+id/edGenus"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:layout_marginTop="96dp"
             android:layout_marginEnd="16dp"
-            android:text="@={viewmodel.searchModel.search}"
             android:autofillHints="name"
             android:ems="10"
-            android:hint="@string/searching"
+            android:hint="@string/genus"
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:text="@={viewmodel.searchModel.gen}"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edGenus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:autofillHints="name"
-            android:ems="10"
-            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
-            android:text="@={viewmodel.searchModel.gen}"
-            android:hint="@string/genus"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="@+id/edMainSearch"
-            app:layout_constraintStart_toStartOf="@+id/edMainSearch"
-            app:layout_constraintTop_toBottomOf="@+id/edMainSearch" />
 
         <EditText
             android:id="@+id/edBackgroundSubspecies"
@@ -204,14 +188,15 @@
             android:id="@+id/btnSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cornerRadius="0dp"
+            android:layout_marginBottom="5dp"
+            android:onClick="@{() -> viewmodel.onSearch()}"
             android:text="@string/search"
             android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
-            android:onClick="@{() -> viewmodel.onSearch()}"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/edPostAuthor"
-            app:layout_constraintStart_toStartOf="@+id/edPostAuthor"
-            app:layout_constraintTop_toBottomOf="@+id/edPostAuthor" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edPostAuthor" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

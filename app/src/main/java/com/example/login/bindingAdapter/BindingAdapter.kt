@@ -1,5 +1,6 @@
 package com.example.login.bindingAdapter
 
+import android.view.View
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import androidx.core.net.toUri
@@ -7,10 +8,9 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.example.login.ui.main.MainScreen
-import com.example.login.ui.main.adapter.ViewPagerAdapter
+import com.example.login.data.enumss.EmptyState
+import com.example.login.data.enumss.GifState
 import com.google.android.material.tabs.TabLayout
 
 
@@ -24,11 +24,20 @@ fun setImageUrl(imgView: ImageView, imgUrl: String?){
     }
 }
 
+@BindingAdapter("android:visibilityGif")
+fun setVisibility(view: View, value: GifState) {
+      when(value){
+          GifState.SHOW_GIF ->  view.visibility = View.VISIBLE
+          GifState.HIDE_GIF ->  view.visibility = View.INVISIBLE
+      }
+}
 
-@BindingAdapter("setAdapter")
-fun bindViewPagerAdapter(view: ViewPager2, activity: MainScreen) {
-    val adapter = ViewPagerAdapter(activity.supportFragmentManager, activity.lifecycle)
-    view.adapter = adapter
+@BindingAdapter("android:visibilityEmpt")
+fun setVisibilityTwo(view: View, value: EmptyState) {
+    when(value){
+        EmptyState.SHOW_STATE ->  view.visibility = View.VISIBLE
+        EmptyState.HIDE_STATE ->  view.visibility = View.INVISIBLE
+    }
 }
 
 @BindingAdapter("setPager")

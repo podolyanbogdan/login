@@ -1,19 +1,21 @@
 package com.example.login.ui.screens.birdsList
 
-import android.app.Application
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.data.enumss.EmptyState
+import com.example.login.data.enumss.FragNavigation
+import com.example.login.data.enumss.GifState
 import com.example.login.data.models.BirdModel
+import com.example.login.data.states.NetworkResult
 import com.example.login.databinding.FragmentBirdsListBinding
-import com.example.login.internetCheckign.ConnectionLiveData
 import com.example.login.ui.screens.birdsList.adapter.BirdsAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,11 +28,34 @@ class BirdsListFragment : BaseFragment<FragmentBirdsListBinding>(R.layout.fragme
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navigate(R.id.tabFragment)
+        }
+        getPosts()
         return view
     }
 
+    private fun getPosts() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.data.collect() {
+                when (it) {
+                    is NetworkResult.Success -> {
+                        initRecycler()
+                        viewModel.gifState.value = GifState.HIDE_GIF
+                    }
+                    is NetworkResult.Failure -> {
+                        showToast(getString(R.string.request_was_failed))
+                    }
+                    NetworkResult.Loading -> {
+                        viewModel.gifState.value = GifState.SHOW_GIF
+                    }
+                }
+            }
+        }
+    }
 
     private fun initRecycler() {
+        viewModel.recProperties()
         binding.recBirds.also { rec ->
             rec.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -43,13 +68,16 @@ class BirdsListFragment : BaseFragment<FragmentBirdsListBinding>(R.layout.fragme
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.showMoreTrigger.observe(this) {
-            navigate(R.id.detailsFragment)
+        viewModel.fragmentActions.observe(this) { act ->
+            when(act){
+                FragNavigation.SHOW_MORE -> navigate(R.id.detailsFragment)
+                FragNavigation.BACK -> navigate(R.id.tabFragment)
+            }
         }
-        viewModel.birdList.observe(this){
-            if(!it.isNullOrEmpty()){
+        viewModel.birdList.observe(this) { list ->
+            if (list.isNotEmpty()) {
+                viewModel.emptyState.value = EmptyState.HIDE_STATE
                 initRecycler()
-                viewModel.showLoadingGif.value = true
             }
         }
     }

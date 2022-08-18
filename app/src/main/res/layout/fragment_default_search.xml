@@ -14,6 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
         android:layout_height="match_parent">
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -25,7 +26,7 @@
             android:text="@={viewmodel.defaultRequestValue}"
             android:inputType="textPersonName"
             android:hint="@string/searching"
-            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/search"
-            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
             android:onClick="@{() -> viewmodel.onSearch()}"
             app:cornerRadius="0dp"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
@@ -45,23 +46,11 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:onClick="@{() -> viewmodel.goAdvanced()}"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_arrow"
-            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:src="@drawable/ic_no_internet"
-            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
             android:text="You have no Internet connection"
             android:textSize="20sp"
             android:textColor="#F13C3C"

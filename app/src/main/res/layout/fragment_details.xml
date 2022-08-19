@@ -203,7 +203,7 @@
                     <ImageView
                         android:id="@+id/imgValue"
                         style="@style/marginStyle"
-                        imageUrl="@{viewmodel.birdDetailModel.pictureModel.full}"
+                        imageUrl="@{viewmodel.birdDetailModel.sono.full}"
                         android:layout_width="345dp"
                         android:layout_height="110dp"
                         android:layout_marginStart="16dp"

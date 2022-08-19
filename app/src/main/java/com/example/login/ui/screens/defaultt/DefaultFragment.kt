@@ -9,8 +9,10 @@ import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
 import com.example.login.data.enumss.FieldsStatus
+import com.example.login.data.enumss.From
 import com.example.login.databinding.FragmentDefaultSearchBinding
 import com.example.login.internetCheckign.ConnectionLiveData
+import com.example.login.ui.screens.tab.TabFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -46,7 +48,10 @@ class DefaultFragment :
         super.setObservers()
         viewModel.onSearchTrigger.observe(this) { status ->
            when(status){
-               FieldsStatus.FILLED -> navigate(R.id.birdsListFragment)
+               FieldsStatus.FILLED -> navigate(TabFragmentDirections.fromTabFragmentToBirdList(
+                   queryString = viewModel.defaultRequestValue.value ?: "",
+                   querySearchType = From.DEFAULT
+               ))
                FieldsStatus.EMPTY -> showToast(getString(R.string.you_need_to_pass_data))
            }
         }

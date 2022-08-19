@@ -13,5 +13,5 @@ data class PageModel(
     @SerializedName("page")
     val page: Int,
     @SerializedName("recordings")
-    val birdModels: List<BirdModel>
+    var birdModels: List<BirdModel>
 )

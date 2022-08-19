@@ -5,68 +5,91 @@ import androidx.lifecycle.viewModelScope
 import com.example.login.arch.BaseViewModel
 import com.example.login.data.enumss.EmptyState
 import com.example.login.data.enumss.FragNavigation
-import com.example.login.data.models.BirdModel
-import com.example.login.data.enumss.From
 import com.example.login.data.enumss.GifState
+import com.example.login.data.localeModels.BirdModelLocale
+import com.example.login.data.mapper.BirdMapper
+import com.example.login.data.mapper.PictureMapper
 import com.example.login.data.models.PageModel
 import com.example.login.data.repository.BirdRepository
-import com.example.login.data.states.NetworkResult
-import kotlinx.coroutines.flow.emptyFlow
+import com.example.login.data.states.ResponseState
+import com.example.login.ui.screens.birdsList.adapter.RecyclerActions
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class BirdsListViewModel(
-    private val repo: BirdRepository
-) : BaseViewModel() {
-    val birdList: MutableLiveData<List<BirdModel>> = MutableLiveData()
+    private val repo: BirdRepository,
+) : BaseViewModel(), RecyclerActions {
+
+    private val searchResponse: MutableLiveData<ResponseState<PageModel>> = MutableLiveData()
+    val updateList: MutableLiveData<List<BirdModelLocale>> = MutableLiveData()
+    val showError: MutableLiveData<Unit> = MutableLiveData()
     val fragmentActions: MutableLiveData<FragNavigation> = MutableLiveData()
     var gifState: MutableLiveData<GifState> = MutableLiveData()
     var emptyState: MutableLiveData<EmptyState> = MutableLiveData()
-    var data = emptyFlow<NetworkResult<PageModel?>>()
 
     init {
-        when (repo.setSearchType()) {
-            From.DEFAULT -> {
-                data = repo.getPosts(repo.setDefaultRequest())
-                fetchDefaultResult()
-            }
-            From.ADVANCED -> {
-                data = repo.getPosts(repo.setAdvancedRequest())
-                fetchAdvancedResult()
-            }
-        }
         emptyState.value = EmptyState.HIDE_STATE
-        birdList.value = emptyList()
-    }
-    private fun fetchAdvancedResult() {
-        viewModelScope.launch {
-            birdList.postValue(repo.searchBird(
-                repo.setAdvancedRequest()
-            ).birdModels)
-        }
+        gifState.value = GifState.SHOW_GIF
     }
 
-    private fun fetchDefaultResult() {
-        viewModelScope.launch {
-            birdList.postValue(repo.searchBird(
-                repo.setDefaultRequest()
-            ).birdModels)
-        }
+    //advanced search
+    fun getAdvancedSearchResponse(
+        value: String
+    ) = viewModelScope.launch {
+        searchResponse.postValue(ResponseState.Loading())
+        val response = repo.getBirdResponse(
+            value
+        )
+        searchResponse.postValue(handleAdvancedSearchResponse(response))
     }
 
-    fun showMore(birdModel: BirdModel) {
+    fun getDefaultSearchResponse(
+        value: String
+    ) = viewModelScope.launch {
+        searchResponse.postValue(ResponseState.Loading())
+        val response = repo.getBirdResponse(
+            value
+        )
+        searchResponse.postValue(handleAdvancedSearchResponse(response))
+    }
+
+    //resultResponse.birdModels
+    private fun handleAdvancedSearchResponse(response: Response<PageModel>): ResponseState<PageModel> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                recProperties(
+                    BirdMapper(
+                        PictureMapper()
+                    ).map(resultResponse.birdModels)
+                )
+            }
+        } else {
+            showError()
+        }
+        return ResponseState.Error(response.message())
+    }
+    //advanced search
+
+    override fun showMore(birdModel: BirdModelLocale) {
         fragmentActions.value = FragNavigation.SHOW_MORE
         repo.getBirdDetail(birdModel)
     }
 
-    fun onBack(){
+    fun onBack() {
         fragmentActions.value = FragNavigation.BACK
     }
 
-    fun recProperties(){
-        if (birdList.value.isNullOrEmpty()) {
+    private fun recProperties(list: List<BirdModelLocale>) {
+        if (list.isEmpty()) {
             emptyState.value = EmptyState.SHOW_STATE
             gifState.value = GifState.HIDE_GIF
         }
+        gifState.value = GifState.HIDE_GIF
+        updateList.value = list
     }
 
+    private fun showError() {
+        gifState.value = GifState.HIDE_GIF
+        showError.value = Unit
+    }
 }

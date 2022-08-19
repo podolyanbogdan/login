@@ -16,17 +16,22 @@ import org.jetbrains.anko.doAsync
 
 object BirdMusic {
     private var player = MediaPlayer()
+    private var disableStart = false
 
     fun startMusic(context: Context, musicPath: String) {
-       doAsync {
-           player = MediaPlayer.create(context, Uri.parse(musicPath))
-           player.start()
-           player.isLooping = true
-       }
-        Toast.makeText(context, context.getString(R.string.music_is_loading), Toast.LENGTH_SHORT).show()
+      if(!disableStart){
+          doAsync {
+              player = MediaPlayer.create(context, Uri.parse(musicPath))
+              player.start()
+              player.isLooping = true
+          }
+          Toast.makeText(context, context.getString(R.string.music_is_loading), Toast.LENGTH_SHORT).show()
+          disableStart = true
+      }
     }
 
     fun stopMusic() {
+        disableStart = false
         player.stop()
     }
 

@@ -23,6 +23,7 @@ class AdvancedViewModel(
     val onSearchTrigger: MutableLiveData<FieldsStatus> =  MutableLiveData()
     var searchModel = SearchModel()
     val wifiState: MutableLiveData<Boolean> = MutableLiveData()
+    val advancedQuery: MutableLiveData<String> = MutableLiveData()
 
     private fun requestString(): String {
         val result = mutableMapOf<String, String>()
@@ -62,8 +63,7 @@ class AdvancedViewModel(
         if(searchModel.country.isEmpty() && searchModel.gen.isEmpty()){
             onSearchTrigger.value = FieldsStatus.EMPTY
         } else {
-            repo.getSearchType(From.ADVANCED)
-            repo.getAdvancedRequest(requestString())
+            advancedQuery.value = requestString()
             onSearchTrigger.value = FieldsStatus.FILLED
         }
     }

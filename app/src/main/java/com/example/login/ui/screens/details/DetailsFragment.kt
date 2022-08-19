@@ -40,7 +40,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
     override fun setObservers() {
         super.setObservers()
         viewModel.onCloseTrigger.observe(this) {
-            navigate(R.id.birdsListFragment)
+            navigate(DetailsFragmentDirections.fromDetailToBirdsList())
         }
         viewModel.musicStatus.observe(this) { status ->
             when (status) {

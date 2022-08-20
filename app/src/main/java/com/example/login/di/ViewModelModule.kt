@@ -13,9 +13,4 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { SplashViewModel() }
-    viewModel { AdvancedViewModel(get()) }
-    viewModel { DefaultViewModel() }
-    viewModel { BirdsListViewModel(get()) }
-    viewModel { DetailsViewModel(get()) }
-    viewModel { TabViewModel() }
 }

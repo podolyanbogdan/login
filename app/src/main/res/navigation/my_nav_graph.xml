@@ -4,9 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav_graph"
     app:startDestination="@id/splashFragment">
-
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/fromSplashToTabsFrag"
+            app:destination="@id/tabFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/birdsListFragment"
+        android:name="com.example.login.ui.screens.birdsList.BirdsListFragment"
+        android:label="fragment_birds_list"
+        tools:layout="@layout/fragment_birds_list" >
+        <action
+            android:id="@+id/fromBirdListToDetails"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/fromBirdsListToTabsFrag"
+            app:destination="@id/tabFragment" />
+        <argument
+            android:name="queryString"
+            app:argType="string"
+            android:defaultValue="empty" />
+        <argument
+            android:name="querySearchType"
+            app:argType="com.example.login.data.enumss.From"
+            android:defaultValue="DEFAULT" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.login.ui.screens.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/fromDetailToBirdsList"
+            app:destination="@id/birdsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.example.login.ui.screens.tab.TabFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_tab" >
+        <action
+            android:id="@+id/fromTabFragmentToBirdList"
+            app:destination="@id/birdsListFragment" />
+    </fragment>
 </navigation>

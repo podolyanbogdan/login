@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 
 fun Fragment.hideKeyboard() {
@@ -22,10 +23,10 @@ fun Context.hideKeyboard(view: View) {
 fun CharSequence?.isValidEmail() =
     !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
-fun Fragment.navigate(@IdRes resId: Int, args: Bundle? = null, clearStack: Boolean = false) {
+fun Fragment.navigate(directions: NavDirections, clearStack: Boolean = false) {
     findNavController().apply {
         if (clearStack) {
             popBackStack()
         }
-    }.navigate(resId, args)
+    }.navigate(directions)
 }

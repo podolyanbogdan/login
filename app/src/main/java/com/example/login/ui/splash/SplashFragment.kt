@@ -11,6 +11,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
     override val viewModel: SplashViewModel by viewModel()
     override fun setObservers() {
         viewModel.initEvent.observe(this) {
+            navigate(SplashFragmentDirections.fromSplashToTabsFrag())
         }
     }
 }

@@ -5,5 +5,4 @@ import com.example.login.arch.BaseViewModel
 class MainViewModel(
 
 ) : BaseViewModel() {
-
 }

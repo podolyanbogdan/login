@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.screens.defaultt.DefaultFragment">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.screens.advanced.AdvancedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/edGenus"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/genus"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:text="@={viewmodel.searchModel.gen}"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edBackgroundSubspecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:hint="@string/background_subspecies"
+            android:text="@={viewmodel.searchModel.subtype}"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edSubspecies"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edSubspecies"
+            app:layout_constraintTop_toBottomOf="@+id/edSubspecies" />
+
+        <EditText
+            android:id="@+id/edPlace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/place"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:inputType="textPersonName"
+            android:text="@={viewmodel.searchModel.place}"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edSoundType"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edSoundType"
+            app:layout_constraintTop_toBottomOf="@+id/edSoundType" />
+
+        <EditText
+            android:id="@+id/edSubspecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="name"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:ems="10"
+            android:text="@={viewmodel.searchModel.type}"
+            android:hint="@string/subspecies"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edGenus"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edGenus"
+            app:layout_constraintTop_toBottomOf="@+id/edGenus" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/ic_no_internet"
+            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.315" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="@{viewmodel.wifiState ? View.INVISIBLE : View.VISIBLE}"
+            android:text="You have no Internet connection"
+            android:textSize="20sp"
+            android:textColor="#F13C3C"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <EditText
+            android:id="@+id/edSoundType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="name"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:ems="10"
+            android:hint="@string/sound_type"
+            android:text="@={viewmodel.searchModel.soundType}"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edBackgroundSubspecies"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edBackgroundSubspecies"
+            app:layout_constraintTop_toBottomOf="@+id/edBackgroundSubspecies" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typesLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="381dp"
+            android:layout_height="58dp"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:layout_margin="20dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/edPlace"
+            app:layout_constraintStart_toStartOf="@+id/edPlace"
+            app:layout_constraintTop_toBottomOf="@+id/edPlace">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+                app:dropdown_text="@={viewmodel.searchModel.country}"
+                android:inputType="none"
+                android:text="@string/countries" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <EditText
+            android:id="@+id/edRemark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:hint="@string/remarks"
+            android:text="@={viewmodel.searchModel.remarks}"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edPlace"
+            app:layout_constraintStart_toStartOf="@+id/edPlace"
+            app:layout_constraintTop_toBottomOf="@+id/typesLayout" />
+
+        <EditText
+            android:id="@+id/edPostAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/post_author"
+            android:inputType="textPersonName"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            android:minHeight="48dp"
+            android:text="@={viewmodel.searchModel.author}"
+            app:layout_constraintEnd_toEndOf="@+id/edRemark"
+            app:layout_constraintStart_toStartOf="@+id/edRemark"
+            app:layout_constraintTop_toBottomOf="@+id/edRemark" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:onClick="@{() -> viewmodel.onSearch()}"
+            android:text="@string/search"
+            android:visibility="@{viewmodel.wifiState ? View.VISIBLE : View.INVISIBLE}"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edPostAuthor"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edPostAuthor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

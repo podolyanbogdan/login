@@ -4,6 +4,8 @@
     <string name="smth_wrong">You have no Internet connection.</string>
     <string name="no_memes_yet">No memes yet</string>
     <string name="memes_type">Memes type</string>
+    <string name="memes_list">Memes List</string>
+    <string name="without_type">Without Type</string>
 
     <string-array name="memes_types">
         <item>Without Tag</item>

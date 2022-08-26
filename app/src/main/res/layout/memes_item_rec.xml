@@ -14,14 +14,8 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:scaleType="centerCrop"
             app:cardBackgroundColor="@color/primary_white_def"
+            style="@style/MemesCardViewStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H,16:9"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,14 +24,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <ImageView
                     android:id="@+id/imgMemes"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     imageUrl="@{memes.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -48,50 +38,23 @@
 
                 <TextView
                     android:id="@+id/tvTopText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:shadowColor="#000000"
-                    android:gravity="center"
-                    android:shadowDx="5.5"
-                    android:shadowDy="5.3"
-                    android:shadowRadius="2.6"
-                    android:maxWidth="310dp"
-                    android:textSize="24sp"
                     android:text="@{memes.topText}"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
+                    style="@style/memesTextStyle"
+                    android:gravity="center|top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Twdasdawdlalsdmklasdmalskdkals" />
+                    tools:text="loremipsumloremipsumloremipsum" />
 
                 <TextView
                     android:id="@+id/tvBottomText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="310dp"
-                    android:maxHeight="100dp"
-                    android:layout_marginBottom="16dp"
-                    android:shadowColor="#000000"
-                    android:shadowDx="5.5"
-                    android:shadowDy="5.3"
-                    android:shadowRadius="2.6"
-                    android:textSize="24sp"
-                    android:gravity="center"
                     android:text="@{memes.bottomText}"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
+                    style="@style/memesTextStyle"
                     app:layout_constraintBottom_toBottomOf="@+id/imgMemes"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center|bottom"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:text="sadawdasdawdasdasjdaskldjasldkjkasl" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+                    tools:text="loremipsumloremipsumloremipsum" />
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
+import androidx.paging.DataSource
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.example.login.R
@@ -50,8 +52,9 @@ class MemesListFragment : BaseFragment<FragmentMemesListBinding>(R.layout.fragme
             binding.gifLoading.isVisible = refreshState == LoadState.Loading
             if (refreshState is LoadState.Error) {
                 snackBar(getString(R.string.smth_wrong))
+            } else {
+                MemesRepository().getAvailableMemes(memesAdapter.snapshot().items)
             }
-            MemesRepository().getAvailableMemes(memesAdapter.snapshot().items)
         }
     }
 

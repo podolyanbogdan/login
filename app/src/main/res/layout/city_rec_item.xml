@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="city"
+            type="com.example.login.data.modelsAPI.City" />
+        <variable
+            name="leftData"
+            type="com.example.login.data.modelsAPI.MainInfo" />
+        <variable
+            name="rightData"
+            type="com.example.login.data.modelsAPI.MainInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{city.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            imageUrl="@{leftData.weather[0].icon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvCityName"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCityName"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Today"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLeft"
+            app:layout_constraintStart_toEndOf="@+id/imgLeft"
+            app:layout_constraintTop_toTopOf="@+id/imgLeft"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvLeftGradusHumadity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            tools:text="+21 / 41%"
+            android:text="@{`+` + Double.toString(leftData.temp.day) + ` / ` + Integer.toString(leftData.humidity)}"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLeft"
+            app:layout_constraintStart_toEndOf="@+id/imgLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvToday"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imgTomorrow"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            imageUrl="@{leftData.weather[0].icon}"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.864"
+            app:layout_constraintStart_toEndOf="@+id/tvCityName"
+            app:layout_constraintTop_toTopOf="@+id/tvCityName"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvTommorow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="31dp"
+            android:text="Tommorow"
+            app:layout_constraintBottom_toBottomOf="@+id/imgTomorrow"
+            app:layout_constraintEnd_toStartOf="@+id/imgTomorrow"
+            app:layout_constraintTop_toTopOf="@+id/imgTomorrow" />
+
+        <TextView
+            android:id="@+id/tvRightGradusHumadity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="+21 / 41%"
+            android:text="@{`+` + Double.toString(rightData.temp.day) + ` / ` + Integer.toString(rightData.humidity)}"
+            app:layout_constraintBottom_toBottomOf="@+id/imgTomorrow"
+            app:layout_constraintEnd_toStartOf="@+id/imgTomorrow"
+            app:layout_constraintTop_toBottomOf="@+id/tvTommorow"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

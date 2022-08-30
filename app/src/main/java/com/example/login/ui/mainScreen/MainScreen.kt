@@ -1,4 +1,4 @@
-package com.example.login.ui.main
+package com.example.login.ui.mainScreen
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment

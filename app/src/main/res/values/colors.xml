@@ -2,7 +2,7 @@
 
 <resources>
     <!-- LIGHT MODE -->
-    <color name="primary_green_def">#286B2A</color>
+    <color name="primary_green_def">#62AA74</color>
     <color name="primary_white_def">#FFFFFF</color>
     <color name= "primary_green_light">#167C0C</color>
     <color name="primary_green_dark">#042101</color>

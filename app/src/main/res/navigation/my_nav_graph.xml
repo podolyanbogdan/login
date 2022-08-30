@@ -7,5 +7,25 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/fromSplashToViewPageFragment"
+            app:destination="@id/parentPageFragment" />
+        <action
+            android:id="@+id/fromSplashToAppBarActivity"
+            app:destination="@id/bottomAppBarActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/bottomAppBarActivity"
+        android:name="com.example.login.ui.appbarActivity.BottomAppBarActivity"
+        android:label="BottomAppBarActivity" />
+    <fragment
+        android:id="@+id/parentPageFragment"
+        android:name="com.example.login.ui.introducingFragments.parent.ParentPageFragment"
+        android:label="fragment_parent_page"
+        tools:layout="@layout/fragment_parent_page" >
+        <action
+            android:id="@+id/fromParentPageToBottomActivity"
+            app:destination="@id/bottomAppBarActivity" />
+    </fragment>
 </navigation>

@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.example.login.arch.ext.hideKeyboard
-import com.example.login.arch.ext.navigate
-import com.example.login.ui.screens.birdsList.BirdsListFragmentDirections
 
 abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: Int) : Fragment() {
 
@@ -41,10 +38,10 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
 
     private fun onBaseObservers() {
         viewModel.loading.observe(viewLifecycleOwner) { hideKeyboard() }
-        viewModel.errorEvent.observe(viewLifecycleOwner) { showToast(it) }
+        viewModel.errorEvent.observe(viewLifecycleOwner) { snackBar(it) }
     }
 
-    protected fun showToast(msg: String) {
+    protected fun snackBar(msg: String) {
         Snackbar.make(this.requireView(), msg, Snackbar.LENGTH_SHORT).show()
     }
 

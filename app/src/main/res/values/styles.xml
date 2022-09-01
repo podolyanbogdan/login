@@ -3,4 +3,38 @@
     <style name="marginStyle">
         <item name="android:layout_marginBottom">20dp</item>
     </style>
+
+    <style name="memesTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:maxWidth">310dp</item>
+        <item name="android:maxHeight">100dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">5.5</item>
+        <item name="android:shadowDy">5.3</item>
+        <item name="android:shadowRadius">2.6</item>
+        <item name="android:textSize">@dimen/ts24</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MemesCardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_16</item>
+        <item name="android:layout_marginTop">@dimen/margin_16</item>
+        <item name="android:layout_marginEnd">@dimen/margin_16</item>
+        <item name="android:layout_marginBottom">@dimen/margin_16</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="textMemeListStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ts36</item>
+        <item name="android:layout_marginTop">@dimen/margin_16</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

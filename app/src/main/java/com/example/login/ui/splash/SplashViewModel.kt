@@ -17,6 +17,9 @@ class SplashViewModel(
         onLoading(true)
         launch {
             delay(2000)
+            if(repo.checkLocationState()){
+                screenState.value =  IntroduceScreenState.LOCATION_ACCEPT
+            }
             when(repo.checkScreenState()){
                 true -> screenState.value = IntroduceScreenState.WATCHED
                 false -> screenState.value = IntroduceScreenState.UNWATCHED

@@ -6,7 +6,7 @@ import com.example.login.data.repository.PrefsRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single { ForecastRepository() }
+    single { ForecastRepository(get(), get(), get()) }
     single { PreferenceStorage(get()) }
     single { PrefsRepository(get()) }
 }

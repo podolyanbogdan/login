@@ -31,5 +31,5 @@ data class MainInfo(
     @SerializedName("temp")
     val temp: Temp,
     @SerializedName("weather")
-    val weather: List<Weather>
+    val weather: List<Weather>,
 )

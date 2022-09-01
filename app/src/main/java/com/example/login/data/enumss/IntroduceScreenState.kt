@@ -1,5 +1,5 @@
 package com.example.login.data.enumss
 
 enum class IntroduceScreenState {
-    WATCHED, UNWATCHED
+    WATCHED, UNWATCHED, LOCATION_ACCEPT
 }

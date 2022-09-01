@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.login.data.modelsAPI.Days
 import com.example.login.data.modelsAPI.MainInfo
 import com.example.login.databinding.ForecastDayItemBinding
 import com.example.login.utils.AppUtils.Companion.getDayName
@@ -26,7 +27,6 @@ class ForecastWeekAdapter() :
 
         fun bind(item: MainInfo) {
             binding.data = item
-            binding.tvDaysName.text = getDayName()
         }
 
         companion object {

@@ -11,12 +11,14 @@ import com.example.login.databinding.CityRecItemBinding
 import com.example.login.databinding.ForecastDayItemBinding
 import com.example.login.utils.AppUtils.Companion.currentDay
 
-class ForecastCitiesAdapter() :
+class ForecastCitiesAdapter(
+    private val recyclerClick: RecyclerClick
+) :
     ListAdapter<DailyForecastAPI, ForecastCitiesAdapter.ForecastCitiesHolder>(DiffCallback()) {
 
     override fun onBindViewHolder(holder: ForecastCitiesHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, recyclerClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastCitiesHolder {
@@ -26,10 +28,13 @@ class ForecastCitiesAdapter() :
     class ForecastCitiesHolder private constructor(private val binding: CityRecItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: DailyForecastAPI) {
+        fun bind(item: DailyForecastAPI, recyclerClick: RecyclerClick) {
             binding.city = item.city
             binding.leftData = item.list[currentDay()]
             binding.rightData = item.list[currentDay()+1]
+            binding.container.setOnClickListener {
+                recyclerClick.showCityInfo(item)
+            }
         }
 
         companion object {
@@ -43,7 +48,7 @@ class ForecastCitiesAdapter() :
 
     class DiffCallback : DiffUtil.ItemCallback<DailyForecastAPI>() {
         override fun areItemsTheSame(oldItem: DailyForecastAPI, newItem: DailyForecastAPI): Boolean {
-            return oldItem.cod == newItem.cod
+            return oldItem.city.name == newItem.city.name
         }
 
         override fun areContentsTheSame(oldItem: DailyForecastAPI, newItem: DailyForecastAPI): Boolean {

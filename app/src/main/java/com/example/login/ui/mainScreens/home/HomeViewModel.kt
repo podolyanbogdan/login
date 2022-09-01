@@ -4,49 +4,33 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.login.arch.BaseViewModel
 import com.example.login.arch.lifecycle.SingleLiveEvent
-import com.example.login.data.constants.Constants.CLOUD
+import com.example.login.arch.mapper.onFailure
+import com.example.login.arch.mapper.onSuccess
 import com.example.login.data.constants.Constants.FULL_DAY_FORMATTER
-import com.example.login.data.constants.Constants.NOT_FOUND
-import com.example.login.data.constants.Constants.SUN
 import com.example.login.data.constants.Constants.TIME_DAY_FORMATTER
 import com.example.login.data.localeModels.HomeModel
 import com.example.login.data.modelsAPI.DailyForecastAPI
 import com.example.login.data.repository.ForecastRepository
-import com.example.login.data.responseState.ResponseState
 import com.example.login.utils.AppUtils.Companion.currentDay
 import com.example.login.utils.AppUtils.Companion.getDate
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class HomeViewModel(
-    private val repo: ForecastRepository
+    private val repo: ForecastRepository,
 ) : BaseViewModel() {
     private val currentDayNumber = currentDay()
     val weekForecastTrigger = SingleLiveEvent<Boolean>()
     val message: MutableLiveData<String> = MutableLiveData()
-
-    private val forecastResponse: MutableLiveData<ResponseState<DailyForecastAPI>> = MutableLiveData()
+    val test: MutableLiveData<DailyForecastAPI> = MutableLiveData()
     val homeModel = HomeModel()
 
     init {
-        getForecastResponse()
-    }
-
-    private fun getForecastResponse() = viewModelScope.launch {
-        forecastResponse.postValue(ResponseState.Loading())
-        val response = repo.getDailyForecast()
-        forecastResponse.postValue(handleForecastResponse(response))
-    }
-
-    private fun handleForecastResponse(response: Response<DailyForecastAPI>): ResponseState<DailyForecastAPI> {
-        if (response.isSuccessful) {
-            response.body()?.let { resultResponse ->
-                setForecastData(resultResponse)
-            }
-        } else {
-            message.value = "No internet connection"
+        viewModelScope.launch {
+            if(!repo.isStop) repo.getCurrentCity()
+            repo.isStop = true
+            test.value = repo.setCityInfo()
+            setForecastData(repo.setCityInfo())
         }
-        return ResponseState.Error(response.message())
     }
 
     private fun setForecastData(resultResponse: DailyForecastAPI) {

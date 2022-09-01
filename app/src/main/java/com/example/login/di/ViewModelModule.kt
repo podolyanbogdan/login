@@ -8,6 +8,8 @@ import com.example.login.ui.mainScreens.cities.CitiesViewModel
 import com.example.login.ui.introducingFragments.thirth.ThirdIntroduceViewModel
 import com.example.login.ui.mainScreens.home.HomeViewModel
 import com.example.login.ui.mainScreen.MainViewModel
+import com.example.login.ui.mainScreens.addLocation.AddLocationViewModel
+import com.example.login.ui.mainScreens.permissionScreen.PermissionLocaleViewModel
 import com.example.login.ui.mainScreens.settings.SettingsViewModel
 import com.example.login.ui.mainScreens.weekForecast.WeekForecastViewModel
 import com.example.login.ui.splash.SplashViewModel
@@ -25,6 +27,8 @@ val viewModelModule = module {
     viewModel { SecondIntroduceViewModel() }
     viewModel { ThirdIntroduceViewModel(get()) }
     viewModel { ParentPageViewModel() }
+    viewModel { AddLocationViewModel(get()) }
+    viewModel { PermissionLocaleViewModel(get()) }
     viewModel { WeekForecastViewModel(get()) }
 
 }

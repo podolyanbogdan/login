@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
+import com.example.login.data.enumss.PermissionScreenState
 import com.example.login.databinding.FragmentThirdIntroduceBinding
 import com.example.login.ui.introducingFragments.parent.ParentPageFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,12 @@ class ThirdIntroduceFragment : BaseFragment<FragmentThirdIntroduceBinding>(R.lay
     override fun setObservers() {
         super.setObservers()
         viewModel.initEvent.observe(this){
-            navigate(ParentPageFragmentDirections.fromParentPageToBottomActivity())
+            if(it == true && viewModel.locationStatus.value == PermissionScreenState.DECLINED){
+                navigate(ParentPageFragmentDirections.actionParentPageFragmentToPermissionAndLocaleFragment())
+            }
+            if(it == true && viewModel.locationStatus.value == PermissionScreenState.ACCEPT){
+                navigate(ParentPageFragmentDirections.fromParentPageToBottomActivity())
+            }
         }
     }
 }

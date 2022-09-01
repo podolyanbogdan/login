@@ -5,20 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.data.repository.ForecastRepository
 import com.example.login.databinding.FragmentCitiesBinding
 import com.example.login.ui.mainScreens.cities.adapter.ForecastCitiesAdapter
-import com.example.login.ui.mainScreens.weekForecast.WeekForecastFragmentDirections
-import com.example.login.ui.mainScreens.weekForecast.adapter.ForecastWeekAdapter
+import com.example.login.ui.mainScreens.cities.adapter.SwipeToDeleteCallback
 import com.google.android.material.bottomappbar.BottomAppBar
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 class CitiesFragment : BaseFragment<FragmentCitiesBinding>(R.layout.fragment_cities) {
     override val viewModel: CitiesViewModel by viewModel()
@@ -35,20 +32,60 @@ class CitiesFragment : BaseFragment<FragmentCitiesBinding>(R.layout.fragment_cit
     }
 
     private fun initRecycler() {
-        citiesAdapter = ForecastCitiesAdapter()
+        citiesAdapter = ForecastCitiesAdapter(viewModel)
         binding.citiesRec.apply {
             adapter = citiesAdapter
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            delete(this.adapter as ForecastCitiesAdapter)
         }
     }
 
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.forecastData.observe(this){
+        viewModel.cities.observe(this) {
             citiesAdapter.submitList(it)
         }
+        viewModel.addCityTrigger.observe(this) {
+            hideNavBar()
+            if (it) navigate(CitiesFragmentDirections.actionCitiesFragmentToAddLocationFragment())
+        }
+        viewModel.showCityInfoTrigger.observe(this) {
+            if (it) navigate(CitiesFragmentDirections.actionCitiesFragmentToHomeFragment())
+        }
     }
+
+    private fun hideNavBar() {
+        val bap = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
+        bap.visibility = View.GONE
+    }
+
+    private fun delete(adapter: ForecastCitiesAdapter) {
+        if ((viewModel.citiesRepoList.value?.size ?: 0) != 1) {
+            val swipeGesture = object : SwipeToDeleteCallback(requireContext()) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    when (direction) {
+                        ItemTouchHelper.LEFT -> removeItem(
+                            viewHolder.bindingAdapterPosition,
+                            viewHolder as ForecastCitiesAdapter.ForecastCitiesHolder
+                        )
+                    }
+                }
+            }
+            val touchHelper = ItemTouchHelper(swipeGesture)
+            touchHelper.attachToRecyclerView(binding.citiesRec)
+        }
+    }
+
+    fun removeItem(
+        position: Int,
+        forecastCitiesHolder: ForecastCitiesAdapter.ForecastCitiesHolder
+    ) {
+        val currentList = viewModel.citiesRepoList.value
+        currentList?.removeAt(position)
+        viewModel.fetchData()
+    }
+
 
 }

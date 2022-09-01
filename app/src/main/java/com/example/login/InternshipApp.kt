@@ -1,6 +1,7 @@
 package com.example.login
 
 import android.app.Application
+import com.example.login.di.networkModule
 import com.example.login.di.providerModule
 import com.example.login.di.repositoryModule
 import com.example.login.di.viewModelModule
@@ -10,7 +11,7 @@ import org.koin.core.context.startKoin
 class InternshipApp : Application() {
 
     private val appModules by lazy{
-        listOf(viewModelModule, repositoryModule, providerModule)
+        listOf(viewModelModule, repositoryModule, providerModule, networkModule)
     }
 
     override fun onCreate() {

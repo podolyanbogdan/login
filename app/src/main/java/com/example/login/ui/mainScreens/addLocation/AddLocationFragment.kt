@@ -1,20 +1,22 @@
-package com.example.login.ui.mainScreens.home
+package com.example.login.ui.mainScreens.addLocation
 
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.databinding.FragmentHomeBinding
+import com.example.login.databinding.FragmentAddLocationBinding
+import com.example.login.ui.mainScreens.home.HomeViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    override val viewModel: HomeViewModel by viewModel()
+class AddLocationFragment :
+    BaseFragment<FragmentAddLocationBinding>(R.layout.fragment_add_location) {
+    override val viewModel: AddLocationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,21 +29,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.test.observe(this) {
-            Log.d("TEST", "$it")
-        }
-        viewModel.message.observe(this) {
-            snackBar(it)
-        }
-        viewModel.weekForecastTrigger.observe(this){
-            if(it) navigate(HomeFragmentDirections.actionHomeFragmentToWeekForecastFragment())
-            hideNavBar()
+        viewModel.addCityTrigger.observe(this) {
+            showNavBar()
+            if (it) navigate(AddLocationFragmentDirections.actionAddLocationFragmentToCitiesFragment())
         }
     }
 
-    private fun hideNavBar(){
+    private fun showNavBar() {
         val bap = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
-        bap.visibility = View.GONE
+        bap.visibility = View.VISIBLE
     }
-
 }

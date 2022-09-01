@@ -13,7 +13,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
     override fun setObservers() {
         viewModel.screenState.observe(this) { state ->
             when(state){
-                IntroduceScreenState.WATCHED -> navigate(SplashFragmentDirections.fromSplashToAppBarActivity())
+                IntroduceScreenState.LOCATION_ACCEPT -> navigate(SplashFragmentDirections.fromSplashToAppBarActivity())
+                IntroduceScreenState.WATCHED -> navigate(SplashFragmentDirections.actionSplashFragmentToPermissionAndLocaleFragment())
                 IntroduceScreenState.UNWATCHED -> navigate(SplashFragmentDirections.fromSplashToViewPageFragment())
             }
         }

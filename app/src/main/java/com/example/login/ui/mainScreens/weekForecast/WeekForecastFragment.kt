@@ -30,10 +30,6 @@ class WeekForecastFragment :
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
         initRecycler()
-        lifecycleScope.launch {
-            Log.d("TEST", "${ForecastRepository().getDailyForecast()}")
-            Log.d("TEST", "${ForecastRepository().getDailyForecast().body()}")
-        }
         return view
     }
 

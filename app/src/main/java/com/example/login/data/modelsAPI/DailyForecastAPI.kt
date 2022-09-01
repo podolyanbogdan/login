@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class DailyForecastAPI(
     @SerializedName("city")
-    val city: City,
+    val city: City = City(Coord(0.0,0.0),"",0,"",0,0),
     @SerializedName("cnt")
-    val cnt: Int,
+    val cnt: Int = 0,
     @SerializedName("cod")
-    val cod: String,
+    var cod: String = "",
     @SerializedName("list")
-    val list: List<MainInfo>,
+    val list: List<MainInfo> = emptyList(),
     @SerializedName("message")
-    val message: Double
+    val message: Double = 0.0
 )

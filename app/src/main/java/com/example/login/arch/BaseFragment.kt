@@ -45,4 +45,6 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
         Snackbar.make(this.requireView(), msg, Snackbar.LENGTH_SHORT).show()
     }
 
+
+
 }

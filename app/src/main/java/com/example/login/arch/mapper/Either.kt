@@ -1,5 +1,7 @@
 package com.example.login.arch.mapper
 
+import com.example.login.data.modelsAPI.DailyForecastAPI
+
 class Either<out T>(val value: Any?) {
 
     val isSuccess: Boolean get() = value !is Failure

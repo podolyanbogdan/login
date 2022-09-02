@@ -3,7 +3,7 @@ package com.example.login.data.modelsAPI
 
 import com.google.gson.annotations.SerializedName
 
-data class MainInfo(
+data class MainInfoAPI(
     @SerializedName("clouds")
     val clouds: Int,
     @SerializedName("deg")
@@ -11,7 +11,7 @@ data class MainInfo(
     @SerializedName("dt")
     val dt: Int,
     @SerializedName("feels_like")
-    val feelsLike: FeelsLike,
+    val feelsLikeAPI: FeelsLikeAPI,
     @SerializedName("gust")
     val gust: Double,
     @SerializedName("humidity")
@@ -29,7 +29,7 @@ data class MainInfo(
     @SerializedName("sunset")
     val sunset: Int,
     @SerializedName("temp")
-    val temp: Temp,
+    val tempAPI: TempAPI,
     @SerializedName("weather")
-    val weather: List<Weather>,
+    val weatherAPI: List<WeatherAPI>,
 )

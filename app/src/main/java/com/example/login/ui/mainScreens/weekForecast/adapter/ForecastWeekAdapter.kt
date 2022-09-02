@@ -5,13 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login.data.modelsAPI.Days
-import com.example.login.data.modelsAPI.MainInfo
+import com.example.login.data.constants.Constants.DAY_NAME_FORMATTER
+import com.example.login.data.localeModels.MainInfoLocale
+import com.example.login.data.modelsAPI.MainInfoAPI
 import com.example.login.databinding.ForecastDayItemBinding
+import com.example.login.utils.AppUtils
 import com.example.login.utils.AppUtils.Companion.getDayName
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+
 
 class ForecastWeekAdapter() :
-    ListAdapter<MainInfo, ForecastWeekAdapter.ForecastWeekHolder>(DiffCallback()) {
+    ListAdapter<MainInfoLocale, ForecastWeekAdapter.ForecastWeekHolder>(DiffCallback()) {
 
     override fun onBindViewHolder(holder: ForecastWeekHolder, position: Int) {
         val item = getItem(position)
@@ -25,8 +32,9 @@ class ForecastWeekAdapter() :
     class ForecastWeekHolder private constructor(private val binding: ForecastDayItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MainInfo) {
+        fun bind(item: MainInfoLocale) {
             binding.data = item
+            binding.tvDaysName.text = getDayName(item.dt.toLong())
         }
 
         companion object {
@@ -38,12 +46,12 @@ class ForecastWeekAdapter() :
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<MainInfo>() {
-        override fun areItemsTheSame(oldItem: MainInfo, newItem: MainInfo): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<MainInfoLocale>() {
+        override fun areItemsTheSame(oldItem: MainInfoLocale, newItem: MainInfoLocale): Boolean {
             return oldItem.dt == newItem.dt
         }
 
-        override fun areContentsTheSame(oldItem: MainInfo, newItem: MainInfo): Boolean {
+        override fun areContentsTheSame(oldItem: MainInfoLocale, newItem: MainInfoLocale): Boolean {
             return oldItem == newItem
         }
     }

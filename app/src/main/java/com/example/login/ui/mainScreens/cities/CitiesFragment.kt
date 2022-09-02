@@ -54,6 +54,11 @@ class CitiesFragment : BaseFragment<FragmentCitiesBinding>(R.layout.fragment_cit
         viewModel.showCityInfoTrigger.observe(this) {
             if (it) navigate(CitiesFragmentDirections.actionCitiesFragmentToHomeFragment())
         }
+        viewModel.message.observe(this){ msg ->
+            if (msg.isNotEmpty()){
+                snackBar(getString(R.string.smth_wrong))
+            }
+        }
     }
 
     private fun hideNavBar() {

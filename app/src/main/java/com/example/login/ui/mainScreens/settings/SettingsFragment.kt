@@ -1,5 +1,7 @@
 package com.example.login.ui.mainScreens.settings
 
+import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +13,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.databinding.FragmentSettingsBinding
+import com.yariksoffice.lingver.Lingver
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment_settings) {
     override val viewModel: SettingsViewModel by viewModel()
@@ -22,17 +26,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewmodel = viewModel
-        initDropDownType()
+        binding.tvEnglish.setOnClickListener { changeLanguage("en") }
+        binding.tvRus.setOnClickListener { changeLanguage("rus") }
         return view
-    }
-
-    private fun initDropDownType() {
-        val arrayAdapter = ArrayAdapter(
-            requireContext(),
-            R.layout.support_simple_spinner_dropdown_item,
-            resources.getStringArray(R.array.languages_array)
-        )
-        binding.autoCompleteType.setAdapter(arrayAdapter)
     }
 
     override fun setObservers() {
@@ -44,9 +40,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         viewModel.showAlertsState.observe(this) { state ->
             viewModel.alertsVisible.value = state
         }
-        viewModel.languageState.observe(this){ lang ->
-            Toast.makeText(context, lang, Toast.LENGTH_SHORT).show()
-        }
+    }
+
+    private fun changeLanguage(lang: String){
+        context?.let { Lingver.getInstance().setLocale(it, lang) }
+        requireActivity().recreate()
     }
 
 }

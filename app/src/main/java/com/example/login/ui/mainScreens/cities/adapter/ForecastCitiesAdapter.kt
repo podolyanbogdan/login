@@ -5,16 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.login.data.localeModels.DailyForecastLocale
 import com.example.login.data.modelsAPI.DailyForecastAPI
-import com.example.login.data.modelsAPI.MainInfo
 import com.example.login.databinding.CityRecItemBinding
-import com.example.login.databinding.ForecastDayItemBinding
 import com.example.login.utils.AppUtils.Companion.currentDay
 
 class ForecastCitiesAdapter(
     private val recyclerClick: RecyclerClick
 ) :
-    ListAdapter<DailyForecastAPI, ForecastCitiesAdapter.ForecastCitiesHolder>(DiffCallback()) {
+    ListAdapter<DailyForecastLocale, ForecastCitiesAdapter.ForecastCitiesHolder>(DiffCallback()) {
 
     override fun onBindViewHolder(holder: ForecastCitiesHolder, position: Int) {
         val item = getItem(position)
@@ -28,8 +27,8 @@ class ForecastCitiesAdapter(
     class ForecastCitiesHolder private constructor(private val binding: CityRecItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: DailyForecastAPI, recyclerClick: RecyclerClick) {
-            binding.city = item.city
+        fun bind(item: DailyForecastLocale, recyclerClick: RecyclerClick) {
+            binding.city = item.cityLocale
             binding.leftData = item.list[currentDay()]
             binding.rightData = item.list[currentDay()+1]
             binding.container.setOnClickListener {
@@ -46,12 +45,12 @@ class ForecastCitiesAdapter(
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<DailyForecastAPI>() {
-        override fun areItemsTheSame(oldItem: DailyForecastAPI, newItem: DailyForecastAPI): Boolean {
-            return oldItem.city.name == newItem.city.name
+    class DiffCallback : DiffUtil.ItemCallback<DailyForecastLocale>() {
+        override fun areItemsTheSame(oldItem: DailyForecastLocale, newItem: DailyForecastLocale): Boolean {
+            return oldItem.cityLocale.name == newItem.cityLocale.name
         }
 
-        override fun areContentsTheSame(oldItem: DailyForecastAPI, newItem: DailyForecastAPI): Boolean {
+        override fun areContentsTheSame(oldItem: DailyForecastLocale, newItem: DailyForecastLocale): Boolean {
             return oldItem == newItem
         }
     }

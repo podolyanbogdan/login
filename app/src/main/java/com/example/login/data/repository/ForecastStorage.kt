@@ -8,37 +8,41 @@ import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.mapper.Either
 import com.example.login.arch.mapper.onFailure
 import com.example.login.arch.mapper.onSuccess
+import com.example.login.data.localeModels.DailyForecastLocale
+import com.example.login.data.mapper.DailyForecastMapper
 import com.example.login.data.modelsAPI.DailyForecastAPI
 import com.example.login.retrofit.networkLoader.NetworkLoader
 import java.util.*
 
-class ForecastRepository(
+class ForecastStorage(
     private val networkLoader: NetworkLoader,
     private val prefsRepository: PrefsRepository,
-    private val context: Context
+    private val context: Context,
+    private val dailyForecastMapper: DailyForecastMapper
 ) {
     var cityList = mutableListOf(decodeLocation())
-    private var currentCity = DailyForecastAPI()
+    private var currentCity = DailyForecastLocale()
+    var errorMessage = ""
     var isStop  = false
     suspend fun getCurrentCity() {
         networkLoader.searchByCityName(decodeLocation()).onSuccess { res ->
-            currentCity = res
+            currentCity = dailyForecastMapper.map(res)
         }
     }
 
-    suspend fun getForecastData(): MutableList<DailyForecastAPI> {
-        val result = mutableListOf<DailyForecastAPI>()
+    suspend fun getForecastData(): MutableList<DailyForecastLocale> {
+        val result = mutableListOf<DailyForecastLocale>()
         cityList.forEachIndexed { index, city ->
             val response = networkLoader.searchByCityName(city)
             when{
                 response.isSuccess -> {
                     response.onSuccess { item ->
-                        result.add(index,item)
+                        result.add(index, dailyForecastMapper.map(item))
                     }
                 }
                 response.isFailure -> {
                     response.onFailure { error ->
-
+                        errorMessage = error.localizedMessage as String
                     }
                 }
             }
@@ -61,12 +65,11 @@ class ForecastRepository(
         cityList.add(city)
     }
 
-    fun getCityInfo(cityInfo: DailyForecastAPI){
+    fun getCityInfo(cityInfo: DailyForecastLocale){
         currentCity = cityInfo
     }
 
-    fun setCityInfo(): DailyForecastAPI {
+    fun setCityInfo(): DailyForecastLocale {
         return currentCity
     }
-
 }

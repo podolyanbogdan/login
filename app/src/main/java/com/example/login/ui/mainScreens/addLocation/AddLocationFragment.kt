@@ -33,6 +33,9 @@ class AddLocationFragment :
             showNavBar()
             if (it) navigate(AddLocationFragmentDirections.actionAddLocationFragmentToCitiesFragment())
         }
+        viewModel.showError.observe(this){
+            if(it) snackBar(getString(R.string.field_cant_empty))
+        }
     }
 
     private fun showNavBar() {

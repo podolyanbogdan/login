@@ -19,6 +19,8 @@ fun setImageUrl(imgView: ImageView, imgUrl: String?){
     val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
     val imgUri: Uri = when (imgUrl) {
         "01d" -> Constants.SUN.toUri().buildUpon().build()
+        "10d" -> Constants.CLOUD_RAIN.toUri().buildUpon().build()
+        "03d" -> Constants.OVER_CLOUDS.toUri().buildUpon().build()
         "04d" -> Constants.CLOUD.toUri().buildUpon().build()
         else -> Constants.NOT_FOUND.toUri().buildUpon().build()
     }

@@ -1,21 +1,16 @@
 package com.example.login.ui.mainScreens.weekForecast
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
 import com.example.login.arch.BaseFragment
 import com.example.login.arch.ext.navigate
-import com.example.login.data.repository.ForecastRepository
 import com.example.login.databinding.FragmentWeekForecastBinding
-import com.example.login.ui.mainScreens.cities.adapter.ForecastCitiesAdapter
 import com.example.login.ui.mainScreens.weekForecast.adapter.ForecastWeekAdapter
 import com.google.android.material.bottomappbar.BottomAppBar
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeekForecastFragment :
@@ -48,15 +43,21 @@ class WeekForecastFragment :
         viewModel.onBackTrigger.observe(this) {
             if (it) {
                 navigate(WeekForecastFragmentDirections.actionWeekForecastFragmentToHomeFragment())
-                val bap = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
-                bap.visibility = View.VISIBLE
+                showBar()
             }
         }
         viewModel.weatherData.observe(this){
             forecastAdapter.submitList(it)
         }
-        viewModel.message.observe(this){
-            snackBar("No internet connection")
+        viewModel.message.observe(this){ msg ->
+            if (msg.isNotEmpty()){
+                snackBar(getString(R.string.smth_wrong))
+            }
         }
+    }
+
+    private fun showBar(){
+        val bap = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
+        bap.visibility = View.VISIBLE
     }
 }

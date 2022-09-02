@@ -3,6 +3,8 @@ package com.example.login.utils
 import android.annotation.SuppressLint
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -41,14 +43,15 @@ class AppUtils {
             return current.format(formatter)
         }
 
-        fun getDayName(): String{
-            val current = LocalDateTime.now()
-            val formatter = DateTimeFormatter.ofPattern(DATE_NAME_DAY)
-            return current.format(formatter)
+        fun getDayName(day: Long): String {
+            val instant = Instant.ofEpochSecond(day).toString()
+            val date = LocalDate.parse(instant, DateTimeFormatter.ISO_DATE_TIME)
+            return date.dayOfWeek.name
         }
 
-        fun currentDay(): Int{
-            return Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-2
+
+        fun currentDay(): Int {
+            return Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 2
         }
     }
 }

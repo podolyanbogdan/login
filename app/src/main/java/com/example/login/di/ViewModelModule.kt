@@ -21,7 +21,7 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { CitiesViewModel(get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { SettingsViewModel() }
+    viewModel { SettingsViewModel(get()) }
     viewModel { BottomAppBarViewModel() }
     viewModel { FirstIntroduceViewModel() }
     viewModel { SecondIntroduceViewModel() }

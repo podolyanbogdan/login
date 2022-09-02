@@ -27,15 +27,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.test.observe(this) {
-            Log.d("TEST", "$it")
-        }
-        viewModel.message.observe(this) {
-            snackBar(it)
-        }
         viewModel.weekForecastTrigger.observe(this){
             if(it) navigate(HomeFragmentDirections.actionHomeFragmentToWeekForecastFragment())
             hideNavBar()
+        }
+        viewModel.message.observe(this){ msg ->
+            if (msg.isNotEmpty()){
+                snackBar(getString(R.string.smth_wrong))
+            }
         }
     }
 

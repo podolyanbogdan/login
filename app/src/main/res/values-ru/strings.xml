@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Forecast</string>
+    <string name="settings">Настройки</string>
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="enter_city_name_here">Введите город</string>
+    <string name="home">Назад</string>
+    <string name="add">Добавить</string>
+    <string name="add_location">Добавить локацию</string>
+    <string name="introduce_text_1">Добро пожаловать в Weather App</string>
+    <string name="cities_list">Список Городов</string>
+    <string name="cities">Города</string>
+    <string name="need_know_location">Для того что бы продолжить пользоваться приложением нам нужно узнать ваше местонахождение</string>
+    <string name="humidity">Влажность</string>
+    <string name="winter">Ветер</string>
+    <string name="theme">Тема</string>
+    <string name="dark_mode">Ночной режим</string>
+    <string name="notification">Уведомления</string>
+    <string name="show_alerts">Показывать уведомления</string>
+    <string name="very_hot">Очень жарко</string>
+    <string name="snow">Снег</string>
+    <string name="hot">Жарко</string>
+    <string name="language">Языки</string>
+    <string name="introduce_text_2">Это приложение создано для показа прогноза погоды</string>
+    <string name="introduce_text_3">Вы можете перемещаться по вкладкам, просматривать текущий прогноз и прогноз на неделю, а также выбирать другие города.</string>
+    <string name="back">Назад</string>
+    <string name="field_cant_empty">Это поле не может быть пустым</string>
+    <string name="smth_wrong">Что то пошло не так</string>
+</resources>

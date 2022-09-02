@@ -3,9 +3,9 @@ package com.example.login.data.modelsAPI
 
 import com.google.gson.annotations.SerializedName
 
-data class City(
+data class CityAPI(
     @SerializedName("coord")
-    val coord: Coord,
+    val coordAPI: CoordAPI,
     @SerializedName("country")
     val country: String,
     @SerializedName("id")

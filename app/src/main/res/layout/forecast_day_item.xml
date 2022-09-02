@@ -7,11 +7,7 @@
 
         <variable
             name="data"
-            type="com.example.login.data.modelsAPI.MainInfo" />
-
-        <variable
-            name="viewmodel"
-            type="com.example.login.ui.mainScreens.weekForecast.WeekForecastViewModel" />
+            type="com.example.login.data.localeModels.MainInfoLocale" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +21,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            imageUrl="@{data.weather[0].icon}"
+            imageUrl="@{data.weatherLocale[0].icon}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@{`+` + Double.toString(data.temp.day) + ` / ` + Integer.toString(data.humidity) + `%` + ` / ` + Double.toString(data.speed) + ` m/s`}"
+            android:text="@{`+` + Double.toString(data.tempLocale.day) + ` / ` + Integer.toString(data.humidity) + `%` + ` / ` + Double.toString(data.speed) + ` m/s`}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toBottomOf="@+id/tvDaysName"

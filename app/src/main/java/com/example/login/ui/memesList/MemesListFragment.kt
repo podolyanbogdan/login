@@ -76,6 +76,10 @@ class MemesListFragment : BaseFragment<FragmentMemesListBinding>(R.layout.fragme
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+    }
+
     override fun setObservers() {
         super.setObservers()
         viewModel.sortMemeType.observe(this){ sort ->

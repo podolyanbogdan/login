@@ -13,7 +13,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary_white_def"
         android:onClick="@{() -> viewmodel.openDailyForecast()}">
 
         <TextView
@@ -84,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             tools:text="Humanidity: 50%"
-            android:text="@{Integer.toString(viewmodel.homeModel.humidity) + ` %`}"
+            android:text="@{@string/humidity + Integer.toString(viewmodel.homeModel.humidity) + ` %`}"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/imgWeather"
             app:layout_constraintStart_toStartOf="@+id/imgWeather"

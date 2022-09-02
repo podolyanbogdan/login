@@ -4,9 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import com.example.login.arch.BaseViewModel
 
 class SettingsViewModel: BaseViewModel() {
-    val currentLanguage: MutableLiveData<String> = MutableLiveData()
+    var darkModeState = MutableLiveData(false)
+    var showAlertsState = MutableLiveData(false)
+    var alertsVisible = MutableLiveData(false)
+    var languageState: MutableLiveData<String> = MutableLiveData()
 
     init {
-        currentLanguage.value = "English"
+        languageState.value = "English"
     }
 }

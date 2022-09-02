@@ -6,6 +6,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.login.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 
 class BottomAppBarActivity : AppCompatActivity() {
 
@@ -15,6 +17,5 @@ class BottomAppBarActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragmentContainerView)
         bottomNavigationView.setupWithNavController(navController)
-
     }
 }

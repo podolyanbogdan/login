@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Today"
+            android:text="@string/today"
             app:layout_constraintBottom_toBottomOf="@+id/imgLeft"
             app:layout_constraintStart_toEndOf="@+id/imgLeft"
             app:layout_constraintTop_toTopOf="@+id/imgLeft"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="31dp"
-            android:text="Tommorow"
+            android:text="@string/tomorrow"
             app:layout_constraintBottom_toBottomOf="@+id/imgTomorrow"
             app:layout_constraintEnd_toStartOf="@+id/imgTomorrow"
             app:layout_constraintTop_toTopOf="@+id/imgTomorrow" />

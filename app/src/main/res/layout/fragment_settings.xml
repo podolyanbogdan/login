@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.mainScreens.settings.SettingsFragment">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
             type="com.example.login.ui.mainScreens.settings.SettingsViewModel" />
@@ -31,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="Dark Mode"
+            android:checked="@={viewmodel.darkModeState}"
+            android:text="Dark mode"
             app:layout_constraintEnd_toEndOf="@+id/textView3"
             app:layout_constraintHorizontal_bias="0.109"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch4" />
+            app:layout_constraintTop_toBottomOf="@+id/hot" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/typesLayout"
@@ -66,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
-                android:text="English" />
+                app:dropdown_text="@={viewmodel.languageState}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:checked="@={viewmodel.showAlertsState}"
             android:text="Show alets"
             app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintHorizontal_bias="0.109"
@@ -93,40 +97,41 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch2"
-            android:layout_width="wrap_content"
+            android:id="@+id/veryHot"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Very hot"
-            android:visibility="gone"
+            android:visibility="@{viewmodel.alertsVisible ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="@+id/switch1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/switch1"
             app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch3"
-            android:layout_width="wrap_content"
+            android:id="@+id/snow"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Snow"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/switch2"
+            android:visibility="@{viewmodel.alertsVisible ? View.VISIBLE : View.GONE}"
+
+            app:layout_constraintEnd_toEndOf="@+id/veryHot"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/switch2"
-            app:layout_constraintTop_toBottomOf="@+id/switch2" />
+            app:layout_constraintStart_toStartOf="@+id/veryHot"
+            app:layout_constraintTop_toBottomOf="@+id/veryHot" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch4"
-            android:layout_width="wrap_content"
+            android:id="@+id/hot"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Hot"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/switch3"
+            android:visibility="@{viewmodel.alertsVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/snow"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/switch3"
-            app:layout_constraintTop_toBottomOf="@+id/switch3" />
+            app:layout_constraintStart_toStartOf="@+id/snow"
+            app:layout_constraintTop_toBottomOf="@+id/snow" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

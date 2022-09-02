@@ -30,7 +30,6 @@
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
-            app:backgroundTint="@color/primary_white_def"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
@@ -43,11 +42,9 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/bottom_nav_corners"
                 android:foregroundGravity="bottom"
                 android:gravity="center|bottom"
-                app:itemRippleColor="@color/primary_white_def"
-                app:itemTextColor="@color/primary_green_def"
+                android:background="@drawable/bottom_nav_corners"
                 app:labelVisibilityMode="unlabeled"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

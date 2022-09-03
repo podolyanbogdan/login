@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.login.ui.mainScreens.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_weekForecastFragment"
+            app:destination="@id/weekForecastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="com.example.login.ui.mainScreens.cities.CitiesFragment"
+        android:label="fragment_cities"
+        tools:layout="@layout/fragment_cities" >
+        <action
+            android:id="@+id/action_citiesFragment_to_addLocationFragment"
+            app:destination="@id/addLocationFragment" />
+        <action
+            android:id="@+id/action_citiesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_citiesFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.login.ui.mainScreens.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/weekForecastFragment"
+        android:name="com.example.login.ui.mainScreens.weekForecast.WeekForecastFragment"
+        android:label="fragment_week_forecast"
+        tools:layout="@layout/fragment_week_forecast" >
+        <action
+            android:id="@+id/action_weekForecastFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLocationFragment"
+        android:name="com.example.login.ui.mainScreens.addLocation.AddLocationFragment"
+        android:label="fragment_add_location"
+        tools:layout="@layout/fragment_add_location" >
+        <action
+            android:id="@+id/action_addLocationFragment_to_citiesFragment"
+            app:destination="@id/citiesFragment" />
+    </fragment>
+</navigation>

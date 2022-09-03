@@ -1,4 +1,4 @@
-package com.example.login.ui.main
+package com.example.login.ui.mainScreen
 
 import com.example.login.arch.BaseViewModel
 

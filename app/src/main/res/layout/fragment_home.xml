@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mainScreens.home.HomeFragment">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.login.ui.mainScreens.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{() -> viewmodel.openDailyForecast()}">
+
+        <TextView
+            android:id="@+id/tvHomeCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.homeModel.cityName}"
+            tools:text="Kyiv"
+            android:textColor="@color/primary_green_def_light"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvCurrentDay"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentDay"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentDay" />
+
+        <ImageView
+            android:id="@+id/imgWeather"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            imageUrl="@{viewmodel.homeModel.weatherImg}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.406"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvGradus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@{`+` + Double.toString(viewmodel.homeModel.degrees)}"
+            tools:text="+21"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imgWeather"
+            app:layout_constraintEnd_toEndOf="@+id/imgWeather"
+            app:layout_constraintStart_toStartOf="@+id/imgWeather" />
+
+        <TextView
+            android:id="@+id/tvLatLng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{Double.toString(viewmodel.homeModel.locationLon) + `,` + Double.toString(viewmodel.homeModel.locationLat)}"
+            tools:text="50.42926, 30.54076"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvHomeCity"
+            app:layout_constraintStart_toStartOf="@+id/tvHomeCity"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeCity" />
+
+        <TextView
+            android:id="@+id/tvCurrentDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewmodel.homeModel.currentDay.substring(0,1).toUpperCase() + viewmodel.homeModel.currentDay.substring(1).toLowerCase() }"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvVlajnost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            tools:text="Humanidity: 50%"
+            android:text="@{@string/humidity + ` ` +  Integer.toString(viewmodel.homeModel.humidity) + ` %`}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/imgWeather"
+            app:layout_constraintStart_toStartOf="@+id/imgWeather"
+            app:layout_constraintTop_toBottomOf="@+id/imgWeather" />
+
+        <TextView
+            android:id="@+id/tvWindSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{@string/winter + ` ` + Double.toString(viewmodel.homeModel.windSpeed) + ` m/s`}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvVlajnost"
+            app:layout_constraintStart_toStartOf="@+id/tvVlajnost"
+            app:layout_constraintTop_toBottomOf="@+id/tvVlajnost"
+            tools:text="Wind speed: 7 m/s" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewmodel.homeModel.currentTime}"
+            tools:text="16:50"
+            android:textSize="60sp"
+            app:layout_constraintEnd_toEndOf="@+id/imgWeather"
+            app:layout_constraintStart_toStartOf="@+id/imgWeather"
+            app:layout_constraintTop_toBottomOf="@+id/tvWindSpeed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

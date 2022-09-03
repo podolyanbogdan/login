@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.login.ui.main.MainViewModel" />
+            type="com.example.login.ui.mainScreen.MainViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainScreen">
+        tools:context=".ui.mainScreen.MainScreen">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/homeHostNavFragment"

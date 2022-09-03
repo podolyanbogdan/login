@@ -2,7 +2,7 @@
 
 <resources>
     <!-- LIGHT MODE -->
-    <color name="primary_green_def">#286B2A</color>
+    <color name="primary_green_def">#62AA74</color>
     <color name="primary_white_def">#FFFFFF</color>
     <color name= "primary_green_light">#167C0C</color>
     <color name="primary_green_dark">#042101</color>
@@ -11,6 +11,7 @@
     <!-- DARK MODE -->
     <color name="primary_green_def_light">#90D789</color>
     <color name="on_primary_green_dark">#0B3906</color>
+    <color name="on_primary_white_dark">#292B29</color>
     <color name= "primary_container_green_half">#155315</color>
     <color name="on_primary_container_green_light">#ABF5A3</color>
 

@@ -7,5 +7,40 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/fromSplashToViewPageFragment"
+            app:destination="@id/parentPageFragment" />
+        <action
+            android:id="@+id/fromSplashToAppBarActivity"
+            app:destination="@id/bottomAppBarActivity" />
+        <action
+            android:id="@+id/action_splashFragment_to_permissionAndLocaleFragment"
+            app:destination="@id/permissionAndLocaleFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/bottomAppBarActivity"
+        android:name="com.example.login.ui.appbarActivity.BottomAppBarActivity"
+        android:label="BottomAppBarActivity" />
+    <fragment
+        android:id="@+id/parentPageFragment"
+        android:name="com.example.login.ui.introducingFragments.parent.ParentPageFragment"
+        android:label="fragment_parent_page"
+        tools:layout="@layout/fragment_parent_page" >
+        <action
+            android:id="@+id/fromParentPageToBottomActivity"
+            app:destination="@id/bottomAppBarActivity" />
+        <action
+            android:id="@+id/action_parentPageFragment_to_permissionAndLocaleFragment"
+            app:destination="@id/permissionAndLocaleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionAndLocaleFragment"
+        android:name="com.example.login.ui.mainScreens.permissionScreen.PermissionAndLocaleFragment"
+        android:label="fragment_permission_and_locale"
+        tools:layout="@layout/fragment_permission_and_locale" >
+        <action
+            android:id="@+id/action_permissionAndLocaleFragment_to_bottomAppBarActivity"
+            app:destination="@id/bottomAppBarActivity" />
+    </fragment>
 </navigation>

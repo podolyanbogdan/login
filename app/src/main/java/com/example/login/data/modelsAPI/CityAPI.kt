@@ -2,18 +2,21 @@ package com.example.login.data.modelsAPI
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CityAPI(
-    @SerializedName("coord")
+    @SerialName("coord")
     val coordAPI: CoordAPI,
-    @SerializedName("country")
+    @SerialName("country")
     val country: String,
-    @SerializedName("id")
+    @SerialName("id")
     val id: Int,
-    @SerializedName("name")
+    @SerialName("name")
     val name: String,
-    @SerializedName("population")
+    @SerialName("population")
     val population: Int,
-    @SerializedName("timezone")
+    @SerialName("timezone")
     val timezone: Int
 )

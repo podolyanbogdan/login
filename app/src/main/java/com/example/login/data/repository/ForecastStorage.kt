@@ -23,7 +23,7 @@ class ForecastStorage(
     var cityList = mutableListOf(decodeLocation())
     private var currentCity = DailyForecastLocale()
     var errorMessage = ""
-    var isStop  = false
+    var isStop = false
     suspend fun getCurrentCity() {
         networkLoader.searchByCityName(decodeLocation()).onSuccess { res ->
             currentCity = dailyForecastMapper.map(res)
@@ -58,7 +58,7 @@ class ForecastStorage(
             Double.fromBits(prefsRepository.getLocationLongitude()),
             1,
         )
-        return addresses!![0].locality
+        return addresses?.get(0)?.locality ?: ""
     }
 
     fun addNewCity(city: String){

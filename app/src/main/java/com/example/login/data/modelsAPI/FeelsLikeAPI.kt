@@ -2,14 +2,17 @@ package com.example.login.data.modelsAPI
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class FeelsLikeAPI(
-    @SerializedName("day")
+    @SerialName("day")
     val day: Double,
-    @SerializedName("eve")
+    @SerialName("eve")
     val eve: Double,
-    @SerializedName("morn")
+    @SerialName("morn")
     val morn: Double,
-    @SerializedName("night")
+    @SerialName("night")
     val night: Double
 )

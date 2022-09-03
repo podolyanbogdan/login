@@ -26,9 +26,9 @@ class ParentPageFragment : BaseFragment<FragmentParentPageBinding>(R.layout.frag
 
         val adapter = ViewPagerAdapter(childFragmentManager)
 
-        adapter.addFragment(FirstIntroduceFragment(), "Info")
-        adapter.addFragment(SecondIntroduceFragment(), "Introducing")
-        adapter.addFragment(ThirdIntroduceFragment(), "How to")
+        adapter.addFragment(FirstIntroduceFragment(), getString(R.string.welcome))
+        adapter.addFragment(SecondIntroduceFragment(), getString(R.string.introducing))
+        adapter.addFragment(ThirdIntroduceFragment(), getString(R.string.how_to))
 
         binding.searchPager.adapter = adapter
         binding.searchTabs.setupWithViewPager(binding.searchPager)

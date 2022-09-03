@@ -2,14 +2,17 @@ package com.example.login.data.modelsAPI
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class WeatherAPI(
-    @SerializedName("description")
+    @SerialName("description")
     val description: String,
-    @SerializedName("icon")
+    @SerialName("icon")
     val icon: String,
-    @SerializedName("id")
+    @SerialName("id")
     val id: Int,
-    @SerializedName("main")
+    @SerialName("main")
     val main: String
 )

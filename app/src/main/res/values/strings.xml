@@ -10,6 +10,11 @@
     <string name="humidity">Humidity </string>
     <string name="winter">Winter </string>
     <string name="theme">Theme</string>
+    <string name="go_to_app">Go to the App</string>
+    <string name="welcome">Welcome</string>
+    <string name="share_my_loc">Share my location</string>
+    <string name="introducing">Introducing</string>
+    <string name="how_to">How to</string>
     <string name="dark_mode">Dark mode</string>
     <string name="notification">Notifications</string>
     <string name="show_alerts">Show alets</string>

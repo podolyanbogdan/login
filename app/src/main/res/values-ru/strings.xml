@@ -27,4 +27,9 @@
     <string name="back">Назад</string>
     <string name="field_cant_empty">Это поле не может быть пустым</string>
     <string name="smth_wrong">Что то пошло не так</string>
+    <string name="how_to">Как пользоваться</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="introducing">О нас</string>
+    <string name="go_to_app">Перейти в приложение</string>
+    <string name="share_my_loc">Поделиться местоположением</string>
 </resources>

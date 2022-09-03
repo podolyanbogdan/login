@@ -39,7 +39,7 @@ class HomeViewModel(
         homeModel.countryName.set(resultResponse.cityLocale.country)
         homeModel.locationLon.set(resultResponse.cityLocale.coordLocale.lon)
         homeModel.locationLat.set(resultResponse.cityLocale.coordLocale.lat)
-        homeModel.degrees.set(resultResponse.list[currentDayNumber].tempLocale.day)
+        homeModel.degrees.set(resultResponse.list[currentDayNumber].tempLocale.eve)
         homeModel.humidity.set(resultResponse.list[currentDayNumber].humidity)
         homeModel.windSpeed.set(resultResponse.list[currentDayNumber].speed)
         homeModel.weatherImg.set(resultResponse.list[currentDayNumber].weatherLocale[0].icon)

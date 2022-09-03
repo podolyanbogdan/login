@@ -2,16 +2,20 @@ package com.example.login.data.modelsAPI
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class DailyForecastAPI(
-    @SerializedName("city")
+    @SerialName("city")
     val cityAPI: CityAPI = CityAPI(CoordAPI(0.0,0.0),"",0,"",0,0),
-    @SerializedName("cnt")
+    @SerialName("cnt")
     val cnt: Int = 0,
-    @SerializedName("cod")
+    @SerialName("cod")
     var cod: String = "",
-    @SerializedName("list")
+    @SerialName("list")
     val list: List<MainInfoAPI> = emptyList(),
-    @SerializedName("message")
+    @SerialName("message")
     val message: Double = 0.0
 )

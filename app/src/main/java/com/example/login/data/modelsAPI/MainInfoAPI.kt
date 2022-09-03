@@ -2,34 +2,37 @@ package com.example.login.data.modelsAPI
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MainInfoAPI(
-    @SerializedName("clouds")
+    @SerialName("clouds")
     val clouds: Int,
-    @SerializedName("deg")
+    @SerialName("deg")
     val deg: Int,
-    @SerializedName("dt")
+    @SerialName("dt")
     val dt: Int,
-    @SerializedName("feels_like")
+    @SerialName("feels_like")
     val feelsLikeAPI: FeelsLikeAPI,
-    @SerializedName("gust")
+    @SerialName("gust")
     val gust: Double,
-    @SerializedName("humidity")
+    @SerialName("humidity")
     val humidity: Int,
-    @SerializedName("pop")
+    @SerialName("pop")
     val pop: Double,
-    @SerializedName("pressure")
+    @SerialName("pressure")
     val pressure: Int,
-    @SerializedName("rain")
-    val rain: Double,
-    @SerializedName("speed")
+    @SerialName("rain")
+    val rain: Double = 0.0,
+    @SerialName("speed")
     val speed: Double,
-    @SerializedName("sunrise")
+    @SerialName("sunrise")
     val sunrise: Int,
-    @SerializedName("sunset")
+    @SerialName("sunset")
     val sunset: Int,
-    @SerializedName("temp")
+    @SerialName("temp")
     val tempAPI: TempAPI,
-    @SerializedName("weather")
+    @SerialName("weather")
     val weatherAPI: List<WeatherAPI>,
 )

@@ -1,11 +1,13 @@
 package com.example.login.data.modelsAPI
 
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CoordAPI(
-    @SerializedName("lat")
+    @SerialName("lat")
     val lat: Double,
-    @SerializedName("lon")
+    @SerialName("lon")
     val lon: Double
 )

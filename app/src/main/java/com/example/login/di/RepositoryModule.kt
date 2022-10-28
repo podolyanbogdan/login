@@ -1,8 +1,9 @@
 package com.example.login.di
 
-import com.example.login.data.repository.MemesRepository
+import com.example.login.repo.AgeRepository
+import com.example.login.repo.AgeRepositoryImpl
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single { MemesRepository() }
+    factory<AgeRepository> { AgeRepositoryImpl(get()) }
 }

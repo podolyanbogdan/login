@@ -2,4 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_nav_graph" />
+    android:id="@+id/my_nav_graph"
+    app:startDestination="@id/ageFragment">
+    <fragment
+        android:id="@+id/ageFragment"
+        android:name="com.example.login.ui.age.AgeFragment"
+        android:label="fragment_age"
+        tools:layout="@layout/fragment_age" />
+</navigation>

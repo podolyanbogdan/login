@@ -2,19 +2,4 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_nav_graph"
-    app:startDestination="@id/splashFragment">
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.login.ui.splash.SplashFragment"
-        android:label="SplashFragment" >
-        <action
-            android:id="@+id/fromSplashToMemesList"
-            app:destination="@id/memesListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/memesListFragment"
-        android:name="com.example.login.ui.memesList.MemesListFragment"
-        android:label="fragment_memes_list"
-        tools:layout="@layout/fragment_memes_list" />
-</navigation>
+    android:id="@+id/my_nav_graph" />

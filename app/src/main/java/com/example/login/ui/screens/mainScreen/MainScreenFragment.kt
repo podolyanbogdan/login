@@ -1,11 +1,16 @@
 package com.example.login.ui.screens.mainScreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsCompat.toWindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
@@ -21,6 +26,8 @@ import com.example.login.databinding.FragmentMainScreenBinding
 import com.example.login.repository.TaskRepository.hideImgAndTv
 import com.example.login.ui.datePicker.DatePickerDialog
 import com.example.login.utils.AppUtils.Companion.getCurrentMonth
+import dev.chrisbanes.insetter.Insetter
+import dev.chrisbanes.insetter.windowInsetTypesOf
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,6 +44,22 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(R.layout.frag
         requireActivity().onBackPressedDispatcher.addCallback(this) {}
         initRecyclerDays()
         initRecyclerTasks()
+
+        Insetter.builder()
+            .marginTop(windowInsetTypesOf(tappableElement = true))
+            .applyToView(binding.editTextTextPersonName)
+
+        val controller = WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        )
+        binding.btnEditClear.setOnClickListener {
+            controller.show(WindowInsetsCompat.Type.ime())
+        }
+        binding.btnEditSearch.setOnClickListener {
+            controller.hide(WindowInsetsCompat.Type.ime())
+
+        }
         return view
     }
 

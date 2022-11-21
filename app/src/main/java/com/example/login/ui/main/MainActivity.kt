@@ -12,6 +12,8 @@ import com.example.login.repository.TaskRepository
 import com.example.login.ui.screens.addTask.AddTaskFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dev.chrisbanes.insetter.Insetter
+import dev.chrisbanes.insetter.windowInsetTypesOf
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +27,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragmentContainerView)
         bottomNavigationView.setupWithNavController(navController)
 
-        val floatBtn = findViewById<FloatingActionButton>(R.id.floatBtn)
-        floatBtn.setOnClickListener {
-            navController.navigate(R.id.addTaskFragment)
-        }
-
+        Insetter.builder()
+            .marginBottom(windowInsetTypesOf(navigationBars = true))
+            .applyToView(bottomNavigationView)
     }
 
 }

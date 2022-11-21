@@ -47,7 +47,6 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         requireActivity().onBackPressedDispatcher.addCallback(this) {}
-        hideNavBar()
         binding.viewmodel = viewModel
         return view
     }
@@ -102,12 +101,6 @@ class AddTaskFragment : BaseFragment<FragmentAddTaskBinding>(R.layout.fragment_a
         } finally {
             popupMenu.show()
         }
-    }
-
-
-    private fun hideNavBar() {
-        corrd = requireActivity().findViewById(R.id.corrd)
-        corrd.visibility = View.INVISIBLE
     }
 
     private fun openTagDialog() {

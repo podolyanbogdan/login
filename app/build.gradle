@@ -62,4 +62,7 @@ dependencies {
     implementation 'com.shawnlin:number-picker:2.4.12'
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:0.10.5"
+
+    implementation 'dev.chrisbanes.insetter:insetter-dbx:0.6.1'
+    implementation 'dev.chrisbanes.insetter:insetter:0.6.1'
 }

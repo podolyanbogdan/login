@@ -31,6 +31,7 @@ fun ImageView.bindCircleImage(image: String?, placeholder: Drawable?) {
     }
 }
 
+
 @BindingAdapter("gifImage", requireAll = false)
 fun ImageView.bindGifView(
     @RawRes resId: Int,
